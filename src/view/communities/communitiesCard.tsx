@@ -21,7 +21,7 @@ export default function CommunitiesCard({ data }: { data: CommunityData }) {
   const router = useRouter();
   return (
     <Card
-      className="relative w-[95%] h-[380px] rounded-none overflow-hidden shadow-lg group border cursor-pointer"
+      className="relative w-[95%] h-[380px] rounded-2xl overflow-hidden shadow-xl group border border-white/20 cursor-pointer luxury-hover"
       onClick={() =>
         router.push(`/communities/details/${encodeURIComponent(data?.name)}`)
       }
@@ -40,11 +40,11 @@ export default function CommunitiesCard({ data }: { data: CommunityData }) {
 
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end text-white">
-          <h3 className="text-2xl sm:text-3xl font-custom mb-2 tracking-wide">
+          <h3 className="text-2xl sm:text-3xl font-serif mb-2 tracking-wide">
             {data?.name}
           </h3>
           {data?.order_description && (
-            <p className="text-xs mb-4 font-light leading-relaxed opacity-90">
+            <p className="text-xs mb-4 font-light leading-relaxed opacity-90 font-serif">
               {data.order_description}
             </p>
           )}
@@ -53,9 +53,9 @@ export default function CommunitiesCard({ data }: { data: CommunityData }) {
           <Link
             href={`/communities/details/${encodeURIComponent(data?.name)}`}
             className={cn(
-              "relative pb-1 transition-all duration-300 text-primary uppercase text-base",
+              "relative pb-1 transition-all duration-300 text-[#dbbb90] uppercase text-base font-serif",
               "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0",
-              "after:bg-primary after:transition-all after:duration-300 hover:after:w-20"
+              "after:bg-[#dbbb90] after:transition-all after:duration-300 hover:after:w-20"
             )}
           >
             Explore

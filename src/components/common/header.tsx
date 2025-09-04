@@ -42,6 +42,7 @@ export default function Header() {
     { href: "/offPlans", label: "OFF-PLAN" },
     { href: "/rent", label: "RENT" },
     { href: "/communities", label: "COMMUNITIES" },
+    { href: "/team", label: "OUR TEAM" },
     { href: "/whyDubai", label: "WHY DUBAI" },
     { href: "/service", label: "SERVICES" },
     { href: "/about", label: "ABOUT" },
@@ -52,6 +53,7 @@ export default function Header() {
     { href: "/offPlans", label: "OFF-PLAN" },
     { href: "/rent", label: "RENT" },
     { href: "/communities", label: "COMMUNITIES" },
+    { href: "/team", label: "OUR TEAM" },
     { href: "/contactUs", label: "CONTACT US" },
   ];
   useEffect(() => {
@@ -92,10 +94,7 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <div
-          className="hidden md:flex items-center space-x-10 text-sm font-light uppercase tracking-[1.5px]"
-          style={{
-            fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
-          }}
+          className="hidden md:flex items-center space-x-10 text-sm font-light uppercase tracking-[1.5px] font-serif"
         >
           {headerLink.map((link, i) => (
             <Link
@@ -103,13 +102,12 @@ export default function Header() {
               href={link.href}
               className={cn(
                 "relative pb-1 transition-all duration-300 uppercase text-[16px] font-normal",
-                isScrolled ? "text-black" : "text-white",
+                isScrolled ? "text-black" : "text-gray-800",
                 "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0",
                 "after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
                 pathname === link.href && "after:w-full"
               )}
               style={{
-                fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
                 letterSpacing: "1.5px",
               }}
             >
@@ -124,7 +122,7 @@ export default function Header() {
             <Heart className="h-5 w-5" fill={isScrolled ? "black" : "white"} />
             <span className="sr-only">Favorites</span>
           </div> */}
-          <div className={isScrolled ? "text-black" : "text-white"}>
+          <div className={isScrolled ? "text-black" : "text-gray-800"}>
             <a
               href="https://wa.me/971542524242"
               target="_blank"
@@ -135,26 +133,26 @@ export default function Header() {
               <span className="sr-only">WhatsApp</span>
             </a>
           </div>
-          <div className={isScrolled ? "text-black" : "text-white"}>
+          <div className={isScrolled ? "text-black" : "text-gray-800"}>
             <a href="tel:+971542524242" aria-label="Call Us">
               <Icon icon={"line-md:phone-call-filled"} className="h-6 w-6" />
               <span className="sr-only">Call Us</span>
             </a>
           </div>
           <div
-            className={`${isScrolled ? "text-black" : "text-white"} group relative cursor-pointer w-12 h-8 flex items-center justify-center overflow-hidden`}
+            className={`${isScrolled ? "text-black" : "text-gray-800"} group relative cursor-pointer w-12 h-8 flex items-center justify-center overflow-hidden`}
             onClick={() => setIsOverlayOpen(true)}
           >
             {/* Single Menu Icon that transforms to ladder */}
             <div className="relative z-10 flex flex-col justify-end items-start space-y-1">
               {/* Top line - width 10 default, decreases from right */}
-              <span className={`w-10 h-0.5 rounded-full transition-all duration-500 ease-out group-hover:w-10 group-hover:h-1 ${isScrolled ? "bg-black group-hover:bg-black/80" : "bg-white group-hover:bg-white/80"}`}></span>
+              <span className={`w-10 h-0.5 rounded-full transition-all duration-500 ease-out group-hover:w-10 group-hover:h-1 ${isScrolled ? "bg-black group-hover:bg-black/80" : "bg-gray-800 group-hover:bg-gray-600"}`}></span>
 
               {/* Middle line - width 10 default, decreases from right */}
-              <span className={`w-10 h-0.5 rounded-full transition-all duration-500 ease-out group-hover:w-9 group-hover:h-1 ${isScrolled ? "bg-black group-hover:h-1 group-hover:bg-black/80" : "bg-white group-hover:h-1 group-hover:bg-white/80"}`}></span>
+              <span className={`w-10 h-0.5 rounded-full transition-all duration-500 ease-out group-hover:w-9 group-hover:h-1 ${isScrolled ? "bg-black group-hover:h-1 group-hover:bg-black/80" : "bg-gray-800 group-hover:h-1 group-hover:bg-gray-600"}`}></span>
 
               {/* Bottom line - width 10 default, decreases from right */}
-              <span className={`w-10 h-0.5 rounded-full transition-all duration-500 ease-out group-hover:w-7 group-hover:h-1 ${isScrolled ? "bg-black group-hover:bg-black/80" : "bg-white group-hover:bg-white/80"}`}></span>
+              <span className={`w-10 h-0.5 rounded-full transition-all duration-500 ease-out group-hover:w-7 group-hover:h-1 ${isScrolled ? "bg-black group-hover:bg-black/80" : "bg-gray-800 group-hover:bg-gray-600"}`}></span>
             </div>
 
             <span className="sr-only">Toggle Menu</span>
@@ -177,10 +175,7 @@ export default function Header() {
         </div>
 
         <nav
-          className="flex flex-col pt-16 p-8 space-y-4 text-lg uppercase font-light tracking-[1.5px] flex-grow mt-16 ms-8"
-          style={{
-            fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
-          }}
+          className="flex flex-col pt-16 p-8 space-y-4 text-lg uppercase font-light tracking-[1.5px] flex-grow mt-16 ms-8 font-serif"
         >
           {navLinks.map((link, i) => (
             <Link
@@ -192,7 +187,6 @@ export default function Header() {
                 "after:bg-primary after:transition-all after:duration-300 hover:after:w-20"
               )}
               style={{
-                fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
                 letterSpacing: "1.5px",
               }}
             >

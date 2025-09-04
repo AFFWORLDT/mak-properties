@@ -72,7 +72,7 @@ export default function DetailPage({ id }: any) {
   }
   
   return (
-    <div>
+    <div className="luxury-bg">
       <section 
         className="relative h-screen w-full flex items-center justify-center text-center overflow-hidden"
         onMouseMove={handleMouseMove}

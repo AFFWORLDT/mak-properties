@@ -317,12 +317,12 @@ function OffPlansPage() {
 
   return (
     <div>
-      <section className="pt-32 pb-16 px-6 bg-[#141442]">
+      <section className="pt-32 pb-16 px-6 luxury-bg">
         <div className="container mx-auto">
           {FilterButton}
 
           {/* Desktop Search Form */}
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-8 gap-4 p-6 backdrop-blur-md">
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-8 gap-4 p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl">
            
             {/* Location */}
             <div className="col-span-2">
@@ -330,7 +330,7 @@ function OffPlansPage() {
                 placeholder="City, building or community"
                 value={filters.title}
                 onChange={(e) => handleFilterChange("title", e.target.value)}
-                className="w-full text-black bg-white border border-gray-300 placeholder:text-gray-500"
+                className="w-full text-gray-800 bg-white/90 border border-[#dbbb90]/30 placeholder:text-gray-600 hover:border-[#dbbb90]/50 transition-colors font-serif"
               />
             </div>
 
@@ -353,7 +353,7 @@ function OffPlansPage() {
                 value={filters.bedrooms}
                 onValueChange={(value) => handleFilterChange("bedrooms", value)}
               >
-                <SelectTrigger className="w-full bg-white border border-gray-300 text-black">
+                <SelectTrigger className="w-full bg-white/90 border border-[#dbbb90]/30 text-gray-800 hover:border-[#dbbb90]/50 transition-colors font-serif">
                   <SelectValue placeholder="Beds" />
                 </SelectTrigger>
                 <SelectContent>

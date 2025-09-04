@@ -232,7 +232,7 @@ function Buy() {
               placeholder="Location or Project"
               value={filters.title}
               onChange={(e) => handleFilterChange("title", e.target.value)}
-              className="w-full text-black bg-white border border-gray-300 placeholder:text-gray-500 h-12"
+              className="w-full text-gray-800 bg-white/90 border border-[#dbbb90]/30 placeholder:text-gray-600 hover:border-[#dbbb90]/50 transition-colors font-serif h-12"
             />
           </div>
           <Button
@@ -325,12 +325,12 @@ function Buy() {
 
   return (
     <div>
-      <section className="bg-[#141442] px-4 lg:h-72 h-auto flex justify-center items-end lg:py-16 py-6">
+      <section className="luxury-bg px-4 lg:h-72 h-auto flex justify-center items-end lg:py-16 py-6">
         <div className="container mx-auto ">
           {FilterButton}
 
           {/* Desktop Search Form */}
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-8 gap-4 p-6 backdrop-blur-md">
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-8 gap-4 p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl">
             {/* Buy/Sell Filter */}
             {/* Listing Type Filter */}
             <div>
@@ -338,7 +338,7 @@ function Buy() {
                 value={filters.listing_type}
                 onValueChange={(value) => handleFilterChange("listing_type", value)}
               >
-                <SelectTrigger className="w-full bg-white border border-gray-300 text-black h-14">
+                <SelectTrigger className="w-full bg-white/90 border border-[#dbbb90]/30 text-gray-800 h-14 hover:border-[#dbbb90]/50 transition-colors font-serif">
                   <SelectValue placeholder="Type" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
@@ -366,7 +366,7 @@ function Buy() {
                   handleFilterChange("property_type", value)
                 }
               >
-                <SelectTrigger className="w-full bg-white border border-gray-300 text-black h-14">
+                <SelectTrigger className="w-full bg-white/90 border border-[#dbbb90]/30 text-gray-800 h-14 hover:border-[#dbbb90]/50 transition-colors font-serif">
                   <SelectValue placeholder="Property Type" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
@@ -388,7 +388,7 @@ function Buy() {
                   handleFilterChange("min_price", value)
                 }
               >
-                <SelectTrigger className="w-full bg-white border border-gray-300 text-black h-14">
+                <SelectTrigger className="w-full bg-white/90 border border-[#dbbb90]/30 text-gray-800 h-14 hover:border-[#dbbb90]/50 transition-colors font-serif">
                   <SelectValue placeholder="Min Price" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
@@ -410,7 +410,7 @@ function Buy() {
                   handleFilterChange("max_price", value)
                 }
               >
-                <SelectTrigger className="w-full bg-white border border-gray-300 text-black h-14">
+                <SelectTrigger className="w-full bg-white/90 border border-[#dbbb90]/30 text-gray-800 h-14 hover:border-[#dbbb90]/50 transition-colors font-serif">
                   <SelectValue placeholder="Max Price" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
@@ -430,7 +430,7 @@ function Buy() {
                 value={filters.bedrooms}
                 onValueChange={(value) => handleFilterChange("bedrooms", value)}
               >
-                <SelectTrigger className="w-full bg-white border border-gray-300 text-black h-14">
+                <SelectTrigger className="w-full bg-white/90 border border-[#dbbb90]/30 text-gray-800 h-14 hover:border-[#dbbb90]/50 transition-colors font-serif">
                   <SelectValue placeholder="Beds" />
                 </SelectTrigger>
                 <SelectContent>
@@ -449,7 +449,7 @@ function Buy() {
               <Button
                 onClick={toggleFilters}
                 variant="outline"
-                className="w-32 h-14 bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 flex items-center justify-center gap-2"
+                className="w-32 h-14 bg-white/90 hover:bg-white border border-[#dbbb90]/30 text-gray-700 hover:border-[#dbbb90]/50 transition-colors flex items-center justify-center gap-2 font-serif"
               >
                 <Icon icon="lucide:sliders-horizontal" className="w-4 h-4" />
                 More Filters
@@ -457,7 +457,7 @@ function Buy() {
 
               <Button
                 onClick={handleSearch}
-                className="h-14 w-14 bg-primary hover:bg-primary/90 text-white flex items-center justify-center shadow-lg"
+                className="h-14 w-14 bg-gradient-to-r from-[#dbbb90] to-[#C2A17B] hover:from-[#C2A17B] hover:to-[#B8956A] text-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 <Icon
                   icon="iconamoon:search-fill"

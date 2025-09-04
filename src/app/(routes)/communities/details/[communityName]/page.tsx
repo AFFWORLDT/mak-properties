@@ -77,12 +77,12 @@ export default function CommunityDetails({ params }: { params: { communityName: 
   const article = articles[0]; // Take the first article
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen luxury-bg">
       {/* Hero Section */}
-      <section className="bg-[#141442] py-12">
+      <section className="luxury-bg py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center md:mt-20 mt-10">
-            <h1 className="text-6xl md:text-5xl font-normal font-mono text-white mb-6 leading-tight ">
+            <h1 className="text-6xl md:text-5xl font-normal font-serif text-gray-800 mb-6 leading-tight ">
               {article.title}
             </h1>
           </div>
@@ -112,10 +112,10 @@ export default function CommunityDetails({ params }: { params: { communityName: 
                 dangerouslySetInnerHTML={{ 
                   __html: article.content.replace(
                     /<h2>/g, 
-                    '<h2 class="text-4xl font-normal my-6 font-mono text-gray-900 first:mt-0">'
+                    '<h2 class="text-4xl font-normal my-6 font-serif text-gray-900 first:mt-0">'
                   ).replace(
                     /<p>/g, 
-                    '<p class="text-sm  text-gray-700 mb-6 leading-relaxed">'
+                    '<p class="text-sm text-gray-700 mb-6 leading-relaxed font-serif">'
                   ).replace(
                     /<ul>/g, 
                     '<ul class="list-disc list-inside space-y-2 mb-6 text-sm text-gray-700">'
@@ -133,12 +133,12 @@ export default function CommunityDetails({ params }: { params: { communityName: 
             {/* Tags */}
             {article.tags && article.tags.length > 0 && (
               <div className="mt-16 pt-12 border-t border-gray-200">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Related Topics</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 font-serif">Related Topics</h3>
                 <div className="flex flex-wrap gap-3">
                   {article.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors"
+                      className="px-4 py-2 bg-[#dbbb90]/20 text-gray-700 rounded-full text-sm font-medium hover:bg-[#dbbb90]/30 transition-colors font-serif"
                     >
                       {tag}
                     </span>

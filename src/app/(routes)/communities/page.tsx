@@ -69,19 +69,19 @@ function Communities() {
 
   return (
     <div>
-      <section className="pt-32 pb-12 px-4 bg-[#141442]">
+      <section className="pt-32 pb-12 px-4 luxury-bg">
         <div className=" mx-auto text-center">
-          <h1 className="text-5xl font-medium mb-6 text-white font-mono">
+          <h1 className="text-5xl font-medium mb-6 text-gray-800 font-serif">
             Communities
           </h1>
         </div>
       </section>
       <div className=" mx-auto px-4 py-12 max-w-5xl">
-        <h1 className="text-center  text-4xl font-mono">
+        <h1 className="text-center text-4xl font-serif text-gray-800">
           {" "}
           Unveiling Dubai&rsquo;s Vibrant Communities
         </h1>
-        <p className="text-center text-gray-600 mt-4 text-[15px]">
+        <p className="text-center text-gray-600 mt-4 text-[15px] font-serif">
           Dubai is a city of diverse neighborhoods, each offering a unique
           character &amp; lifestyle. Beyond the stunning architecture, your
           bespoke community awaits. Explore the soul of Dubai&rsquo;s
@@ -97,7 +97,7 @@ function Communities() {
               placeholder="Search communities by name, location, or description..."
               value={searchKeyword}
               onChange={(e) => setSearchKeyword(e.target.value)}
-              className="w-full px-4 py-3 pl-12 text-gray-900 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder:text-gray-500"
+              className="w-full px-4 py-3 pl-12 text-gray-800 bg-white/90 border border-[#dbbb90]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#dbbb90] focus:border-[#dbbb90] placeholder:text-gray-600 font-serif hover:border-[#dbbb90]/50 transition-colors"
             />
             <svg
               className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"

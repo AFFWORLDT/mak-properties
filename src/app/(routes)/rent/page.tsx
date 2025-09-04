@@ -192,7 +192,7 @@ function Rent() {
             placeholder="Location or Project"
             value={filters.title}
             onChange={(e) => handleFilterChange("title", e.target.value)}
-            className="w-full text-black bg-white border border-gray-300 placeholder:text-gray-500 h-12"
+                          className="w-full text-gray-800 bg-white/90 border border-[#dbbb90]/30 placeholder:text-gray-600 hover:border-[#dbbb90]/50 transition-colors font-serif h-12"
           />
         </div>
         <Button
@@ -272,16 +272,16 @@ function Rent() {
 
   return (
     <div>
-      <section className="bg-[#141442] px-4 lg:h-72 h-auto flex justify-center items-end lg:py-16 py-6">
+      <section className="luxury-bg px-4 lg:h-72 h-auto flex justify-center items-end lg:py-16 py-6">
         <div className="container mx-auto " >
           {FilterButton}
 
           {/* Desktop Search Form */}
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-8 gap-4 p-6 backdrop-blur-md">
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-8 gap-4 p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl">
             {/* Listing Type Filter */}
             <div>
               <Select value={filters.listing_type} onValueChange={(value) => handleFilterChange("listing_type", value)}>
-                <SelectTrigger className="w-full bg-white border border-gray-300 text-black h-14">
+                <SelectTrigger className="w-full bg-white/90 border border-[#dbbb90]/30 text-gray-800 h-14 hover:border-[#dbbb90]/50 transition-colors font-serif">
                   <SelectValue placeholder="Type" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
@@ -304,7 +304,7 @@ function Rent() {
             {/* Property Type */}
             <div>
               <Select value={filters.property_type} onValueChange={(value) => handleFilterChange("property_type", value)}>
-                <SelectTrigger className="w-full bg-white border border-gray-300 text-black h-14">
+                <SelectTrigger className="w-full bg-white/90 border border-[#dbbb90]/30 text-gray-800 h-14 hover:border-[#dbbb90]/50 transition-colors font-serif">
                   <SelectValue placeholder="Property Type" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
@@ -319,7 +319,7 @@ function Rent() {
             {/* Min Price */}
             <div>
               <Select value={filters.min_price} onValueChange={(value) => handleFilterChange("min_price", value)}>
-                <SelectTrigger className="w-full bg-white border border-gray-300 text-black h-14">
+                <SelectTrigger className="w-full bg-white/90 border border-[#dbbb90]/30 text-gray-800 h-14 hover:border-[#dbbb90]/50 transition-colors font-serif">
                   <SelectValue placeholder="Min Price" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
@@ -336,7 +336,7 @@ function Rent() {
             {/* Max Price */}
             <div>
               <Select value={filters.max_price} onValueChange={(value) => handleFilterChange("max_price", value)}>
-                <SelectTrigger className="w-full bg-white border border-gray-300 text-black h-14">
+                <SelectTrigger className="w-full bg-white/90 border border-[#dbbb90]/30 text-gray-800 h-14 hover:border-[#dbbb90]/50 transition-colors font-serif">
                   <SelectValue placeholder="Max Price" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
@@ -353,7 +353,7 @@ function Rent() {
             {/* Beds */}
             <div>
               <Select value={filters.bedrooms} onValueChange={(value) => handleFilterChange("bedrooms", value)}>
-                <SelectTrigger className="w-full bg-white border border-gray-300 text-black h-14">
+                <SelectTrigger className="w-full bg-white/90 border border-[#dbbb90]/30 text-gray-800 h-14 hover:border-[#dbbb90]/50 transition-colors font-serif">
                   <SelectValue placeholder="Beds" />
                 </SelectTrigger>
                 <SelectContent>

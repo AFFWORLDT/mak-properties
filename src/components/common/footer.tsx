@@ -15,25 +15,25 @@ const sitemapLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#141442] text-white py-12 px-10 md:px-6">
+    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-12 px-10 md:px-6">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3  gap-8">
         {/* Newsletter Section */}
-        <div className="md:col-span-3 lg:col-span-4 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 w-full">
-          <h3 className="text-xl font-extralight tracking-wide leading-relaxed w-full md:flex-none md:w-[40%]">
+        <div className="md:col-span-3 lg:col-span-4 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 w-full bg-gradient-to-r from-[#dbbb90]/10 to-[#C2A17B]/10 p-6 rounded-2xl border border-[#dbbb90]/20">
+          <h3 className="text-xl font-light tracking-wide leading-relaxed w-full md:flex-none md:w-[40%] text-white font-serif">
             Receive our exceptional real estate listings delivered straight to
             your inbox.
           </h3>
-          <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full md:flex-1">
+          <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 w-full md:flex-1">
             <label htmlFor="email-subscribe" className="sr-only">
               Email address for newsletter subscription
             </label>
             <Input
               id="email-subscribe"
               type="email"
-              placeholder="Email"
-              className="flex-grow bg-transparent text-white border-white/50 placeholder:text-white/70 focus-visible:ring-offset-0 focus-visible:ring-transparent rounded-none md:w-1/2 w-full"
+              placeholder="Enter your email address"
+              className="flex-grow bg-white/10 text-white border-[#dbbb90]/50 placeholder:text-white/60 focus-visible:ring-offset-0 focus-visible:ring-[#dbbb90] focus:border-[#dbbb90] rounded-lg md:w-1/2 w-full h-12 backdrop-blur-sm"
             />
-            <Button className="bg-[#D4B28C] hover:bg-[#C2A17B] text-white font-sans tracking-wider py-2 px-4 transition-colors uppercase h-14 rounded-none md:w-1/3 w-full">
+            <Button className="bg-gradient-to-r from-[#dbbb90] to-[#C2A17B] hover:from-[#C2A17B] hover:to-[#B8956A] text-white font-medium tracking-wider py-3 px-6 transition-all duration-300 uppercase h-12 rounded-lg md:w-1/3 w-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 font-serif">
               Subscribe
             </Button>
           </div>
@@ -41,16 +41,16 @@ export default function Footer() {
 
         {/* Sitemap */}
         <div>
-          <h4 className="text-lg  mb-4 font-sans">Sitemap</h4>
-          <ul className="space-y-2 text-sm font-sans">
+          <h4 className="text-lg  mb-4 font-serif">Sitemap</h4>
+          <ul className="space-y-2 text-sm font-serif">
             {sitemapLinks.map((link, i) => (
               <li key={i}>
                 <a
                   href={link.href}
                   className="relative inline-block hover:text-gray-300 transition-colors
                              after:content-[''] after:absolute after:left-0 after:bottom-0
-                             after:h-[2px] after:w-0 after:bg-primary
-                             after:transition-all after:duration-300 hover:after:w-full font-sans"
+                             after:h-[2px] after:w-0 after:bg-[#dbbb90]
+                             after:transition-all after:duration-300 hover:after:w-full font-serif"
                 >
                   {link.label}
                 </a>
@@ -60,31 +60,31 @@ export default function Footer() {
         </div>
 
         {/* Contact */}
-        <div className="font-sans">
-          <h4 className="text-lg  mb-4 font-sans">Contact</h4>
-          <address className="not-italic space-y-2 text-sm font-sans leading-relaxed">
+        <div className="font-serif">
+          <h4 className="text-lg  mb-4 font-serif">Contact</h4>
+          <address className="not-italic space-y-2 text-sm font-serif leading-relaxed">
             <p>802 Churchill Tower Business Bay</p>
             <p>Dubai, UAE</p>
             <p>
-              <span className="font-sans">P</span>{" "}
+              <span className="font-serif">P</span>{" "}
               <a
                 href="tel:+971542524242"
                 className="relative inline-block hover:text-gray-300 transition-colors
                            after:content-[''] after:absolute after:left-0 after:bottom-0
-                           after:h-[2px] after:w-0 after:bg-primary
-                           after:transition-all after:duration-300 hover:after:w-full font-sans"
+                           after:h-[2px] after:w-0 after:bg-[#dbbb90]
+                           after:transition-all after:duration-300 hover:after:w-full font-serif"
               >
                 +971 54 252 4242
               </a>
             </p>
             <p>
-              <span className="font-sans">P</span>{" "}
+              <span className="font-serif">P</span>{" "}
               <a
                 href="tel:+971547944000"
                 className="relative inline-block hover:text-gray-300 transition-colors
                            after:content-[''] after:absolute after:left-0 after:bottom-0
-                           after:h-[2px] after:w-0 after:bg-primary
-                           after:transition-all after:duration-300 hover:after:w-full font-sans"
+                           after:h-[2px] after:w-0 after:bg-[#dbbb90]
+                           after:transition-all after:duration-300 hover:after:w-full font-serif"
               >
                 +971 54 794 4000
               </a>
@@ -95,8 +95,8 @@ export default function Footer() {
                 href="mailto:info@evidproperties.com"
                 className="relative inline-block hover:text-gray-300 transition-colors
                            after:content-[''] after:absolute after:left-0 after:bottom-0
-                           after:h-[2px] after:w-0 after:bg-primary
-                           after:transition-all after:duration-300 hover:after:w-full font-sans"
+                           after:h-[2px] after:w-0 after:bg-[#dbbb90]
+                           after:transition-all after:duration-300 hover:after:w-full font-serif"
               >
                 info@evidproperties.com
               </a>
@@ -106,8 +106,8 @@ export default function Footer() {
 
         {/* About Us */}
         <div>
-          <h4 className="text-lg font-sans mb-4 tracking-wide">About Us</h4>
-          <p className="text-sm leading-relaxed font-sans">
+          <h4 className="text-lg font-serif mb-4 tracking-wide">About Us</h4>
+          <p className="text-sm leading-relaxed font-serif">
             Evid Properties specializes in luxury Dubai real estate, offering
             personalized service, market insights, and tailored investment
             solutions for discerning clients.
@@ -117,7 +117,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="container mx-auto border-t border-white/20 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-white/70">
-        <p className="font-sans">
+        <p className="font-serif">
           &copy; {"2025 Evid Properties. All Rights Reserved."}
         </p>
         <div className="flex space-x-4 mt-4 md:mt-0">
@@ -125,25 +125,25 @@ export default function Footer() {
             href="https://www.facebook.com/profile.php?id=61555781408625"
             target="_blank"
             aria-label="Facebook"
-            className="w-8 h-8 flex items-center justify-center border border-white/50 rounded-full hover:bg-white/10 transition-colors"
+            className="w-10 h-10 flex items-center justify-center border border-white/30 rounded-full hover:bg-[#dbbb90] hover:border-[#dbbb90] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
           >
-            <Facebook className="h-4 w-4" />
+            <Facebook className="h-5 w-5" />
           </a>
           <a
             href="https://www.instagram.com/jnapropertiesofficial/"
             target="_blank"
             aria-label="Instagram"
-            className="w-8 h-8 flex items-center justify-center border border-white/50 rounded-full hover:bg-white/10 transition-colors"
+            className="w-10 h-10 flex items-center justify-center border border-white/30 rounded-full hover:bg-[#dbbb90] hover:border-[#dbbb90] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
           >
-            <Instagram className="h-4 w-4" />
+            <Instagram className="h-5 w-5" />
           </a>
           <a
             href="https://www.linkedin.com/company/j-a-properties/"
             target="_blank"
             aria-label="LinkedIn"
-            className="w-8 h-8 flex items-center justify-center border border-white/50 rounded-full hover:bg-white/10 transition-colors"
+            className="w-10 h-10 flex items-center justify-center border border-white/30 rounded-full hover:bg-[#dbbb90] hover:border-[#dbbb90] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
           >
-            <Linkedin className="h-4 w-4" />
+            <Linkedin className="h-5 w-5" />
           </a>
         </div>
       </div>

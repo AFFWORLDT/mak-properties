@@ -34,8 +34,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${trajanPro.variable} antialiased`}>
-      <body >
-        <main>
+      <body className="luxury-bg">
+        <main className="min-h-screen">
            <Header/>
           {children}
            <Footer/>

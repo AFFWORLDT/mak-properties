@@ -76,7 +76,7 @@
 }
 
 @theme inline {
-  --font-sans: sans-serif;
+  --font-sans: var(--font-trajan);
   --font-serif: var(--font-trajan);
   --font-mono: var(--font-trajan);
   --font-custom: var(--font-trajan);
@@ -129,7 +129,13 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+  p, span, div, a, button, input, select, textarea {
+    @apply font-serif;
   }
 }
 
@@ -147,5 +153,94 @@
 
 .animate-zoomInOut {
   animation: zoomInOut 20s ease-in-out infinite;
+}
+
+/* Luxury Animations */
+@keyframes luxuryFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes luxuryGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(219, 187, 144, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(219, 187, 144, 0.6);
+  }
+}
+
+@keyframes luxuryShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes luxuryPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-luxuryFloat {
+  animation: luxuryFloat 6s ease-in-out infinite;
+}
+
+.animate-luxuryGlow {
+  animation: luxuryGlow 3s ease-in-out infinite;
+}
+
+.animate-luxuryShimmer {
+  background: linear-gradient(90deg, transparent, rgba(219, 187, 144, 0.4), transparent);
+  background-size: 200% 100%;
+  animation: luxuryShimmer 2s ease-in-out infinite;
+}
+
+.animate-luxuryPulse {
+  animation: luxuryPulse 2s ease-in-out infinite;
+}
+
+/* Luxury Hover Effects */
+.luxury-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.luxury-hover:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Luxury Text Effects */
+.luxury-text {
+  background: linear-gradient(135deg, #dbbb90, #C2A17B, #B8956A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Luxury Glass Effect */
+.luxury-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Luxury Gradient Backgrounds */
+.luxury-bg {
+  background: linear-gradient(135deg, #F8F6F0 0%, #ffffff 50%, #F2EEE8 100%);
+}
+
+.luxury-bg-dark {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
 }
 

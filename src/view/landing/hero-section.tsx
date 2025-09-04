@@ -123,9 +123,35 @@ export default function HeroSection() {
 
   return (
     <section 
-      className="relative h-screen md:h-[115vh] w-full flex items-center justify-center text-center bg-white md:bg-transparent overflow-hidden"
+      className="relative h-screen md:h-[115vh] w-full flex items-center justify-center text-center bg-gradient-to-br from-[#F8F6F0] via-white to-[#F2EEE8] overflow-hidden"
       onMouseMove={handleMouseMove}
     >
+      {/* Luxury Loading Overlay */}
+      {isLoading && (
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 1, delay: 2 }}
+          className="absolute inset-0 z-50 bg-gradient-to-br from-[#F8F6F0] via-white to-[#F2EEE8] flex items-center justify-center"
+        >
+          <div className="text-center">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              className="w-16 h-16 border-4 border-[#dbbb90]/30 border-t-[#dbbb90] rounded-full mx-auto mb-4"
+            />
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="text-[#dbbb90] font-light text-lg tracking-wider"
+            >
+              EVID PROPERTIES
+            </motion.p>
+          </div>
+        </motion.div>
+      )}
+
       {/* Ultra-Rich Cinematic Background */}
       <div className="absolute inset-0 w-full h-full">
         {isLoading ? (
@@ -197,12 +223,12 @@ export default function HeroSection() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: -50 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="bg-black/60 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/30 text-center"
+            className="bg-gradient-to-br from-black/80 via-black/70 to-black/80 backdrop-blur-md p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-[#dbbb90]/30 text-center shadow-2xl"
           >
-            <h2 className="text-lg sm:text-2xl font-light mb-2 leading-tight">
+            <h2 className="text-lg sm:text-2xl font-light mb-2 leading-tight font-serif">
               {currentProject.name || "Luxury Project"}
             </h2>
-            <p className="text-xs sm:text-sm text-neutral-300 mb-3 sm:mb-4">
+            <p className="text-xs sm:text-sm text-neutral-300 mb-3 sm:mb-4 font-serif">
               {currentProject.location?.community}, {currentProject.location?.city}
             </p>
             
@@ -213,10 +239,10 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
             >
-              <h1 className="text-sm sm:text-xl lg:text-2xl font-custom mb-1 sm:mb-2">
+              <h1 className="text-lg sm:text-2xl lg:text-3xl font-light mb-2 sm:mb-3 text-[#dbbb90] font-serif">
                 Luxury Living Reimagined
               </h1>
-              <p className="text-xs sm:text-sm uppercase max-w-2xl mx-auto text-neutral-300 leading-tight">
+              <p className="text-xs sm:text-sm uppercase max-w-2xl mx-auto text-white/80 leading-tight tracking-wider font-serif">
                 EMBRACE TO A JOURNEY OF PURE SOPHISTICATION
               </p>
             </motion.div>
@@ -234,14 +260,14 @@ export default function HeroSection() {
         >
 
         <div className="w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-2 sm:gap-4 p-2 sm:p-6 bg-white/95 sm:bg-transparent rounded-lg sm:rounded-none">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 sm:gap-4 p-4 sm:p-6 bg-white/95 sm:bg-black/20 backdrop-blur-md rounded-xl sm:rounded-2xl border border-white/20 shadow-2xl">
             {/* Location */}
             <div className="lg:col-span-1 relative">
-              <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10">
+              <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
                 Location
               </div>
               <Select>
-                <SelectTrigger className="w-full h-12 sm:h-14 text-white max-sm:text-black  focus:ring-offset-0 focus:ring-transparent bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-none pt-5 pb-2">
+                <SelectTrigger className="w-full h-12 sm:h-14 text-white max-sm:text-black focus:ring-offset-0 focus:ring-transparent bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-lg pt-5 pb-2 hover:border-[#dbbb90]/50 transition-colors">
                   <SelectValue placeholder="Any" className="max-sm:hidden pt-2" />
                 </SelectTrigger>
                 <SelectContent className="bg-white text-gray-900">
@@ -258,7 +284,7 @@ export default function HeroSection() {
 
             {/* Type */}
             <div className="lg:col-span-1 relative">
-              <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10">
+              <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
                 Type
               </div>
               <Select>
@@ -280,7 +306,7 @@ export default function HeroSection() {
 
             {/* Price */}
             <div className="lg:col-span-1 relative">
-              <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10">
+              <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
                 Price
               </div>
               <div
@@ -348,7 +374,7 @@ export default function HeroSection() {
 
             {/* Bedrooms */}
             <div className="lg:col-span-1 relative">
-              <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10">
+              <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
                 Bedrooms
               </div>
               <Select>
@@ -370,7 +396,7 @@ export default function HeroSection() {
 
             {/* Ref Number */}
             <div className="lg:col-span-1 relative">
-              <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10">
+              <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
                 Ref Number
               </div>
               <Input
@@ -382,7 +408,7 @@ export default function HeroSection() {
 
             {/* Search Button */}
             <div className="lg:col-span-1 sm:col-span-2">
-              <Button className="w-full bg-[#dbbb90] hover:bg-[#C2A17B] text-white font-semibold py-2 px-4 rounded-none transition-colors h-12 sm:h-14 uppercase tracking-wider text-sm sm:text-base">
+              <Button className="w-full bg-gradient-to-r from-[#dbbb90] to-[#C2A17B] hover:from-[#C2A17B] hover:to-[#B8956A] text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 h-12 sm:h-14 uppercase tracking-wider text-sm sm:text-base shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                 Search
               </Button>
             </div>
