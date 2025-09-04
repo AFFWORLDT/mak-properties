@@ -63,7 +63,7 @@ export default function Footer() {
         <div className="font-serif">
           <h4 className="text-lg  mb-4 font-serif">Contact</h4>
           <address className="not-italic space-y-2 text-sm font-serif leading-relaxed">
-            <p>802 Churchill Tower Business Bay</p>
+            <p>2107, Al Manara Tower, Business Bay</p>
             <p>Dubai, UAE</p>
             <p>
               <span className="font-serif">P</span>{" "}
@@ -75,18 +75,6 @@ export default function Footer() {
                            after:transition-all after:duration-300 hover:after:w-full font-serif"
               >
                 +971 54 252 4242
-              </a>
-            </p>
-            <p>
-              <span className="font-serif">P</span>{" "}
-              <a
-                href="tel:+971547944000"
-                className="relative inline-block hover:text-gray-300 transition-colors
-                           after:content-[''] after:absolute after:left-0 after:bottom-0
-                           after:h-[2px] after:w-0 after:bg-[#dbbb90]
-                           after:transition-all after:duration-300 hover:after:w-full font-serif"
-              >
-                +971 54 794 4000
               </a>
             </p>
             <p>

@@ -6,13 +6,8 @@ import EnquireForm from "@/src/components/common/enquireForm"
 function ContactUs() {
   return (
     <div className="luxury-bg">
-      <section className="pt-32 pb-16 px-4 luxury-bg relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/5 via-transparent to-black/5"></div>
-        <div className="absolute top-20 left-10 w-32 h-32 bg-[#dbbb90]/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-[#C2A17B]/10 rounded-full blur-3xl"></div>
-        
-        <div className="relative z-10 container mx-auto text-center">
+      <section className="pt-32 pb-16 px-4">
+        <div className="container mx-auto text-center">
           <h1 className="text-6xl md:text-7xl font-light mb-8 text-gray-800 font-serif leading-tight">
             <span className="text-[#dbbb90] font-normal">Contact</span> Us
           </h1>
@@ -46,7 +41,7 @@ function ContactUs() {
                 </div>
                 <div>
                   <p className="text-gray-800 font-medium font-serif">Address</p>
-                  <p className="text-gray-600 font-serif">802 Churchill Tower, Business Bay</p>
+                  <p className="text-gray-600 font-serif">2107, Al Manara Tower, Business Bay</p>
                   <p className="text-gray-600 font-serif">Dubai – UAE</p>
                 </div>
               </div>

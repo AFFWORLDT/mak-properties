@@ -223,12 +223,12 @@ export default function HeroSection() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: -50 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="bg-gradient-to-br from-black/80 via-black/70 to-black/80 backdrop-blur-md p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-[#dbbb90]/30 text-center shadow-2xl"
+            className="bg-white/10 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/20 text-center shadow-sm"
           >
-            <h2 className="text-lg sm:text-2xl font-light mb-2 leading-tight font-serif">
+            <h2 className="text-lg sm:text-2xl font-light mb-2 leading-tight font-serif text-gray-900">
               {currentProject.name || "Luxury Project"}
             </h2>
-            <p className="text-xs sm:text-sm text-neutral-300 mb-3 sm:mb-4 font-serif">
+            <p className="text-xs sm:text-sm text-gray-700 mb-3 sm:mb-4 font-serif">
               {currentProject.location?.community}, {currentProject.location?.city}
             </p>
             
@@ -242,7 +242,7 @@ export default function HeroSection() {
               <h1 className="text-lg sm:text-2xl lg:text-3xl font-light mb-2 sm:mb-3 text-[#dbbb90] font-serif">
                 Luxury Living Reimagined
               </h1>
-              <p className="text-xs sm:text-sm uppercase max-w-2xl mx-auto text-white/80 leading-tight tracking-wider font-serif">
+              <p className="text-xs sm:text-sm uppercase max-w-2xl mx-auto text-gray-800 leading-tight tracking-wider font-serif">
                 EMBRACE TO A JOURNEY OF PURE SOPHISTICATION
               </p>
             </motion.div>
