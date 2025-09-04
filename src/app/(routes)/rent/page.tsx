@@ -297,7 +297,7 @@ function Rent() {
                 placeholder="City, building or community"
                 value={filters.title}
                 onChange={(e) => handleFilterChange("title", e.target.value)}
-                className="w-full text-black bg-white border border-gray-300 placeholder:text-gray-500 h-14"
+                className="w-full text-gray-800 bg-white/90 border border-[#dbbb90]/30 placeholder:text-gray-600 hover:border-[#dbbb90]/50 transition-colors font-serif h-14"
               />
             </div>
 

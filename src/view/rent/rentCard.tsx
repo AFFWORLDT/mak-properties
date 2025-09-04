@@ -70,7 +70,7 @@ export function RentCard({ data, onFavorite }: RentCardProps) {
         />
         <div className="absolute top-4 left-4 flex gap-2">
           <span className="bg-[#D4B88C] text-white px-3 py-1 text-xs tracking-wider uppercase">
-            For Sale
+            For Rent
           </span>
           <span className="bg-white text-gray-800 px-3 py-1 text-xs tracking-wider uppercase">
             Available
