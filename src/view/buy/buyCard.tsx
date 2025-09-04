@@ -20,7 +20,13 @@ interface PropertyData {
     community?: string
     sub_community?: string
   }
-    ownPortal_agent_Id?: string
+  ownPortal_agent_Id?: string
+  agent?: {
+    name?: string
+    email?: string
+    phone?: string
+    avatar?: string
+  }
 }
 
 interface BuyCardProps {
@@ -101,18 +107,41 @@ export function BuyCard({ data, onFavorite }: BuyCardProps) {
           {formattedPrice}
         </p>
 
-        <div className="flex items-end gap-11 text-gray-600 text-sm mt-2 font-light">
-          <div className="flex items-center gap-1">
-            <Bed className="w-4 h-4" />
-            <span>{data?.bedRooms ?? "N/A"}</span>
+        <div className="flex items-end justify-between text-gray-600 text-sm mt-2 font-light">
+          <div className="flex items-end gap-8">
+            <div className="flex items-center gap-1">
+              <Bed className="w-4 h-4" />
+              <span>{data?.bedRooms ?? "N/A"}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Bath className="w-4 h-4" />
+              <span>{data?.bathrooms ?? "N/A"}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <SquareGanttChart className="w-4 h-4" />
+              <span>{data?.size ? `${data?.size} sqft` : "N/A"}</span>
+            </div>
           </div>
-          <div className="flex items-center gap-1">
-            <Bath className="w-4 h-4" />
-            <span>{data?.bathrooms ?? "N/A"}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <SquareGanttChart className="w-4 h-4" />
-            <span>{data?.size ? `${data?.size} sqft` : "N/A"}</span>
+          
+          {/* Agent Avatar - Bottom Right Corner */}
+          <div className="flex items-center justify-center">
+            {data?.agent?.avatar ? (
+              <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-[#dbbb90] shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+                <Image
+                  src={data.agent.avatar}
+                  alt={data.agent.name || "Agent"}
+                  width={32}
+                  height={32}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ) : (
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#dbbb90] to-[#C2A17B] flex items-center justify-center shadow-lg">
+                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+            )}
           </div>
         </div>
       </CardContent>
