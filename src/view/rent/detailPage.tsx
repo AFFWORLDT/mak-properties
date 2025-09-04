@@ -144,6 +144,65 @@ export default function DetailPage({ id }: any) {
             <a href="#" className="hover:underline">
               <Heart className="w-4 h-4 inline-block" />
             </a>
+            {property?.agent && (
+              <>
+                <span className="text-gray-300">|</span>
+                <div className="flex items-center gap-4 bg-gradient-to-r from-[#F8F6F0] to-[#F2EEE8] px-4 py-3 rounded-xl border border-[#E5E1D8] shadow-lg">
+                  <div className="relative">
+                    <div className="w-12 h-12 rounded-full overflow-hidden border-3 border-[#dbbb90] shadow-md">
+                      {property.agent.avatar ? (
+                        <Image
+                          src={property.agent.avatar}
+                          alt={property.agent.name}
+                          width={48}
+                          height={48}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-[#dbbb90] to-[#C2A17B] flex items-center justify-center">
+                          <span className="text-lg font-bold text-white">
+                            {property.agent.name?.charAt(0) || 'A'}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                      <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                    </div>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-semibold text-gray-800 uppercase tracking-wide">
+                      {property.agent.name}
+                    </span>
+                    <span className="text-xs text-[#dbbb90] font-medium uppercase tracking-wider">
+                      Property Specialist
+                    </span>
+                  </div>
+                  <div className="flex gap-2">
+                    <a
+                      href={`https://wa.me/${property.agent.phone?.replace(/[^0-9]/g, '')}?text=Hi ${property.agent.name}, I'm interested in ${property.name}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                    >
+                      <Icon icon="iconoir:whatsapp-solid" className="w-5 h-5 text-white" />
+                    </a>
+                    <a
+                      href={`tel:${property.agent.phone}`}
+                      className="w-10 h-10 bg-[#dbbb90] hover:bg-[#C2A17B] rounded-full flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                    >
+                      <Icon icon="line-md:phone-call-filled" className="w-5 h-5 text-white" />
+                    </a>
+                    <a
+                      href={`mailto:${property.agent.email}?subject=Inquiry about ${property.name}`}
+                      className="w-10 h-10 bg-gray-700 hover:bg-gray-800 rounded-full flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                    >
+                      <Icon icon="material-symbols:mail-outline" className="w-5 h-5 text-white" />
+                    </a>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
 
           <hr className="border-t border-gray-200 mb-12" />
@@ -329,6 +388,7 @@ export default function DetailPage({ id }: any) {
             </div>
           </div>
         )}
+
 
         <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
           <h2 className="text-3xl font-serif text-primary mb-8">Enquire</h2>
