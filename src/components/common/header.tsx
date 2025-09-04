@@ -1,0 +1,237 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import {
+  Heart,
+  MessageCircle,
+  Phone,
+  Menu,
+  X,
+  Facebook,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
+import { Button } from "@/src/components/ui/button";
+import Link from "next/link";
+import { cn } from "@/src/lib/utils";
+import { Icon } from "@iconify/react";
+
+export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const pathname = usePathname();
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isOverlayOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOverlayOpen]);
+
+  const navLinks = [
+    { href: "/buy", label: "BUY" },
+    { href: "/offPlans", label: "OFF-PLAN" },
+    { href: "/rent", label: "RENT" },
+    { href: "/communities", label: "COMMUNITIES" },
+    { href: "/whyDubai", label: "WHY DUBAI" },
+    { href: "/service", label: "SERVICES" },
+    { href: "/about", label: "ABOUT" },
+    { href: "/contactUs", label: "CONTACT US" },
+  ];
+  const headerLink = [
+    { href: "/buy", label: "BUY" },
+    { href: "/offPlans", label: "OFF-PLAN" },
+    { href: "/rent", label: "RENT" },
+    { href: "/communities", label: "COMMUNITIES" },
+    { href: "/contactUs", label: "CONTACT US" },
+  ];
+  useEffect(() => {
+    if (!isOverlayOpen) return;
+
+    const handleClickOutside = () => {
+      setIsOverlayOpen(false);
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isOverlayOpen]);
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+        isScrolled ? "bg-[#141442]" : "bg-transparent"
+      }`}
+    >
+      <nav
+        className={`container mx-auto flex items-center justify-between px-4 md:px-6 transition-all duration-300 ${
+          isScrolled ? "h-20" : "h-32"
+        }`}
+      >
+        <div className="flex items-center">
+          <Link href={"/"}>
+            <Image
+              src={
+                (pathname === "/" ||
+                  pathname.startsWith("/offPlans/details/")) &&
+                !isScrolled
+                  ? "/images/logo-white.svg"
+                  : "/images/logo-gold.svg"
+              }
+              alt="logo"
+              width={isScrolled ? 80 : 100}
+              height={isScrolled ? 80 : 100}
+            />
+          </Link>
+        </div>
+
+        {/* Desktop Nav */}
+        <div
+          className="hidden md:flex items-center space-x-10 text-sm font-light uppercase tracking-[1.5px]"
+          style={{
+            fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+          }}
+        >
+          {headerLink.map((link, i) => (
+            <Link
+              key={i}
+              href={link.href}
+              className={cn(
+                "relative pb-1 transition-all duration-300 text-white uppercase text-[16px] font-normal",
+                "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0",
+                "after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
+                pathname === link.href && "after:w-full"
+              )}
+              style={{
+                fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+                letterSpacing: "1.5px",
+              }}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+
+        {/* Icons */}
+        <div className="flex items-center gap-x-7">
+          {/* <div className="text-white">
+            <Heart className="h-5 w-5" fill="white" />
+            <span className="sr-only">Favorites</span>
+          </div> */}
+          <div className="text-white">
+            <a
+              href="https://wa.me/971565024240"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <Icon icon={"iconoir:whatsapp-solid"} className="h-6 w-6" />
+              <span className="sr-only">WhatsApp</span>
+            </a>
+          </div>
+          <div className="text-white">
+            <a href="tel:+971565024240" aria-label="Call Us">
+              <Icon icon={"line-md:phone-call-filled"} className="h-6 w-6" />
+              <span className="sr-only">Call Us</span>
+            </a>
+          </div>
+          <div
+            className="text-white group relative cursor-pointer w-12 h-8 flex items-center justify-center overflow-hidden"
+            onClick={() => setIsOverlayOpen(true)}
+          >
+            {/* Single Menu Icon that transforms to ladder */}
+            <div className="relative z-10 flex flex-col justify-end items-start space-y-1">
+              {/* Top line - width 10 default, decreases from right */}
+              <span className="w-10 h-0.5 bg-white rounded-full transition-all duration-500 ease-out group-hover:w-10 group-hover:h-1 group-hover:bg-white/80"></span>
+
+              {/* Middle line - width 10 default, decreases from right */}
+              <span className="w-10 h-0.5 bg-white rounded-full transition-all duration-500 ease-out group-hover:w-9 group-hover:h-1 group-hover:bg-white/80"></span>
+
+              {/* Bottom line - width 10 default, decreases from right */}
+              <span className="w-10 h-0.5 bg-white rounded-full transition-all duration-500 ease-out group-hover:w-7 group-hover:h-1 group-hover:bg-white/80"></span>
+            </div>
+
+            <span className="sr-only">Toggle Menu</span>
+          </div>
+        </div>
+      </nav>
+
+      {/* Overlay */}
+      <div
+        className={`fixed top-0 bottom-0 right-0 w-full md:w-1/4 bg-[#F5F2ED] text-gray-900 z-[100] transform transition-transform duration-800 ease-in-out ${
+          isOverlayOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div
+          className="absolute top-4 right-4 text-[#1A2B40] hover:bg-gray-200"
+          onClick={() => setIsOverlayOpen(false)}
+        >
+          <Icon icon={"ic:outline-cancel"} fontSize={25} />
+          <span className="sr-only">Close menu</span>
+        </div>
+
+        <nav
+          className="flex flex-col pt-16 p-8 space-y-4 text-lg uppercase font-light tracking-[1.5px] flex-grow mt-16 ms-8"
+          style={{
+            fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+          }}
+        >
+          {navLinks.map((link, i) => (
+            <Link
+              key={i}
+              href={link.href}
+              className={cn(
+                "relative pb-1 transition-all duration-300 text-black uppercase text-base",
+                "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0",
+                "after:bg-primary after:transition-all after:duration-300 hover:after:w-20"
+              )}
+              style={{
+                fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+                letterSpacing: "1.5px",
+              }}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="p-8 border-t border-gray-200 flex justify-start space-x-4">
+          <Link
+            href="https://www.facebook.com/profile.php?id=61555781408625"
+            target="_blank"
+            aria-label="Facebook"
+            className="w-8 h-8 flex items-center justify-center border border-gray-400 rounded-full text-gray-700 hover:bg-gray-200"
+          >
+            <Facebook className="h-4 w-4" />
+          </Link>
+          <Link
+            href="https://www.instagram.com/jnapropertiesofficial/"
+            target="_blank"
+            aria-label="Instagram"
+            className="w-8 h-8 flex items-center justify-center border border-gray-400 rounded-full text-gray-700 hover:bg-gray-200"
+          >
+            <Instagram className="h-4 w-4" />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/company/j-a-properties/"
+            target="_blank"
+            aria-label="LinkedIn"
+            className="w-8 h-8 flex items-center justify-center border border-gray-400 rounded-full text-gray-700 hover:bg-gray-200"
+          >
+            <Linkedin className="h-4 w-4" />
+          </Link>
+        </div>
+      </div>
+    </header>
+  );
+}
