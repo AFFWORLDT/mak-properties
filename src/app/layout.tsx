@@ -23,7 +23,7 @@ const trajanPro = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Home - J&A Properties",
+  title: "Home - Evid Properties",
   description: "",
 };
 

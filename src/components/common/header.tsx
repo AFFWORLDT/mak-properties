@@ -70,7 +70,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isScrolled ? "bg-[#141442]" : "bg-transparent"
+        isScrolled ? "bg-white shadow-lg" : "bg-transparent"
       }`}
     >
       <nav
@@ -81,16 +81,11 @@ export default function Header() {
         <div className="flex items-center">
           <Link href={"/"}>
             <Image
-              src={
-                (pathname === "/" ||
-                  pathname.startsWith("/offPlans/details/")) &&
-                !isScrolled
-                  ? "/images/logo-white.svg"
-                  : "/images/logo-gold.svg"
-              }
-              alt="logo"
+              src="/images/logo.png"
+              alt="EVIDPROPERTIES Logo"
               width={isScrolled ? 80 : 100}
               height={isScrolled ? 80 : 100}
+              className="object-contain"
             />
           </Link>
         </div>
@@ -107,7 +102,8 @@ export default function Header() {
               key={i}
               href={link.href}
               className={cn(
-                "relative pb-1 transition-all duration-300 text-white uppercase text-[16px] font-normal",
+                "relative pb-1 transition-all duration-300 uppercase text-[16px] font-normal",
+                isScrolled ? "text-black" : "text-white",
                 "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0",
                 "after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
                 pathname === link.href && "after:w-full"
@@ -124,13 +120,13 @@ export default function Header() {
 
         {/* Icons */}
         <div className="flex items-center gap-x-7">
-          {/* <div className="text-white">
-            <Heart className="h-5 w-5" fill="white" />
+          {/* <div className={isScrolled ? "text-black" : "text-white"}>
+            <Heart className="h-5 w-5" fill={isScrolled ? "black" : "white"} />
             <span className="sr-only">Favorites</span>
           </div> */}
-          <div className="text-white">
+          <div className={isScrolled ? "text-black" : "text-white"}>
             <a
-              href="https://wa.me/971565024240"
+              href="https://wa.me/971542524242"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
@@ -139,26 +135,26 @@ export default function Header() {
               <span className="sr-only">WhatsApp</span>
             </a>
           </div>
-          <div className="text-white">
-            <a href="tel:+971565024240" aria-label="Call Us">
+          <div className={isScrolled ? "text-black" : "text-white"}>
+            <a href="tel:+971542524242" aria-label="Call Us">
               <Icon icon={"line-md:phone-call-filled"} className="h-6 w-6" />
               <span className="sr-only">Call Us</span>
             </a>
           </div>
           <div
-            className="text-white group relative cursor-pointer w-12 h-8 flex items-center justify-center overflow-hidden"
+            className={`${isScrolled ? "text-black" : "text-white"} group relative cursor-pointer w-12 h-8 flex items-center justify-center overflow-hidden`}
             onClick={() => setIsOverlayOpen(true)}
           >
             {/* Single Menu Icon that transforms to ladder */}
             <div className="relative z-10 flex flex-col justify-end items-start space-y-1">
               {/* Top line - width 10 default, decreases from right */}
-              <span className="w-10 h-0.5 bg-white rounded-full transition-all duration-500 ease-out group-hover:w-10 group-hover:h-1 group-hover:bg-white/80"></span>
+              <span className={`w-10 h-0.5 rounded-full transition-all duration-500 ease-out group-hover:w-10 group-hover:h-1 ${isScrolled ? "bg-black group-hover:bg-black/80" : "bg-white group-hover:bg-white/80"}`}></span>
 
               {/* Middle line - width 10 default, decreases from right */}
-              <span className="w-10 h-0.5 bg-white rounded-full transition-all duration-500 ease-out group-hover:w-9 group-hover:h-1 group-hover:bg-white/80"></span>
+              <span className={`w-10 h-0.5 rounded-full transition-all duration-500 ease-out group-hover:w-9 group-hover:h-1 ${isScrolled ? "bg-black group-hover:h-1 group-hover:bg-black/80" : "bg-white group-hover:h-1 group-hover:bg-white/80"}`}></span>
 
               {/* Bottom line - width 10 default, decreases from right */}
-              <span className="w-10 h-0.5 bg-white rounded-full transition-all duration-500 ease-out group-hover:w-7 group-hover:h-1 group-hover:bg-white/80"></span>
+              <span className={`w-10 h-0.5 rounded-full transition-all duration-500 ease-out group-hover:w-7 group-hover:h-1 ${isScrolled ? "bg-black group-hover:bg-black/80" : "bg-white group-hover:bg-white/80"}`}></span>
             </div>
 
             <span className="sr-only">Toggle Menu</span>

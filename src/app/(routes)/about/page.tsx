@@ -89,7 +89,7 @@ function AboutUs() {
           {/* Company Description */}
           <div className="container mx-auto my-2">
             <p className="text-neutral-400 text-sm  leading-relaxed text-justify max-w-5xl mx-auto">
-              J&A Properties is your ultimate source to genuine and trending
+              Evid Properties is your ultimate source to genuine and trending
               market insights leading to a rewarding and highly satisfying
               luxury real estate experience in the UAE. Founded by seasoned
               professionals Jochen Schmid and Ahmed Omar, we draw upon over 35

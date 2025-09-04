@@ -125,7 +125,7 @@ export default function WhyDubai() {
                   the time of purchase and handover are common).
                 </li>
                 <li>
-                  Early Mover Advantage: Through J&A properties
+                  Early Mover Advantage: Through Evid Properties
                   close relationships with the leading developers, secure your
                   desirable locations and layouts before the general market,
                   potentially yielding higher resale prices.
@@ -200,7 +200,7 @@ export default function WhyDubai() {
             </div>
           </div>
           <p className="mt-6 text-gray-600 leading-relaxed text-[15px]" id="rent-investment">
-            As J&A Properties applies a thorough due diligence process,
+            As Evid Properties applies a thorough due diligence process,
             understands the legal framework, and chooses to work exclusively
             with the most reputable developers with a proven track record within
             the UAE, the inherent risks of off-plan projects are significantly

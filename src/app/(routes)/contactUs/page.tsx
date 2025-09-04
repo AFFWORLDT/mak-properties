@@ -17,26 +17,39 @@ function ContactUs() {
             CONNECT WITH LUXURY
           </p>
           <h1 className="text-4xl md:text-4xl  text-gray-800 leading-tight font-mono">
-            Get in Touch with J&A Properties
+            Get in Touch with Evid Properties
           </h1>
           <p className="text-gray-600 text-base md:text-sm leading-relaxed font-mono">
             Have a question or ready to embark on your real estate journey? Our team is here to assist you every step of
             the way. Reach out to us via phone, email, or simply fill out the contact form below. We look forward to
             hearing from you!
           </p>
-          <div className="space-y-2 pt-4">
-            <a href="https://maps.app.goo.gl/wLiAhQ2tcH6J9iC89" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors block space-y-2">
-            <p className="text-gray-600 text-base font-mono">Aspin Commercial Tower Level 48, Sheikh Zayed Road</p>
-            <p className="text-gray-600 text-base font-mono">Dubai, UAE</p>
-            </a>
+          <div className="space-y-3 pt-4">
+            <div className="space-y-1">
+              <p className="text-gray-600 text-base font-mono">802 Churchill Tower, Business Bay</p>
+              <p className="text-gray-600 text-base font-mono">Dubai – UAE</p>
+            </div>
+            <p className="text-gray-600 text-base flex items-center justify-center lg:justify-start gap-2 font-mono">
+              <span className="font-bold font-mono">P</span>
+              <a
+                href="tel:+971542524242"
+                className="text-brand-gold hover:underline text-primary font-mono"
+              >
+                +971 54 252 4242
+              </a>
+            </p>
             <p className="text-gray-600 text-base flex items-center justify-center lg:justify-start gap-2 font-mono">
               <span className="font-bold font-mono">E</span>
               <a
-                href="mailto:welcome@jna-properties.com"
+                href="mailto:info@evidproperties.com"
                 className="text-brand-gold hover:underline text-primary font-mono"
               >
-                welcome@jna-properties.com
+                info@evidproperties.com
               </a>
+            </p>
+            <p className="text-gray-600 text-base flex items-center justify-center lg:justify-start gap-2 font-mono">
+              <span className="font-bold font-mono">H</span>
+              <span className="text-gray-600 font-mono">Mon – Fri: 9AM to 7PM</span>
             </p>
           </div>
         </div>

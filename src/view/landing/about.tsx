@@ -17,7 +17,7 @@ export default function AboutUsSection() {
               Crafting Dubai&apos;s Real Estate  Legacy
             </h2>
             <p className="max-w-[650px] text-[16px] font-light text-[#6B7280] leading-relaxed">
-              At J&A Properties, we blend unparalleled market expertise with a
+              At Evid Properties, we blend unparalleled market expertise with a
               passion for luxury living. Our journey in Dubai&apos;s dynamic
               real estate landscape is rooted in trust, integrity, and a
               relentless pursuit of excellence. Explore our story and discover

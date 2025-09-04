@@ -15,6 +15,7 @@ export default function DetailPage({ id }: any) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [heroImageIndex, setHeroImageIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     async function fetchProperty() {
@@ -52,12 +53,22 @@ export default function DetailPage({ id }: any) {
     setSelectedImageIndex(index);
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setMousePosition({ x, y });
+  };
+
   if (!property?.photos || property.photos.length === 0) {
     return <div>Loading...</div>;
   }
   return (
     <div>
-      <section className="relative h-screen w-full flex items-center justify-center text-center overflow-hidden">
+      <section 
+        className="relative h-screen w-full flex items-center justify-center text-center overflow-hidden"
+        onMouseMove={handleMouseMove}
+      >
         <div className="absolute inset-0 w-full h-full">
           <div className="relative w-full h-full">
             {property?.photos?.map((photo: string, index: number) => (
@@ -69,11 +80,17 @@ export default function DetailPage({ id }: any) {
                 objectFit="cover"
                 quality={85}
                 priority={index === 0}
-                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
                   index === heroImageIndex
                     ? "opacity-100 z-10"
                     : "opacity-0 z-0"
                 }`}
+                style={{
+                  transform: index === heroImageIndex 
+                    ? `scale(1.1) translate(${(mousePosition.x - 50) * 0.02}%, ${(mousePosition.y - 50) * 0.02}%)`
+                    : 'scale(1)',
+                  transformOrigin: 'center center'
+                }}
               />
             ))}
           </div>

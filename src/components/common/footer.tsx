@@ -63,21 +63,42 @@ export default function Footer() {
         <div className="font-sans">
           <h4 className="text-lg  mb-4 font-sans">Contact</h4>
           <address className="not-italic space-y-2 text-sm font-sans leading-relaxed">
-            <a href="https://maps.app.goo.gl/wLiAhQ2tcH6J9iC89" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors block">
-            <p>Aspin Commercial Tower Level 48,</p>
-            <p>Sheikh Zayed Road,</p>
+            <p>802 Churchill Tower Business Bay</p>
             <p>Dubai, UAE</p>
-            </a>
             <p>
-              <span className="font-sans">E</span>{" "}
+              <span className="font-sans">P</span>{" "}
               <a
-                href="mailto:welcome@jna-properties.com"
+                href="tel:+971542524242"
                 className="relative inline-block hover:text-gray-300 transition-colors
                            after:content-[''] after:absolute after:left-0 after:bottom-0
                            after:h-[2px] after:w-0 after:bg-primary
                            after:transition-all after:duration-300 hover:after:w-full font-sans"
               >
-                welcome@jna-properties.com
+                +971 54 252 4242
+              </a>
+            </p>
+            <p>
+              <span className="font-sans">P</span>{" "}
+              <a
+                href="tel:+971547944000"
+                className="relative inline-block hover:text-gray-300 transition-colors
+                           after:content-[''] after:absolute after:left-0 after:bottom-0
+                           after:h-[2px] after:w-0 after:bg-primary
+                           after:transition-all after:duration-300 hover:after:w-full font-sans"
+              >
+                +971 54 794 4000
+              </a>
+            </p>
+            <p>
+              <span className="font-sans">E</span>{" "}
+              <a
+                href="mailto:info@evidproperties.com"
+                className="relative inline-block hover:text-gray-300 transition-colors
+                           after:content-[''] after:absolute after:left-0 after:bottom-0
+                           after:h-[2px] after:w-0 after:bg-primary
+                           after:transition-all after:duration-300 hover:after:w-full font-sans"
+              >
+                info@evidproperties.com
               </a>
             </p>
           </address>
@@ -87,7 +108,7 @@ export default function Footer() {
         <div>
           <h4 className="text-lg font-sans mb-4 tracking-wide">About Us</h4>
           <p className="text-sm leading-relaxed font-sans">
-            J&A Properties specializes in luxury Dubai real estate, offering
+            Evid Properties specializes in luxury Dubai real estate, offering
             personalized service, market insights, and tailored investment
             solutions for discerning clients.
           </p>
@@ -97,7 +118,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="container mx-auto border-t border-white/20 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-white/70">
         <p className="font-sans">
-          &copy; {"2025 J&A Properties | Privacy Policy | Cookie Policy"}
+          &copy; {"2025 Evid Properties. All Rights Reserved."}
         </p>
         <div className="flex space-x-4 mt-4 md:mt-0">
           <a
