@@ -91,6 +91,9 @@ function OffPlansPage() {
   const [developers, setDevelopers] = useState([]);
   const [developerSearch, setDeveloperSearch] = useState("");
   const [searchingDevelopers, setSearchingDevelopers] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalProperties, setTotalProperties] = useState(0);
 
   // Filter states
   const [filters, setFilters] = useState({
@@ -106,13 +109,13 @@ function OffPlansPage() {
     handover_year: "any",
   });
 
-  const fetchproperty = useCallback(async () => {
+  const fetchproperty = useCallback(async (page = 1) => {
     setLoading(true);
 
     const queryParams = new URLSearchParams({
       sort_by: "total_count",
       sort_order: "desc",
-      page: "1",
+      page: page.toString(),
       size: "24",
     });
 
@@ -126,6 +129,8 @@ function OffPlansPage() {
     try {
       const res = await getAllProperties(queryParams.toString());
       setProperty(res?.projects || []);
+      setTotalPages(Math.ceil((res?.total || 0) / 24));
+      setTotalProperties(res?.total || 0);
     } catch (error) {
       console.error("Error fetching properties:", error);
     } finally {
@@ -192,7 +197,11 @@ function OffPlansPage() {
   }, []);
 
   useEffect(() => {
-    fetchproperty();
+    fetchproperty(currentPage);
+  }, [fetchproperty, currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
   }, [filters]);
 
   useEffect(() => {
@@ -698,6 +707,64 @@ function OffPlansPage() {
             <OffPlanCard data={property} key={i} />
           ))}
         </div>
+
+        {/* Pagination */}
+        {!loading && property.length > 0 && totalPages > 1 && (
+          <div className="flex justify-center items-center mt-12 mb-8">
+            <div className="flex items-center space-x-2">
+              {/* Previous Button */}
+              <button
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                Previous
+              </button>
+
+              {/* Page Numbers */}
+              {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                let pageNum;
+                if (totalPages <= 5) {
+                  pageNum = i + 1;
+                } else if (currentPage <= 3) {
+                  pageNum = i + 1;
+                } else if (currentPage >= totalPages - 2) {
+                  pageNum = totalPages - 4 + i;
+                } else {
+                  pageNum = currentPage - 2 + i;
+                }
+
+                return (
+                  <button
+                    key={pageNum}
+                    onClick={() => setCurrentPage(pageNum)}
+                    className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                      currentPage === pageNum
+                        ? 'bg-[#dbbb90] text-white'
+                        : 'text-gray-700 bg-white border border-gray-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    {pageNum}
+                  </button>
+                );
+              })}
+
+              {/* Next Button */}
+              <button
+                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+                className="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                Next
+              </button>
+            </div>
+
+            {/* Results Info */}
+            <div className="ml-8 text-sm text-gray-600">
+              Showing {((currentPage - 1) * 24) + 1} to {Math.min(currentPage * 24, totalProperties)} of {totalProperties} properties
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
