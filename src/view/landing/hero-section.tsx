@@ -160,6 +160,9 @@ export default function HeroSection() {
             alt="Luxury Living in Dubai"
             fill
             className="object-cover z-0 animate-zoomInOut"
+            style={{
+              filter: 'brightness(1.2) contrast(1.1) saturate(1.1)'
+            }}
             quality={80}
             priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
@@ -182,7 +185,8 @@ export default function HeroSection() {
                       transform: index === currentProjectIndex 
                         ? `scale(1.1) translate(${(mousePosition.x - 50) * 0.005}%, ${(mousePosition.y - 50) * 0.005}%)`
                         : 'scale(1)',
-                      transformOrigin: 'center center'
+                      transformOrigin: 'center center',
+                      filter: 'brightness(1.2) contrast(1.1) saturate(1.1)'
                     }}
                     quality={85}
                     priority={index === 0}
@@ -198,6 +202,9 @@ export default function HeroSection() {
                         ? "opacity-100 z-10"
                         : "opacity-0 z-0"
                     }`}
+                    style={{
+                      filter: 'brightness(1.2) contrast(1.1) saturate(1.1)'
+                    }}
                     quality={80}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                   />
