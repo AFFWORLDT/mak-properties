@@ -223,7 +223,7 @@ export default function HeroSection() {
 
       {/* Project Information Overlay - Center */}
       {!isLoading && currentProject && (
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 text-white max-w-xs sm:max-w-sm w-full px-4">
+        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 text-white max-w-xs sm:max-w-sm w-full px-4">
           <motion.div
             key={currentProjectIndex}
             initial={{ opacity: 0, scale: 0.8, y: 50 }}
@@ -258,7 +258,7 @@ export default function HeroSection() {
       )}
 
       {/* Search Form - Bottom */}
-      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-20 text-white px-2 sm:px-6 lg:px-8 container w-full">
+      <div className="absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 z-20 text-white px-2 sm:px-6 lg:px-8 container w-full">
         <motion.div
           key={`search-${currentProjectIndex}`}
           initial={{ opacity: 0, y: 30 }}
