@@ -3,7 +3,6 @@ import Header from "@/src/components/common/header"
 import HeroSection from "@/src/view/landing/hero-section"
 import Footer from "@/src/components/common/footer"
 import Feature from "@/src/view/landing/feature"
-import AboutUsSection from "@/src/view/landing/about"
 import Communities from "@/src/view/landing/Communities"
 import Property from "@/src/view/landing/property"
 import { InsightsInspiration } from "@/src/view/landing/blog"
@@ -15,7 +14,6 @@ export default function Home() {
       
       <HeroSection />
       <Feature/>
-      <AboutUsSection/>
       <Communities/>
       <Property/>
      <InsightsInspiration/>

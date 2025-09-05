@@ -9,16 +9,15 @@ const sitemapLinks = [
   { href: "/communities", label: "Communities" },
   { href: "/whyDubai", label: "Why Dubai" },
   { href: "/service", label: "Services" },
-  { href: "/about", label: "About Us" },
   { href: "/contactUs", label: "Contact Us" },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-12 px-10 md:px-6">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3  gap-8">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2  gap-8">
         {/* Newsletter Section */}
-        <div className="md:col-span-3 lg:col-span-4 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 w-full bg-gradient-to-r from-[#dbbb90]/10 to-[#C2A17B]/10 p-6 rounded-2xl border border-[#dbbb90]/20">
+        <div className="md:col-span-2 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 w-full bg-gradient-to-r from-[#dbbb90]/10 to-[#C2A17B]/10 p-6 rounded-2xl border border-[#dbbb90]/20">
           <h3 className="text-xl font-light tracking-wide leading-relaxed w-full md:flex-none md:w-[40%] text-white font-serif">
             Receive our exceptional real estate listings delivered straight to
             your inbox.
@@ -92,15 +91,6 @@ export default function Footer() {
           </address>
         </div>
 
-        {/* About Us */}
-        <div>
-          <h4 className="text-lg font-serif mb-4 tracking-wide">About Us</h4>
-          <p className="text-sm leading-relaxed font-serif">
-            Evid Properties specializes in luxury Dubai real estate, offering
-            personalized service, market insights, and tailored investment
-            solutions for discerning clients.
-          </p>
-        </div>
       </div>
 
       {/* Bottom bar */}

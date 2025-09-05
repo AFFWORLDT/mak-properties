@@ -45,7 +45,6 @@ export default function Header() {
     { href: "/team", label: "OUR TEAM" },
     { href: "/whyDubai", label: "WHY DUBAI" },
     { href: "/service", label: "SERVICES" },
-    { href: "/about", label: "ABOUT" },
     { href: "/contactUs", label: "CONTACT US" },
   ];
   const headerLink = [
