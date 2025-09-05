@@ -223,7 +223,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: -50 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="bg-white/10 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/20 text-center shadow-sm"
+            className="bg-white/5 backdrop-blur-[2px] p-6 sm:p-8 rounded-2xl border border-white/10 text-center shadow-sm"
           >
             <h2 className="text-lg sm:text-2xl font-light mb-2 leading-tight font-serif text-gray-900">
               {currentProject.name || "Luxury Project"}
