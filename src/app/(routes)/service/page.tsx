@@ -34,9 +34,9 @@ export default function Services() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="pt-32 pb-12 px-4 bg-[#141442]">
+      <section className="pt-32 pb-12 px-4 bg-white">
         <div className="container mx-auto text-center">
-          <h1 className="text-5xl font-medium mb-6 text-white font-mono">
+          <h1 className="text-5xl font-medium mb-6 text-black font-mono">
             Services
           </h1>
         </div>
