@@ -192,7 +192,11 @@ export default function Header() {
                             {services.slice(0, 5).map((service, index) => (
                               <Link
                                 key={index}
-                                href={service.name === "List Your Property" ? "/list-your-property" : "/service"}
+                                href={
+                                  service.name === "List Your Property" ? "/list-your-property" :
+                                  service.name === "Property Management" ? "/property-management" :
+                                  "/service"
+                                }
                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer group"
                               >
                                 <div className="flex-shrink-0 transition-colors duration-200 group-hover:text-blue-600">
@@ -210,7 +214,11 @@ export default function Header() {
                             {services.slice(5, 10).map((service, index) => (
                               <Link
                                 key={index + 5}
-                                href={service.name === "List Your Property" ? "/list-your-property" : "/service"}
+                                href={
+                                  service.name === "List Your Property" ? "/list-your-property" :
+                                  service.name === "Property Management" ? "/property-management" :
+                                  "/service"
+                                }
                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer group"
                               >
                                 <div className="flex-shrink-0 transition-colors duration-200 group-hover:text-blue-600">
@@ -369,7 +377,11 @@ export default function Header() {
                       {services.map((service, serviceIndex) => (
                         <Link
                           key={serviceIndex}
-                          href={service.name === "List Your Property" ? "/list-your-property" : "/service"}
+                          href={
+                            service.name === "List Your Property" ? "/list-your-property" :
+                            service.name === "Property Management" ? "/property-management" :
+                            "/service"
+                          }
                           onClick={() => setIsOverlayOpen(false)}
                           className="flex items-center space-x-3 py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer group"
                         >
