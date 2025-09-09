@@ -12,11 +12,20 @@ import {
   Facebook,
   Instagram,
   Linkedin,
+  Globe,
+  ChevronDown,
+  User,
 } from "lucide-react";
 import { Button } from "@/src/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/src/lib/utils";
 import { Icon } from "@iconify/react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/src/components/ui/dropdown-menu";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,22 +47,24 @@ export default function Header() {
   }, [isOverlayOpen]);
 
   const navLinks = [
-    { href: "/buy", label: "BUY" },
-    { href: "/offPlans", label: "OFF-PLAN" },
-    { href: "/rent", label: "RENT" },
-    { href: "/communities", label: "COMMUNITIES" },
-    { href: "/team", label: "OUR TEAM" },
-    { href: "/whyDubai", label: "WHY DUBAI" },
-    { href: "/service", label: "SERVICES" },
-    { href: "/contactUs", label: "CONTACT US" },
+    { href: "/buy", label: "Buy" },
+    { href: "/rent", label: "Rent" },
+    { href: "/offPlans", label: "Projects" },
+    { href: "/team", label: "Developers" },
+    { href: "/communities", label: "Areas" },
+    { href: "/service", label: "Services" },
+    { href: "/blog", label: "Blogs" },
+    { href: "/contactUs", label: "More" },
   ];
   const headerLink = [
-    { href: "/buy", label: "BUY" },
-    { href: "/offPlans", label: "OFF-PLAN" },
-    { href: "/rent", label: "RENT" },
-    { href: "/communities", label: "COMMUNITIES" },
-    { href: "/team", label: "OUR TEAM" },
-    { href: "/contactUs", label: "CONTACT US" },
+    { href: "/buy", label: "Buy" },
+    { href: "/rent", label: "Rent" },
+    { href: "/offPlans", label: "Projects" },
+    { href: "/team", label: "Developers" },
+    { href: "/communities", label: "Areas" },
+    { href: "/service", label: "Services" },
+    { href: "/blog", label: "Blogs" },
+    { href: "/contactUs", label: "More" },
   ];
   useEffect(() => {
     if (!isOverlayOpen) return;
@@ -70,38 +81,38 @@ export default function Header() {
   }, [isOverlayOpen]);
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? "bg-white shadow-lg" : "bg-transparent"
       }`}
     >
       <nav
-        className={`container mx-auto flex items-center justify-between px-4 md:px-6 transition-all duration-300 ${
-          isScrolled ? "h-20" : "h-32"
-        }`}
+        className={cn(
+          "container mx-auto flex items-center justify-between px-4 md:px-6",
+          isScrolled ? "h-24" : "h-28"
+        )}
       >
+        {/* Logo */}
         <div className="flex items-center">
           <Link href={"/"}>
             <Image
               src="/images/logo.png"
               alt="EVIDPROPERTIES Logo"
-              width={isScrolled ? 80 : 100}
-              height={isScrolled ? 80 : 100}
+              width={120}
+              height={40}
               className="object-contain"
             />
           </Link>
         </div>
 
         {/* Desktop Nav */}
-        <div
-          className="hidden md:flex items-center space-x-10 text-sm font-light uppercase tracking-[1.5px] font-serif"
-        >
+        <div className="hidden lg:flex items-center space-x-8">
           {headerLink.map((link, i) => (
             <Link
               key={i}
               href={link.href}
               className={cn(
-                "relative pb-1 transition-all duration-300 uppercase text-[16px] font-normal",
-                isScrolled ? "text-black" : "text-gray-800",
+                "relative pb-1 transition-all duration-300 font-sans text-[17px]",
+                isScrolled && pathname === "/" ? "text-black" : "text-gray-800",
                 "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0",
                 "after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
                 pathname === link.href && "after:w-full"
@@ -115,110 +126,165 @@ export default function Header() {
           ))}
         </div>
 
-        {/* Icons */}
-        <div className="flex items-center gap-x-7">
-          {/* <div className={isScrolled ? "text-black" : "text-white"}>
-            <Heart className="h-5 w-5" fill={isScrolled ? "black" : "white"} />
-            <span className="sr-only">Favorites</span>
-          </div> */}
-          <div className={isScrolled ? "text-black" : "text-gray-800"}>
-            <a
-              href="https://wa.me/971542524242"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-            >
-              <Icon icon={"iconoir:whatsapp-solid"} className="h-6 w-6" />
-              <span className="sr-only">WhatsApp</span>
-            </a>
+        {/* Right Side - Currency, Login, Signup */}
+        <div className="flex items-center space-x-4">
+          {/* Currency Selector */}
+          <div className="hidden md:flex items-center space-x-2">
+            <div
+              className={`w-px h-6 ${
+                isScrolled ? "bg-black/30" : "bg-white/30"
+              }`}
+            ></div>
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                className={cn(
+                  "flex items-center space-x-1 transition-colors",
+                  isScrolled
+                    ? "text-black hover:text-black/80"
+                    : "text-white hover:text-white/80"
+                )}
+              >
+                <Globe className="h-4 w-4" />
+                <span className="text-sm font-medium underline">USD</span>
+                <ChevronDown className="h-3 w-3" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>USD</DropdownMenuItem>
+                <DropdownMenuItem>AED</DropdownMenuItem>
+                <DropdownMenuItem>EUR</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
-          <div className={isScrolled ? "text-black" : "text-gray-800"}>
-            <a href="tel:+971542524242" aria-label="Call Us">
-              <Icon icon={"line-md:phone-call-filled"} className="h-6 w-6" />
-              <span className="sr-only">Call Us</span>
-            </a>
-          </div>
+
+          {/* Login Button */}
+          <Button
+            variant="outline"
+            className={cn(
+              "hidden sm:flex items-center space-x-2 bg-transparent h-9 px-4 transition-all duration-200",
+              isScrolled
+                ? "border-black text-black hover:bg-black/10"
+                : "border-white text-white hover:bg-white/10"
+            )}
+          >
+            <User className="h-4 w-4" />
+            <span className="text-sm">Login</span>
+          </Button>
+
+          {/* List Your Property Button */}
+          <Button
+            className={cn(
+              "border h-9 px-4 text-sm transition-all duration-200",
+              isScrolled
+                ? "bg-slate-200/20 border-black text-black hover:bg-slate-200/30"
+                : "bg-slate-300/20 border-white text-white hover:bg-slate-300/30"
+            )}
+          >
+            List Your Property
+          </Button>
+
+          {/* Mobile Menu Button */}
           <div
-            className={`${isScrolled ? "text-black" : "text-gray-800"} group relative cursor-pointer w-12 h-8 flex items-center justify-center overflow-hidden`}
+            className={cn(
+              "lg:hidden cursor-pointer transition-colors duration-200",
+              isScrolled ? "text-black" : "text-white"
+            )}
             onClick={() => setIsOverlayOpen(true)}
           >
-            {/* Single Menu Icon that transforms to ladder */}
-            <div className="relative z-10 flex flex-col justify-end items-start space-y-1">
-              {/* Top line - width 10 default, decreases from right */}
-              <span className={`w-10 h-0.5 rounded-full transition-all duration-500 ease-out group-hover:w-10 group-hover:h-1 ${isScrolled ? "bg-black group-hover:bg-black/80" : "bg-gray-800 group-hover:bg-gray-600"}`}></span>
-
-              {/* Middle line - width 10 default, decreases from right */}
-              <span className={`w-10 h-0.5 rounded-full transition-all duration-500 ease-out group-hover:w-9 group-hover:h-1 ${isScrolled ? "bg-black group-hover:h-1 group-hover:bg-black/80" : "bg-gray-800 group-hover:h-1 group-hover:bg-gray-600"}`}></span>
-
-              {/* Bottom line - width 10 default, decreases from right */}
-              <span className={`w-10 h-0.5 rounded-full transition-all duration-500 ease-out group-hover:w-7 group-hover:h-1 ${isScrolled ? "bg-black group-hover:bg-black/80" : "bg-gray-800 group-hover:bg-gray-600"}`}></span>
-            </div>
-
-            <span className="sr-only">Toggle Menu</span>
+            <Menu className="h-6 w-6" />
           </div>
         </div>
       </nav>
 
-      {/* Overlay */}
+      {/* Mobile Overlay */}
       <div
-        className={`fixed top-0 bottom-0 right-0 w-full md:w-1/4 bg-[#F5F2ED] text-gray-900 z-[100] transform transition-transform duration-800 ease-in-out ${
+        className={`fixed top-0 bottom-0 right-0 w-full md:w-1/3 bg-white text-gray-900 z-[100] transform transition-transform duration-300 ease-in-out ${
           isOverlayOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div
-          className="absolute top-4 right-4 text-[#1A2B40] hover:bg-gray-200"
-          onClick={() => setIsOverlayOpen(false)}
-        >
-          <Icon icon={"ic:outline-cancel"} fontSize={25} />
-          <span className="sr-only">Close menu</span>
+        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+          <h2 className="text-lg font-semibold">Menu</h2>
+          <button
+            onClick={() => setIsOverlayOpen(false)}
+            className="text-gray-500 hover:text-gray-700"
+          >
+            <X className="h-6 w-6" />
+          </button>
         </div>
 
-        <nav
-          className="flex flex-col pt-16 p-8 space-y-4 text-lg uppercase font-light tracking-[1.5px] flex-grow mt-16 ms-8 font-serif"
-        >
+        <nav className="flex flex-col p-6 space-y-4">
           {navLinks.map((link, i) => (
             <Link
               key={i}
               href={link.href}
               className={cn(
-                "relative pb-1 transition-all duration-300 text-black uppercase text-base",
-                "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0",
-                "after:bg-primary after:transition-all after:duration-300 hover:after:w-20"
+                "text-gray-700 hover:text-gray-900 transition-colors duration-200 py-2",
+                pathname === link.href && "text-gray-900 font-medium"
               )}
-              style={{
-                letterSpacing: "1.5px",
-              }}
+              onClick={() => setIsOverlayOpen(false)}
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="p-8 border-t border-gray-200 flex justify-start space-x-4">
-          <Link
-            href="https://www.facebook.com/profile.php?id=61555781408625"
-            target="_blank"
-            aria-label="Facebook"
-            className="w-8 h-8 flex items-center justify-center border border-gray-400 rounded-full text-gray-700 hover:bg-gray-200"
-          >
-            <Facebook className="h-4 w-4" />
-          </Link>
-          <Link
-            href="https://www.instagram.com/jnapropertiesofficial/"
-            target="_blank"
-            aria-label="Instagram"
-            className="w-8 h-8 flex items-center justify-center border border-gray-400 rounded-full text-gray-700 hover:bg-gray-200"
-          >
-            <Instagram className="h-4 w-4" />
-          </Link>
-          <Link
-            href="https://www.linkedin.com/company/j-a-properties/"
-            target="_blank"
-            aria-label="LinkedIn"
-            className="w-8 h-8 flex items-center justify-center border border-gray-400 rounded-full text-gray-700 hover:bg-gray-200"
-          >
-            <Linkedin className="h-4 w-4" />
-          </Link>
+        <div className="p-6 border-t border-gray-200 space-y-4">
+          {/* Mobile Currency Selector */}
+          <div className="flex items-center space-x-2">
+            <Globe className="h-4 w-4 text-gray-500" />
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-700">
+                <span className="text-sm font-medium">USD</span>
+                <ChevronDown className="h-3 w-3" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>USD</DropdownMenuItem>
+                <DropdownMenuItem>AED</DropdownMenuItem>
+                <DropdownMenuItem>EUR</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+
+          {/* Mobile Buttons */}
+          <div className="space-y-3">
+            <Button
+              variant="outline"
+              className="w-full flex items-center justify-center space-x-2"
+            >
+              <User className="h-4 w-4" />
+              <span>Login</span>
+            </Button>
+            <Button className="w-full bg-slate-600 hover:bg-slate-700">
+              List Your Property
+            </Button>
+          </div>
+
+          {/* Social Links */}
+          <div className="flex justify-start space-x-4 pt-4">
+            <Link
+              href="https://www.facebook.com/profile.php?id=61555781408625"
+              target="_blank"
+              aria-label="Facebook"
+              className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full text-gray-600 hover:bg-gray-100"
+            >
+              <Facebook className="h-4 w-4" />
+            </Link>
+            <Link
+              href="https://www.instagram.com/jnapropertiesofficial/"
+              target="_blank"
+              aria-label="Instagram"
+              className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full text-gray-600 hover:bg-gray-100"
+            >
+              <Instagram className="h-4 w-4" />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/company/j-a-properties/"
+              target="_blank"
+              aria-label="LinkedIn"
+              className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full text-gray-600 hover:bg-gray-100"
+            >
+              <Linkedin className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </div>
     </header>
