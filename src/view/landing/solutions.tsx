@@ -1,5 +1,4 @@
-import React from 'react'
-import { ArrowRight, User, Building, Download, MapPin } from 'lucide-react'
+import { ArrowRight, User, Building, Download, MapPin } from "lucide-react"
 
 function Solutions() {
   const solutions = [
@@ -7,26 +6,26 @@ function Solutions() {
       icon: <User className="h-8 w-8 text-blue-900" />,
       title: "Connect with a Specialist",
       description: "Access our dedicated team of over 400+ expert agents ready to assist you.",
-      arrow: <ArrowRight className="h-4 w-4 text-blue-900" />
+      arrow: <ArrowRight className="h-4 w-4 text-blue-900" />,
     },
     {
       icon: <Building className="h-8 w-8 text-blue-900" />,
       title: "List Your Property",
       description: "Achieve optimal value by listing your property with our expert marketing strategies.",
-      arrow: <ArrowRight className="h-4 w-4 text-blue-900" />
+      arrow: <ArrowRight className="h-4 w-4 text-blue-900" />,
     },
     {
       icon: <Download className="h-8 w-8 text-blue-900" />,
       title: "Download Report",
       description: "Download the latest Comprehensive Dubai Real Estate Market Report Q1 2025",
-      arrow: <ArrowRight className="h-4 w-4 text-blue-900" />
+      arrow: <ArrowRight className="h-4 w-4 text-blue-900" />,
     },
     {
       icon: <MapPin className="h-8 w-8 text-blue-900" />,
       title: "Explore Dubai Projects",
       description: "Browse and find your ideal property from our extensive portfolio of Dubai projects.",
-      arrow: <ArrowRight className="h-4 w-4 text-blue-900" />
-    }
+      arrow: <ArrowRight className="h-4 w-4 text-blue-900" />,
+    },
   ]
 
   return (
@@ -36,7 +35,8 @@ function Solutions() {
           {/* Header */}
           <div className="mb-12">
             <h2 className="text-5xl font-bold">
-              Dubai real estate solutions focused around<br/>
+              Dubai real estate solutions focused around
+              <br />
               excellent customer service.
             </h2>
           </div>
@@ -49,24 +49,18 @@ function Solutions() {
                 className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer group"
               >
                 {/* Icon */}
-                <div className="mb-4">
-                  {solution.icon}
-                </div>
+                <div className="mb-4">{solution.icon}</div>
 
                 {/* Title with Arrow */}
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-blue-900 font-bold text-lg">
-                    {solution.title}
-                  </h3>
+                  <h3 className="text-blue-900 font-bold text-lg">{solution.title}</h3>
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {solution.arrow}
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {solution.description}
-                </p>
+                <p className="text-gray-600 text-sm leading-relaxed">{solution.description}</p>
               </div>
             ))}
           </div>
