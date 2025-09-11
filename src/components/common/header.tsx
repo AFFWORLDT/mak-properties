@@ -195,6 +195,9 @@ export default function Header() {
                                 href={
                                   service.name === "List Your Property" ? "/list-your-property" :
                                   service.name === "Property Management" ? "/property-management" :
+                                  service.name === "Mortgages" ? "/mortgages" :
+                                  service.name === "Conveyancing" ? "/conveyancing" :
+                                  service.name === "Short Term Rentals" ? "/short-term-rental" :
                                   "/service"
                                 }
                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer group"
@@ -217,6 +220,9 @@ export default function Header() {
                                 href={
                                   service.name === "List Your Property" ? "/list-your-property" :
                                   service.name === "Property Management" ? "/property-management" :
+                                  service.name === "Mortgages" ? "/mortgages" :
+                                  service.name === "Conveyancing" ? "/conveyancing" :
+                                  service.name === "Short-Term Rental" ? "/short-term-rental" :
                                   "/service"
                                 }
                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer group"
@@ -239,22 +245,22 @@ export default function Header() {
             }
             
             return (
-              <Link
-                key={i}
-                href={link.href}
-                className={cn(
+            <Link
+              key={i}
+              href={link.href}
+              className={cn(
                   "relative pb-1 transition-all duration-300 font-sans text-[17px]",
                   isScrolled && pathname === "/" ? "text-black" : "text-gray-800",
-                  "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0",
-                  "after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
-                  pathname === link.href && "after:w-full"
-                )}
-                style={{
-                  letterSpacing: "1.5px",
-                }}
-              >
-                {link.label}
-              </Link>
+                "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0",
+                "after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
+                pathname === link.href && "after:w-full"
+              )}
+              style={{
+                letterSpacing: "1.5px",
+              }}
+            >
+              {link.label}
+            </Link>
             );
           })}
         </div>
@@ -342,9 +348,9 @@ export default function Header() {
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <h2 className="text-lg font-semibold">Menu</h2>
           <button
-            onClick={() => setIsOverlayOpen(false)}
+          onClick={() => setIsOverlayOpen(false)}
             className="text-gray-500 hover:text-gray-700"
-          >
+        >
             <X className="h-6 w-6" />
           </button>
         </div>
@@ -400,17 +406,17 @@ export default function Header() {
             }
             
             return (
-              <Link
-                key={i}
-                href={link.href}
-                className={cn(
+            <Link
+              key={i}
+              href={link.href}
+              className={cn(
                   "text-gray-700 hover:text-gray-900 transition-colors duration-200 py-2",
                   pathname === link.href && "text-gray-900 font-medium"
-                )}
+              )}
                 onClick={() => setIsOverlayOpen(false)}
-              >
-                {link.label}
-              </Link>
+            >
+              {link.label}
+            </Link>
             );
           })}
         </nav>
@@ -452,30 +458,30 @@ export default function Header() {
 
           {/* Social Links */}
           <div className="flex justify-start space-x-4 pt-4">
-            <Link
-              href="https://www.facebook.com/profile.php?id=61555781408625"
-              target="_blank"
-              aria-label="Facebook"
+          <Link
+            href="https://www.facebook.com/profile.php?id=61555781408625"
+            target="_blank"
+            aria-label="Facebook"
               className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full text-gray-600 hover:bg-gray-100"
-            >
-              <Facebook className="h-4 w-4" />
-            </Link>
-            <Link
-              href="https://www.instagram.com/jnapropertiesofficial/"
-              target="_blank"
-              aria-label="Instagram"
+          >
+            <Facebook className="h-4 w-4" />
+          </Link>
+          <Link
+            href="https://www.instagram.com/jnapropertiesofficial/"
+            target="_blank"
+            aria-label="Instagram"
               className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full text-gray-600 hover:bg-gray-100"
-            >
-              <Instagram className="h-4 w-4" />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/company/j-a-properties/"
-              target="_blank"
-              aria-label="LinkedIn"
+          >
+            <Instagram className="h-4 w-4" />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/company/j-a-properties/"
+            target="_blank"
+            aria-label="LinkedIn"
               className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full text-gray-600 hover:bg-gray-100"
-            >
-              <Linkedin className="h-4 w-4" />
-            </Link>
+          >
+            <Linkedin className="h-4 w-4" />
+          </Link>
           </div>
         </div>
       </div>
