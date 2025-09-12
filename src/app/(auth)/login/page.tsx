@@ -1,17 +1,65 @@
 "use client";
 
 import React, { useState } from 'react';
-import { ArrowLeft, Mail, Eye, EyeOff } from 'lucide-react';
+import { ArrowLeft, User, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { Button } from '@/src/components/ui/button';
 import { Input } from '@/src/components/ui/input';
 import { Label } from '@/src/components/ui/label';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { api, handleApiError } from '@/src/lib/axios';
 
 export default function LoginPage() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!username || !password) {
+      setError('Please fill in all required fields');
+      return;
+    }
+
+    setIsLoading(true);
+    setError('');
+
+    try {
+      const formData = new FormData();
+      formData.append('username', username);
+      formData.append('password', password);
+      
+      const response = await api.post('/api/login', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      
+      // Success - navigate to home page
+      router.push('/');
+      
+    } catch (err) {
+      const apiError = handleApiError(err);
+      setError(apiError.message || 'Login failed. Please check your credentials.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleInputChange = (field: 'username' | 'password', value: string) => {
+    if (field === 'username') {
+      setUsername(value);
+    } else {
+      setPassword(value);
+    }
+    // Clear error when user starts typing
+    if (error) setError('');
+  };
 
   return (
     <div className="min-h-screen relative flex items-center justify-center p-4">
@@ -86,28 +134,35 @@ export default function LoginPage() {
               <div className="w-full border-t border-gray-300"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">or login with email</span>
+              <span className="px-2 bg-white text-gray-500">or login with username</span>
             </div>
           </div>
 
+          {/* Error Message */}
+          {error && (
+            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-4">
+              {error}
+            </div>
+          )}
+
           {/* Form */}
-          <form className="space-y-4">
-            {/* Email Field */}
+          <form className="space-y-4" onSubmit={handleSubmit}>
+            {/* Username Field */}
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium text-gray-700">
-                Email Address *
+              <Label htmlFor="username" className="text-sm font-medium text-gray-700">
+                Username *
               </Label>
               <div className="relative">
                 <Input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  id="username"
+                  type="text"
+                  value={username}
+                  onChange={(e) => handleInputChange('username', e.target.value)}
                   className="pl-4 pr-12 h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                  placeholder="Enter your email"
+                  placeholder="Enter your username"
                   required
                 />
-                <Mail className="absolute right-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <User className="absolute right-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               </div>
             </div>
 
@@ -121,7 +176,7 @@ export default function LoginPage() {
                   id="password"
                   type={showPassword ? "text" : "password"}
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => handleInputChange('password', e.target.value)}
                   className="pl-4 pr-12 h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                   placeholder="Enter your password"
                   required
@@ -162,8 +217,16 @@ export default function LoginPage() {
             <Button 
               type="submit" 
               className="w-full h-12 bg-primary hover:bg-primary text-white font-medium text-lg"
+              disabled={isLoading}
             >
-              Continue
+              {isLoading ? (
+                <>
+                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  Signing in...
+                </>
+              ) : (
+                'Continue'
+              )}
             </Button>
           </form>
         </div>
@@ -171,3 +234,4 @@ export default function LoginPage() {
     </div>
   );
 }
+
