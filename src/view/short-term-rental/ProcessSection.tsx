@@ -7,7 +7,7 @@ export default function ProcessSection() {
     {
       number: 1,
       title: "Connect With Us",
-      description: "A simple call, email, WhatsApp message, or social media inquiry starts your journey.",
+      description: "A simple call, email, or WhatsApp message starts your journey.",
       color: "bg-blue-900"
     },
     {

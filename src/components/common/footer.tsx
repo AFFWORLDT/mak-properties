@@ -1,6 +1,5 @@
 import { Input } from "@/src/components/ui/input";
 import { Button } from "@/src/components/ui/button";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
 
 const sitemapLinks = [
   { href: "/buy", label: "Buy" },
@@ -98,32 +97,6 @@ export default function Footer() {
         <p className="font-serif">
           &copy; {"2025 Evid Properties. All Rights Reserved."}
         </p>
-        <div className="flex space-x-4 mt-4 md:mt-0">
-          <a
-            href="https://www.facebook.com/profile.php?id=61555781408625"
-            target="_blank"
-            aria-label="Facebook"
-            className="w-10 h-10 flex items-center justify-center border border-white/30 rounded-full hover:bg-[#dbbb90] hover:border-[#dbbb90] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
-          >
-            <Facebook className="h-5 w-5" />
-          </a>
-          <a
-            href="https://www.instagram.com/jnapropertiesofficial/"
-            target="_blank"
-            aria-label="Instagram"
-            className="w-10 h-10 flex items-center justify-center border border-white/30 rounded-full hover:bg-[#dbbb90] hover:border-[#dbbb90] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
-          >
-            <Instagram className="h-5 w-5" />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/j-a-properties/"
-            target="_blank"
-            aria-label="LinkedIn"
-            className="w-10 h-10 flex items-center justify-center border border-white/30 rounded-full hover:bg-[#dbbb90] hover:border-[#dbbb90] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
-          >
-            <Linkedin className="h-5 w-5" />
-          </a>
-        </div>
       </div>
     </footer>
   );

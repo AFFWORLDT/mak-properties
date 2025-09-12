@@ -1,4 +1,3 @@
-import SocialMediaFloat from "@/src/components/common/socialMediaFlotionButtons";
 import {
   Avatar,
   AvatarFallback,
@@ -52,10 +51,6 @@ const blogPost = {
           name: "Evid Properties",
     bio: "Leading property experts helping investors and homeowners navigate Dubai’s thriving real estate market.",
     avatar: "/images/logo-gold.svg",
-    social: {
-      twitter: "@japroperties",
-      linkedin: "japroperties",
-    },
   },
   publishedAt: "December 24, 2024",
   readTime: "6 min read",
@@ -105,7 +100,6 @@ export default function DetailsBlog() {
           />
         </article>
       </main>
-      <SocialMediaFloat css="bottom-6 left-6" />{" "}
     </div>
   );
 }

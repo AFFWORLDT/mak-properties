@@ -6,9 +6,6 @@ import { usePathname } from "next/navigation";
 import {
   Menu,
   X,
-  Facebook,
-  Instagram,
-  Linkedin,
   Globe,
   ChevronDown,
   User,
@@ -456,33 +453,6 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Social Links */}
-          <div className="flex justify-start space-x-4 pt-4">
-          <Link
-            href="https://www.facebook.com/profile.php?id=61555781408625"
-            target="_blank"
-            aria-label="Facebook"
-              className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full text-gray-600 hover:bg-gray-100"
-          >
-            <Facebook className="h-4 w-4" />
-          </Link>
-          <Link
-            href="https://www.instagram.com/jnapropertiesofficial/"
-            target="_blank"
-            aria-label="Instagram"
-              className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full text-gray-600 hover:bg-gray-100"
-          >
-            <Instagram className="h-4 w-4" />
-          </Link>
-          <Link
-            href="https://www.linkedin.com/company/j-a-properties/"
-            target="_blank"
-            aria-label="LinkedIn"
-              className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full text-gray-600 hover:bg-gray-100"
-          >
-            <Linkedin className="h-4 w-4" />
-          </Link>
-          </div>
         </div>
       </div>
     </header>
