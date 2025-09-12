@@ -1,28 +1,43 @@
 "use client";
 
 import React, { useState } from 'react';
-import { ArrowLeft, User, Eye, EyeOff, Loader2 } from 'lucide-react';
+import { ArrowLeft, Mail, Eye, EyeOff, User, Phone, Loader2 } from 'lucide-react';
 import { Button } from '@/src/components/ui/button';
 import { Input } from '@/src/components/ui/input';
 import { Label } from '@/src/components/ui/label';
+import { Checkbox } from '@/src/components/ui/checkbox';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { api, handleApiError } from '@/src/lib/axios';
 
-export default function LoginPage() {
+export default function SignupPage() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({
+    owner_name: '',
+    lessor_email: '',
+    password: '',
+    lessor_phone: '',
+    agreeToTerms: false
+  });
+
+  const handleInputChange = (field: string, value: string | boolean) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+    // Clear error when user starts typing
+    if (error) setError('');
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!username || !password) {
-      setError('Please fill in all required fields');
+    if (!formData.agreeToTerms) {
+      setError('Please agree to the Terms of Service and Privacy Policy');
       return;
     }
 
@@ -30,35 +45,25 @@ export default function LoginPage() {
     setError('');
 
     try {
-      const formData = new FormData();
-      formData.append('username', username);
-      formData.append('password', password);
-      
-      const response = await api.post('/api/login', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      // Prepare data for API (exclude agreeToTerms)
+      const apiData = {
+        owner_name: formData.owner_name,
+        lessor_email: formData.lessor_email,
+        password: formData.password,
+        lessor_phone: formData.lessor_phone
+      };
+
+      const response = await api.post('/api/owner/register', apiData);
       
       // Success - navigate to home page
       router.push('/');
       
     } catch (err) {
       const apiError = handleApiError(err);
-      setError(apiError.message || 'Login failed. Please check your credentials.');
+      setError(apiError.message || 'Registration failed. Please try again.');
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleInputChange = (field: 'username' | 'password', value: string) => {
-    if (field === 'username') {
-      setUsername(value);
-    } else {
-      setPassword(value);
-    }
-    // Clear error when user starts typing
-    if (error) setError('');
   };
 
   return (
@@ -75,7 +80,7 @@ export default function LoginPage() {
         <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
       </div>
 
-      {/* Login Form */}
+      {/* Signup Form */}
       <div className="relative z-10 w-full max-w-3xl">
         <div className="bg-white rounded-lg shadow-2xl p-10">
           {/* Header */}
@@ -92,17 +97,17 @@ export default function LoginPage() {
               EVIDPROPERTIES
             </h1>
             <p className="text-gray-600 text-sm mb-4">
-              Login to your account
+              Create your account
             </p>
             <p className="text-gray-600 text-sm">
-              Don't have an account yet?{' '}
-              <Link href="/signup" className="text-blue-600 underline hover:text-blue-700">
-                Sign Up
+              Already have an account?{' '}
+              <Link href="/login" className="text-blue-600 underline hover:text-blue-700">
+                Sign In
               </Link>
             </p>
           </div>
 
-          {/* Google Sign In */}
+          {/* Google Sign Up */}
           <Button 
             variant="outline" 
             className="w-full mb-6 h-12 border-gray-300 hover:bg-gray-50"
@@ -125,7 +130,7 @@ export default function LoginPage() {
                 d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
               />
             </svg>
-            Sign in with Google
+            Sign up with Google
           </Button>
 
           {/* Divider */}
@@ -134,7 +139,7 @@ export default function LoginPage() {
               <div className="w-full border-t border-gray-300"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">or login with username</span>
+              <span className="px-2 bg-white text-gray-500">or sign up with email</span>
             </div>
           </div>
 
@@ -147,22 +152,60 @@ export default function LoginPage() {
 
           {/* Form */}
           <form className="space-y-4" onSubmit={handleSubmit}>
-            {/* Username Field */}
+            {/* Owner Name Field */}
             <div className="space-y-2">
-              <Label htmlFor="username" className="text-sm font-medium text-gray-700">
-                Username *
+              <Label htmlFor="owner_name" className="text-sm font-medium text-gray-700">
+                Owner Name *
               </Label>
               <div className="relative">
                 <Input
-                  id="username"
+                  id="owner_name"
                   type="text"
-                  value={username}
-                  onChange={(e) => handleInputChange('username', e.target.value)}
+                  value={formData.owner_name}
+                  onChange={(e) => handleInputChange('owner_name', e.target.value)}
                   className="pl-4 pr-12 h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                  placeholder="Enter your username"
+                  placeholder="Enter your full name"
                   required
                 />
                 <User className="absolute right-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              </div>
+            </div>
+
+            {/* Lessor Email Field */}
+            <div className="space-y-2">
+              <Label htmlFor="lessor_email" className="text-sm font-medium text-gray-700">
+                Email Address *
+              </Label>
+              <div className="relative">
+                <Input
+                  id="lessor_email"
+                  type="email"
+                  value={formData.lessor_email}
+                  onChange={(e) => handleInputChange('lessor_email', e.target.value)}
+                  className="pl-4 pr-12 h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                  placeholder="Enter your email"
+                  required
+                />
+                <Mail className="absolute right-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              </div>
+            </div>
+
+            {/* Lessor Phone Field */}
+            <div className="space-y-2">
+              <Label htmlFor="lessor_phone" className="text-sm font-medium text-gray-700">
+                Phone Number *
+              </Label>
+              <div className="relative">
+                <Input
+                  id="lessor_phone"
+                  type="tel"
+                  value={formData.lessor_phone}
+                  onChange={(e) => handleInputChange('lessor_phone', e.target.value)}
+                  className="pl-4 pr-12 h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                  placeholder="Enter your phone number"
+                  required
+                />
+                <Phone className="absolute right-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               </div>
             </div>
 
@@ -175,10 +218,10 @@ export default function LoginPage() {
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
-                  value={password}
+                  value={formData.password}
                   onChange={(e) => handleInputChange('password', e.target.value)}
                   className="pl-4 pr-12 h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                  placeholder="Enter your password"
+                  placeholder="Create password"
                   required
                 />
                 <button
@@ -195,37 +238,42 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Forgot Password */}
-            <div className="text-right">
-              <Link 
-                href="/forgot-password" 
-                className="text-sm text-blue-600 underline hover:text-blue-700"
-              >
-                Forgot your password?
-              </Link>
+            {/* Terms Agreement */}
+            <div className="pt-2">
+              <div className="flex items-start space-x-3">
+                <Checkbox 
+                  id="terms"
+                  checked={formData.agreeToTerms}
+                  onCheckedChange={(checked) => handleInputChange('agreeToTerms', checked)}
+                  className="mt-1"
+                />
+                <Label htmlFor="terms" className="text-sm text-gray-600 leading-relaxed">
+                  I agree to the{' '}
+                  <Link href="/terms" className="text-blue-600 underline hover:text-blue-700">
+                    Terms of Service
+                  </Link>
+                  {' '}and{' '}
+                  <Link href="/privacy" className="text-blue-600 underline hover:text-blue-700">
+                    Privacy Policy
+                  </Link>
+                  {' *'}
+                </Label>
+              </div>
             </div>
-
-            {/* Terms */}
-            <p className="text-xs text-gray-600 text-center">
-              By clicking "Continue" you agree to our{' '}
-              <Link href="/privacy" className="text-blue-600 underline hover:text-blue-700">
-                Privacy Policy
-              </Link>
-            </p>
 
             {/* Submit Button */}
             <Button 
               type="submit" 
-              className="w-full h-12 bg-primary hover:bg-primary text-white font-medium text-lg"
-              disabled={isLoading}
+              className="w-full h-12 bg-primary hover:bg-primary text-white font-medium text-lg mt-6"
+              disabled={!formData.agreeToTerms || isLoading}
             >
               {isLoading ? (
                 <>
                   <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                  Signing in...
+                  Creating Account...
                 </>
               ) : (
-                'Continue'
+                'Create Account'
               )}
             </Button>
           </form>
@@ -234,4 +282,3 @@ export default function LoginPage() {
     </div>
   );
 }
-
