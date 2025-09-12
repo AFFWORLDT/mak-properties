@@ -2,8 +2,6 @@ import type React from "react";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "../components/common/header";
-import Footer from "../components/common/footer";
 
 const trajanPro = localFont({
   src: [
@@ -23,8 +21,8 @@ const trajanPro = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Home - Evid Properties",
-  description: "",
+  title: "Evid Properties",
+  description: "Premium real estate solutions in Dubai",
 };
 
 export default function RootLayout({
@@ -35,11 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${trajanPro.variable} antialiased`}>
       <body className="luxury-bg">
-        <main className="min-h-screen">
-           <Header/>
-          {children}
-           <Footer/>
-          </main>
+        {children}
       </body>
     </html>
   );

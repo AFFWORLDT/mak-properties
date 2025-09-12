@@ -1,32 +1,36 @@
-import { ArrowRight, User, Building, Download, MapPin } from "lucide-react"
+import { ArrowRight, User, Building, Download, MapPin } from "lucide-react";
 
 function Solutions() {
   const solutions = [
     {
-      icon: <User className="h-8 w-8 text-blue-900" />,
+      icon: <User className="h-8 w-8 text-black" />,
       title: "Connect with a Specialist",
-      description: "Access our dedicated team of over 400+ expert agents ready to assist you.",
-      arrow: <ArrowRight className="h-4 w-4 text-blue-900" />,
+      description:
+        "Access our dedicated team of over 400+ expert agents ready to assist you.",
+      arrow: <ArrowRight className="h-4 w-4 text-black" />,
     },
     {
-      icon: <Building className="h-8 w-8 text-blue-900" />,
+      icon: <Building className="h-8 w-8 text-black" />,
       title: "List Your Property",
-      description: "Achieve optimal value by listing your property with our expert marketing strategies.",
-      arrow: <ArrowRight className="h-4 w-4 text-blue-900" />,
+      description:
+        "Achieve optimal value by listing your property with our expert marketing strategies.",
+      arrow: <ArrowRight className="h-4 w-4 text-black" />,
     },
     {
-      icon: <Download className="h-8 w-8 text-blue-900" />,
+      icon: <Download className="h-8 w-8 text-black" />,
       title: "Download Report",
-      description: "Download the latest Comprehensive Dubai Real Estate Market Report Q1 2025",
-      arrow: <ArrowRight className="h-4 w-4 text-blue-900" />,
+      description:
+        "Download the latest Comprehensive Dubai Real Estate Market Report Q1 2025",
+      arrow: <ArrowRight className="h-4 w-4 text-black" />,
     },
     {
-      icon: <MapPin className="h-8 w-8 text-blue-900" />,
+      icon: <MapPin className="h-8 w-8 text-black" />,
       title: "Explore Dubai Projects",
-      description: "Browse and find your ideal property from our extensive portfolio of Dubai projects.",
-      arrow: <ArrowRight className="h-4 w-4 text-blue-900" />,
+      description:
+        "Browse and find your ideal property from our extensive portfolio of Dubai projects.",
+      arrow: <ArrowRight className="h-4 w-4 text-black" />,
     },
-  ]
+  ];
 
   return (
     <section className="py-16 bg-white">
@@ -53,21 +57,25 @@ function Solutions() {
 
                 {/* Title with Arrow */}
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-blue-900 font-bold text-lg">{solution.title}</h3>
+                  <h3 className="text-black font-bold text-lg">
+                    {solution.title}
+                  </h3>
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {solution.arrow}
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-600 text-sm leading-relaxed">{solution.description}</p>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {solution.description}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Solutions
+export default Solutions;
