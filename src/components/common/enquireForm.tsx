@@ -40,11 +40,11 @@ function EnquireForm({ type }: { type: string }) {
       <p className="text-xs text-gray-500 mt-4 font-mono">
         By submitting this form you confirm that this website can store your
         submitted information, agree to our{" "}
-        <a href="#" className="text-brand-gold hover:underline font-mono">
+        <a href="/privacy-policy" className="text-brand-gold hover:underline font-mono">
           privacy policy
         </a>{" "}
         and consent to{" "}
-        <a href="#" className="text-brand-gold hover:underline font-mono">
+        <a href="/cookie-policy" className="text-brand-gold hover:underline font-mono">
           cookies
         </a>{" "}
         being stored on your computer.

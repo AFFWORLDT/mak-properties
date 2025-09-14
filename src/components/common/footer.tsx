@@ -92,8 +92,26 @@ export default function Footer() {
 
       </div>
 
+      {/* Legal Links */}
+      <div className="container mx-auto border-t border-white/20 mt-8 pt-8">
+        <div className="flex flex-wrap justify-center gap-6 text-sm text-white/70 mb-4">
+          <a href="/privacy-policy" className="hover:text-white transition-colors font-serif">
+            Privacy Policy
+          </a>
+          <a href="/terms-conditions" className="hover:text-white transition-colors font-serif">
+            Terms & Conditions
+          </a>
+          <a href="/cookie-policy" className="hover:text-white transition-colors font-serif">
+            Cookie Policy
+          </a>
+          <a href="/disclaimer" className="hover:text-white transition-colors font-serif">
+            Disclaimer
+          </a>
+        </div>
+      </div>
+
       {/* Bottom bar */}
-      <div className="container mx-auto border-t border-white/20 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-white/70">
+      <div className="container mx-auto border-t border-white/20 pt-4 flex flex-col md:flex-row items-center justify-between text-sm text-white/70">
         <p className="font-serif">
           &copy; {"2025 Evid Properties. All Rights Reserved."}
         </p>

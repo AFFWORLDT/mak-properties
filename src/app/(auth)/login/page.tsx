@@ -208,8 +208,12 @@ export default function LoginPage() {
             {/* Terms */}
             <p className="text-xs text-gray-600 text-center">
               By clicking "Continue" you agree to our{' '}
-              <Link href="/privacy" className="text-blue-600 underline hover:text-blue-700">
+              <Link href="/privacy-policy" className="text-blue-600 underline hover:text-blue-700">
                 Privacy Policy
+              </Link>
+              {' '}and{' '}
+              <Link href="/terms-conditions" className="text-blue-600 underline hover:text-blue-700">
+                Terms & Conditions
               </Link>
             </p>
 
