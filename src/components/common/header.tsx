@@ -135,7 +135,7 @@ export default function Header() {
       <nav
         className={cn(
           "container mx-auto flex items-center justify-between px-3 md:px-6",
-          isScrolled ? "h-16 md:h-20" : "h-18 md:h-24"
+          isScrolled ? "h-14 md:h-16" : "h-16 md:h-20"
         )}
       >
         {/* Logo */}
@@ -144,15 +144,15 @@ export default function Header() {
             <Image
               src="/images/logo.webp"
               alt="MAK PROPERTIES Logo"
-              width={100}
-              height={32}
-              className="object-contain w-20 h-6 md:w-24 md:h-8"
+              width={80}
+              height={24}
+              className="object-contain w-16 h-5 md:w-20 md:h-6"
             />
           </Link>
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center space-x-6">
           {headerLink.map((link, i) => {
             if (link.hasDropdown) {
               return (
@@ -161,14 +161,14 @@ export default function Header() {
                     <Link
                       href={link.href}
                       className={cn(
-                        "relative pb-1 transition-all duration-300 font-sans text-[17px]",
+                        "relative pb-1 transition-all duration-300 font-sans text-sm",
                         isScrolled && pathname === "/" ? "text-black" : "text-gray-800",
                         "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0",
                         "after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
                         pathname === link.href && "after:w-full"
                       )}
                       style={{
-                        letterSpacing: "1.5px",
+                        letterSpacing: "1px",
                       }}
                     >
                       {link.label}
@@ -297,7 +297,7 @@ export default function Header() {
             <Button
               variant="outline"
               className={cn(
-                "hidden lg:flex items-center space-x-2 bg-transparent h-8 px-3 text-xs transition-all duration-200",
+                "hidden lg:flex items-center space-x-1 bg-transparent h-7 px-2 text-xs transition-all duration-200",
                 isScrolled
                   ? "border-black text-black hover:bg-black/10"
                   : "border-black text-black hover:bg-black/10"
@@ -312,7 +312,7 @@ export default function Header() {
           <Link href="/list-your-property">
             <Button
               className={cn(
-                "border h-8 px-2 md:px-3 text-xs md:text-sm transition-all duration-200",
+                "border h-7 px-2 text-xs transition-all duration-200",
                 isScrolled
                   ? "bg-slate-200/20 border-black text-black hover:bg-slate-200/30"
                   : "bg-slate-300/20 border-black text-black hover:bg-slate-300/30"

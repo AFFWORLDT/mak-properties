@@ -13,10 +13,10 @@ const sitemapLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-8 md:py-12 px-4 md:px-6">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-6 md:py-8 px-4 md:px-6">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         {/* Newsletter Section */}
-        <div className="md:col-span-2 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 w-full bg-gradient-to-r from-[#dbbb90]/10 to-[#C2A17B]/10 p-4 md:p-6 rounded-xl md:rounded-2xl border border-[#dbbb90]/20">
+        <div className="md:col-span-2 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4 w-full bg-gradient-to-r from-[#dbbb90]/10 to-[#C2A17B]/10 p-3 md:p-4 rounded-lg md:rounded-xl border border-[#dbbb90]/20">
           <h3 className="text-lg md:text-xl font-light tracking-wide leading-relaxed w-full md:flex-none md:w-[40%] text-white font-serif">
             Receive our exceptional real estate listings delivered straight to
             your inbox.

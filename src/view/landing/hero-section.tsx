@@ -304,7 +304,7 @@ export default function HeroSection() {
       )}
 
       {/* Search Form - Bottom */}
-      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-20 text-white px-2 sm:px-6 lg:px-8 container w-full">
+      <div className="absolute bottom-2 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-20 text-white px-2 sm:px-4 lg:px-6 container w-full">
         <motion.div
           key={`search-${currentProjectIndex}`}
           initial={{ opacity: 0, y: 30 }}
@@ -313,14 +313,14 @@ export default function HeroSection() {
         >
 
         <div className="w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-2 sm:gap-3 p-3 sm:p-4 bg-white/95 sm:bg-black/20 backdrop-blur-md rounded-lg sm:rounded-xl border border-white/20 shadow-2xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-1 sm:gap-2 p-2 sm:p-3 bg-white/95 sm:bg-black/20 backdrop-blur-md rounded-lg border border-white/20 shadow-2xl">
             {/* Location */}
             <div className="lg:col-span-1 relative">
               <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
                 Location
               </div>
               <Select>
-                <SelectTrigger className="w-full h-10 sm:h-12 text-white max-sm:text-black focus:ring-offset-0 focus:ring-transparent bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-lg pt-4 pb-2 hover:border-[#dbbb90]/50 transition-colors">
+                <SelectTrigger className="w-full h-8 sm:h-10 text-white max-sm:text-black focus:ring-offset-0 focus:ring-transparent bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-lg pt-3 pb-1 hover:border-[#dbbb90]/50 transition-colors">
                   <SelectValue placeholder="Any" className="max-sm:hidden pt-1" />
                 </SelectTrigger>
                 <SelectContent className="bg-white text-gray-900">
@@ -341,7 +341,7 @@ export default function HeroSection() {
                 Type
               </div>
               <Select>
-                <SelectTrigger className="w-full h-10 sm:h-12 text-white max-sm:text-black bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-lg focus:ring-offset-0 focus:ring-transparent pt-4 pb-2">
+                <SelectTrigger className="w-full h-8 sm:h-10 text-white max-sm:text-black bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-lg focus:ring-offset-0 focus:ring-transparent pt-3 pb-1">
                   <SelectValue placeholder="Any" className="max-sm:hidden pt-1" />
                 </SelectTrigger>
                 <SelectContent className="bg-white text-gray-900">
@@ -363,7 +363,7 @@ export default function HeroSection() {
                 Price
               </div>
               <div
-                className="relative w-full h-10 sm:h-12 text-white max-sm:text-black bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-lg focus:ring-offset-0 focus:ring-transparent cursor-pointer flex items-center px-3 pt-4 pb-2"
+                className="relative w-full h-8 sm:h-10 text-white max-sm:text-black bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-lg focus:ring-offset-0 focus:ring-transparent cursor-pointer flex items-center px-3 pt-3 pb-1"
                 onClick={() => setIsPriceOpen(!isPriceOpen)}
               >
                 <span className="text-white max-sm:text-black max-sm:hidden pt-1">
@@ -431,7 +431,7 @@ export default function HeroSection() {
                 Bedrooms
               </div>
               <Select>
-                <SelectTrigger className="w-full h-10 sm:h-12 text-white max-sm:text-black bg-white/10 max-sm:bg-white border max-sm:border-gray-300 border-white/30 rounded-lg focus:ring-offset-0 focus:ring-transparent pt-4 pb-2">
+                <SelectTrigger className="w-full h-8 sm:h-10 text-white max-sm:text-black bg-white/10 max-sm:bg-white border max-sm:border-gray-300 border-white/30 rounded-lg focus:ring-offset-0 focus:ring-transparent pt-3 pb-1">
                   <SelectValue placeholder="Any" className="max-sm:hidden pt-1" />
                 </SelectTrigger>
                 <SelectContent className="bg-white text-gray-900">
@@ -455,13 +455,13 @@ export default function HeroSection() {
               <Input
                 type="text"
                 placeholder=""
-                className="w-full h-10 sm:h-12 text-white max-sm:text-black bg-white/10 max-sm:bg-white border max-sm:border-gray-300 border-white/30 rounded-lg placeholder:text-white/70 max-sm:placeholder:text-black/70 focus-visible:ring-offset-0 focus-visible:ring-transparent pt-4 pb-2"
+                className="w-full h-8 sm:h-10 text-white max-sm:text-black bg-white/10 max-sm:bg-white border max-sm:border-gray-300 border-white/30 rounded-lg placeholder:text-white/70 max-sm:placeholder:text-black/70 focus-visible:ring-offset-0 focus-visible:ring-transparent pt-3 pb-1"
               />
             </div>
 
             {/* Search Button */}
             <div className="lg:col-span-1 sm:col-span-2">
-              <Button className="w-full bg-gradient-to-r from-[#dbbb90] to-[#C2A17B] hover:from-[#C2A17B] hover:to-[#B8956A] text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 h-10 sm:h-12 uppercase tracking-wider text-xs sm:text-sm shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+              <Button className="w-full bg-gradient-to-r from-[#dbbb90] to-[#C2A17B] hover:from-[#C2A17B] hover:to-[#B8956A] text-white font-semibold py-1 px-3 rounded-lg transition-all duration-300 h-8 sm:h-10 uppercase tracking-wider text-xs shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                 Search
               </Button>
             </div>
