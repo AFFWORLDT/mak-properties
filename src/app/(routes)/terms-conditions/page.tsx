@@ -2,8 +2,8 @@ import React from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Terms and Conditions - EVIDPROPERTIES',
-  description: 'Terms and Conditions for EVIDPROPERTIES - Read our terms of service and user agreement.',
+  title: 'Terms and Conditions - MAK PROPERTIES',
+  description: 'Terms and Conditions for MAK PROPERTIES - Read our terms of service and user agreement.',
 };
 
 export default function TermsConditionsPage() {
@@ -21,7 +21,7 @@ export default function TermsConditionsPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-serif">1. Acceptance of Terms</h2>
               <p className="text-gray-700 mb-4">
-                Welcome to EVIDPROPERTIES. These Terms and Conditions ("Terms") govern your use of our website <a href="https://evidproperties.com" className="text-blue-600 hover:underline">evidproperties.com</a> and our services. By accessing or using our website, you agree to be bound by these Terms.
+                Welcome to MAK PROPERTIES. These Terms and Conditions ("Terms") govern your use of our website <a href="https://makproperties.ae" className="text-blue-600 hover:underline">makproperties.ae</a> and our services. By accessing or using our website, you agree to be bound by these Terms.
               </p>
               <p className="text-gray-700 mb-4">
                 If you do not agree to these Terms, please do not use our website or services.
@@ -29,23 +29,23 @@ export default function TermsConditionsPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-serif">2. About EVIDPROPERTIES</h2>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-serif">2. About MAK PROPERTIES</h2>
               <p className="text-gray-700 mb-4">
-                EVIDPROPERTIES is a real estate platform based in Dubai, UAE, providing property listings, real estate services, and related services. We are committed to connecting property buyers, sellers, and renters in the Dubai real estate market.
+                MAK PROPERTIES is a real estate platform based in Dubai, UAE, providing property listings, real estate services, and related services. We are committed to connecting property buyers, sellers, and renters in the Dubai real estate market.
               </p>
               <div className="bg-gray-50 p-6 rounded-lg mb-4">
                 <p className="text-gray-700 mb-2"><strong>Company Information:</strong></p>
-                <p className="text-gray-700 mb-2">EVIDPROPERTIES</p>
-                <p className="text-gray-700 mb-2">2107, Al Manara Tower, Business Bay</p>
+                <p className="text-gray-700 mb-2">MAK PROPERTIES</p>
+                <p className="text-gray-700 mb-2">123, Victory Heights, Dubai Sports City</p>
                 <p className="text-gray-700 mb-2">Dubai, UAE</p>
-                <p className="text-gray-700 mb-2">Phone: <a href="tel:+971542524242" className="text-blue-600 hover:underline">+971 54 252 4242</a></p>
-                <p className="text-gray-700">Email: <a href="mailto:info@evidproperties.com" className="text-blue-600 hover:underline">info@evidproperties.com</a></p>
+                <p className="text-gray-700 mb-2">Phone: <a href="tel:+971508050394" className="text-blue-600 hover:underline">+971 50 805 0394</a></p>
+                <p className="text-gray-700">Email: <a href="mailto:info@makproperties.ae" className="text-blue-600 hover:underline">info@makproperties.ae</a></p>
               </div>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-serif">3. Services Provided</h2>
-              <p className="text-gray-700 mb-4">EVIDPROPERTIES provides the following services:</p>
+              <p className="text-gray-700 mb-4">MAK PROPERTIES provides the following services:</p>
               <ul className="list-disc pl-6 mb-4 text-gray-700">
                 <li>Property listings for sale and rent</li>
                 <li>Off-plan property information and sales</li>
@@ -117,7 +117,7 @@ export default function TermsConditionsPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-serif">7. Intellectual Property Rights</h2>
               <p className="text-gray-700 mb-4">
-                The website and its content, including but not limited to text, graphics, logos, images, and software, are the property of EVIDPROPERTIES or its licensors and are protected by copyright, trademark, and other intellectual property laws.
+                The website and its content, including but not limited to text, graphics, logos, images, and software, are the property of MAK PROPERTIES or its licensors and are protected by copyright, trademark, and other intellectual property laws.
               </p>
               <p className="text-gray-700 mb-4">
                 You may not reproduce, distribute, modify, or create derivative works from any content without our express written permission.
@@ -146,7 +146,7 @@ export default function TermsConditionsPage() {
 
               <h3 className="text-xl font-semibold text-gray-800 mb-3 font-serif">9.2 Limitation of Liability</h3>
               <p className="text-gray-700 mb-4">
-                To the maximum extent permitted by law, EVIDPROPERTIES shall not be liable for any direct, indirect, incidental, special, or consequential damages arising from your use of the website or services.
+                To the maximum extent permitted by law, MAK PROPERTIES shall not be liable for any direct, indirect, incidental, special, or consequential damages arising from your use of the website or services.
               </p>
 
               <h3 className="text-xl font-semibold text-gray-800 mb-3 font-serif">9.3 Property Information</h3>
@@ -165,7 +165,7 @@ export default function TermsConditionsPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-serif">11. Indemnification</h2>
               <p className="text-gray-700 mb-4">
-                You agree to indemnify and hold harmless EVIDPROPERTIES, its officers, directors, employees, and agents from any claims, damages, or expenses arising from your use of the website or violation of these Terms.
+                You agree to indemnify and hold harmless MAK PROPERTIES, its officers, directors, employees, and agents from any claims, damages, or expenses arising from your use of the website or violation of these Terms.
               </p>
             </section>
 
@@ -209,19 +209,19 @@ export default function TermsConditionsPage() {
                 If you have any questions about these Terms and Conditions, please contact us:
               </p>
               <div className="bg-gray-50 p-6 rounded-lg">
-                <p className="text-gray-700 mb-2"><strong>EVIDPROPERTIES</strong></p>
+                <p className="text-gray-700 mb-2"><strong>MAK PROPERTIES</strong></p>
                 <p className="text-gray-700 mb-2">2107, Al Manara Tower, Business Bay</p>
                 <p className="text-gray-700 mb-2">Dubai, UAE</p>
-                <p className="text-gray-700 mb-2">Phone: <a href="tel:+971542524242" className="text-blue-600 hover:underline">+971 54 252 4242</a></p>
-                <p className="text-gray-700 mb-2">Email: <a href="mailto:legal@evidproperties.com" className="text-blue-600 hover:underline">legal@evidproperties.com</a></p>
-                <p className="text-gray-700">General Email: <a href="mailto:info@evidproperties.com" className="text-blue-600 hover:underline">info@evidproperties.com</a></p>
+                <p className="text-gray-700 mb-2">Phone: <a href="tel:+971542524242" className="text-blue-600 hover:underline">+971 50 805 0394</a></p>
+                <p className="text-gray-700 mb-2">Email: <a href="mailto:legal@makproperties.ae" className="text-blue-600 hover:underline">legal@makproperties.ae</a></p>
+                <p className="text-gray-700">General Email: <a href="mailto:info@makproperties.ae" className="text-blue-600 hover:underline">info@makproperties.ae</a></p>
               </div>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-serif">17. Entire Agreement</h2>
               <p className="text-gray-700 mb-4">
-                These Terms, together with our Privacy Policy and any other legal notices published on our website, constitute the entire agreement between you and EVIDPROPERTIES regarding your use of our website and services.
+                These Terms, together with our Privacy Policy and any other legal notices published on our website, constitute the entire agreement between you and MAK PROPERTIES regarding your use of our website and services.
               </p>
             </section>
           </div>

@@ -130,7 +130,7 @@ export default function WhyDubai() {
                     the time of purchase and handover are common).
                   </li>
                   <li>
-                    Early Mover Advantage: Through Evid Properties
+                    Early Mover Advantage: Through MAK Properties
                     close relationships with the leading developers, secure your
                     desirable locations and layouts before the general market,
                     potentially yielding higher resale prices.
@@ -205,7 +205,7 @@ export default function WhyDubai() {
               </div>
             </div>
             <p className="mt-8 text-gray-600 leading-relaxed text-lg font-serif" id="rent-investment">
-              As Evid Properties applies a thorough due diligence process,
+              As MAK Properties applies a thorough due diligence process,
               understands the legal framework, and chooses to work exclusively
               with the most reputable developers with a proven track record within
               the UAE, the inherent risks of off-plan projects are significantly

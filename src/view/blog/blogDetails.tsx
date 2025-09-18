@@ -45,12 +45,12 @@ const blogPost = {
     <h2>Conclusion</h2>
     <p>While renting offers short-term convenience, buying property in Dubai is a decision that offers lasting value, financial security, and numerous lifestyle advantages. From tax-free ownership to residency benefits and high rental yields, the incentives to invest in Dubai real estate are compelling.</p>
 
-            <p><strong>Make the smart move today.</strong> Contact our team at Evid Properties to explore exclusive property listings and discover your path to homeownership in Dubai. Let us help you turn your investment dreams into reality!</p>
+            <p><strong>Make the smart move today.</strong> Contact our team at MAK Properties to explore exclusive property listings and discover your path to homeownership in Dubai. Let us help you turn your investment dreams into reality!</p>
   `,
   author: {
-          name: "Evid Properties",
-    bio: "Leading property experts helping investors and homeowners navigate Dubai’s thriving real estate market.",
-    avatar: "/images/logo-gold.svg",
+          name: "MAK Properties",
+    bio: "Leading property experts helping investors and homeowners navigate Dubai's thriving real estate market.",
+    avatar: "/images/logo.webp",
   },
   publishedAt: "December 24, 2024",
   readTime: "6 min read",

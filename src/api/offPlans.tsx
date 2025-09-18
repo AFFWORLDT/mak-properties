@@ -2,9 +2,11 @@ import { api, handleApiError } from "@/src/lib/axios"
 
 export const getAllProperties = async (querry?:string) => {
    try {
-     const res = await api.get(`/properties/projects?${querry}` )
+     const queryString = querry ? `?${querry}` : '';
+     const res = await api.get(`/properties/projects${queryString}`)
      return res.data
    } catch (error) {
+    console.error('API Error in getAllProperties:', error);
     throw handleApiError(error)
    }
 }

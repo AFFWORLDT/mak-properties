@@ -62,12 +62,12 @@ export class ApiError extends Error {
 
 export const handleApiError = (error: any): ApiError => {
   if (error.response) {
-    const message = error.response.data?.message;
+    const message = error.response.data?.message || error.response.data?.error || `HTTP ${error.response.status} Error`;
 
     return new ApiError(message, error.response?.status, error.response?.data);
   } else if (error.request) {
-    return new ApiError("Network error - no response received", 0);
+    return new ApiError("Network error - no response received. Please check your internet connection.", 0);
   } else {
-    return new ApiError(error.message, 0);
+    return new ApiError(error.message || "An unexpected error occurred", 0);
   }
 };

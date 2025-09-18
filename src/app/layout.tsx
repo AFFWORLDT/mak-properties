@@ -21,7 +21,7 @@ const trajanPro = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Evid Properties",
+  title: "MAK Properties",
   description: "Premium real estate solutions in Dubai",
 };
 

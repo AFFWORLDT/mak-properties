@@ -2,8 +2,8 @@ import React from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy - EVIDPROPERTIES',
-  description: 'Cookie Policy for EVIDPROPERTIES - Learn about how we use cookies and similar technologies.',
+  title: 'Cookie Policy - MAK PROPERTIES',
+  description: 'Cookie Policy for MAK PROPERTIES - Learn about how we use cookies and similar technologies.',
 };
 
 export default function CookiePolicyPage() {
@@ -31,7 +31,7 @@ export default function CookiePolicyPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-serif">2. How We Use Cookies</h2>
               <p className="text-gray-700 mb-4">
-                EVIDPROPERTIES uses cookies for the following purposes:
+                MAK PROPERTIES uses cookies for the following purposes:
               </p>
               
               <h3 className="text-xl font-semibold text-gray-800 mb-3 font-serif">2.1 Essential Cookies</h3>
@@ -227,12 +227,12 @@ export default function CookiePolicyPage() {
                 If you have any questions about our use of cookies or this Cookie Policy, please contact us:
               </p>
               <div className="bg-gray-50 p-6 rounded-lg">
-                <p className="text-gray-700 mb-2"><strong>EVIDPROPERTIES</strong></p>
+                <p className="text-gray-700 mb-2"><strong>MAK PROPERTIES</strong></p>
                 <p className="text-gray-700 mb-2">2107, Al Manara Tower, Business Bay</p>
                 <p className="text-gray-700 mb-2">Dubai, UAE</p>
-                <p className="text-gray-700 mb-2">Phone: <a href="tel:+971542524242" className="text-blue-600 hover:underline">+971 54 252 4242</a></p>
-                <p className="text-gray-700 mb-2">Email: <a href="mailto:privacy@evidproperties.com" className="text-blue-600 hover:underline">privacy@evidproperties.com</a></p>
-                <p className="text-gray-700">General Email: <a href="mailto:info@evidproperties.com" className="text-blue-600 hover:underline">info@evidproperties.com</a></p>
+                <p className="text-gray-700 mb-2">Phone: <a href="tel:+971542524242" className="text-blue-600 hover:underline">+971 50 805 0394</a></p>
+                <p className="text-gray-700 mb-2">Email: <a href="mailto:privacy@makproperties.ae" className="text-blue-600 hover:underline">privacy@makproperties.ae</a></p>
+                <p className="text-gray-700">General Email: <a href="mailto:info@makproperties.ae" className="text-blue-600 hover:underline">info@makproperties.ae</a></p>
               </div>
             </section>
 

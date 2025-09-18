@@ -2,8 +2,8 @@ import React from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Disclaimer - EVIDPROPERTIES',
-  description: 'Disclaimer for EVIDPROPERTIES - Important information about our services and limitations.',
+  title: 'Disclaimer - MAK PROPERTIES',
+  description: 'Disclaimer for MAK PROPERTIES - Important information about our services and limitations.',
 };
 
 export default function DisclaimerPage() {
@@ -21,7 +21,7 @@ export default function DisclaimerPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-serif">1. General Information</h2>
               <p className="text-gray-700 mb-4">
-                The information contained on this website (evidproperties.com) is for general information purposes only. While we endeavor to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose.
+                The information contained on this website (makproperties.ae) is for general information purposes only. While we endeavor to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose.
               </p>
               <p className="text-gray-700 mb-4">
                 Any reliance you place on such information is therefore strictly at your own risk.
@@ -86,7 +86,7 @@ export default function DisclaimerPage() {
 
               <h3 className="text-xl font-semibold text-gray-800 mb-3 font-serif">4.3 User-Generated Content</h3>
               <p className="text-gray-700 mb-4">
-                Any content submitted by users, including reviews, comments, or other materials, represents the views of the individual user and not necessarily the views of EVIDPROPERTIES. We are not responsible for the accuracy or reliability of user-generated content.
+                Any content submitted by users, including reviews, comments, or other materials, represents the views of the individual user and not necessarily the views of MAK PROPERTIES. We are not responsible for the accuracy or reliability of user-generated content.
               </p>
             </section>
 
@@ -112,7 +112,7 @@ export default function DisclaimerPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-serif">6. Limitation of Liability</h2>
               <p className="text-gray-700 mb-4">
-                In no event shall EVIDPROPERTIES, its officers, directors, employees, agents, or affiliates be liable for any direct, indirect, incidental, special, consequential, or punitive damages, including but not limited to:
+                In no event shall MAK PROPERTIES, its officers, directors, employees, agents, or affiliates be liable for any direct, indirect, incidental, special, consequential, or punitive damages, including but not limited to:
               </p>
               <ul className="list-disc pl-6 mb-4 text-gray-700">
                 <li>Loss of profits, data, or other intangible losses</li>
@@ -126,7 +126,7 @@ export default function DisclaimerPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-serif">7. Indemnification</h2>
               <p className="text-gray-700 mb-4">
-                You agree to indemnify and hold harmless EVIDPROPERTIES, its officers, directors, employees, agents, and affiliates from any claims, damages, losses, or expenses (including reasonable attorney's fees) arising from:
+                You agree to indemnify and hold harmless MAK PROPERTIES, its officers, directors, employees, agents, and affiliates from any claims, damages, losses, or expenses (including reasonable attorney's fees) arising from:
               </p>
               <ul className="list-disc pl-6 mb-4 text-gray-700">
                 <li>Your use of our website or services</li>
@@ -139,7 +139,7 @@ export default function DisclaimerPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-serif">8. Force Majeure</h2>
               <p className="text-gray-700 mb-4">
-                EVIDPROPERTIES shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including but not limited to:
+                MAK PROPERTIES shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including but not limited to:
               </p>
               <ul className="list-disc pl-6 mb-4 text-gray-700">
                 <li>Acts of God, natural disasters, or extreme weather conditions</li>
@@ -178,12 +178,12 @@ export default function DisclaimerPage() {
                 If you have any questions about this disclaimer, please contact us:
               </p>
               <div className="bg-gray-50 p-6 rounded-lg">
-                <p className="text-gray-700 mb-2"><strong>EVIDPROPERTIES</strong></p>
+                <p className="text-gray-700 mb-2"><strong>MAK PROPERTIES</strong></p>
                 <p className="text-gray-700 mb-2">2107, Al Manara Tower, Business Bay</p>
                 <p className="text-gray-700 mb-2">Dubai, UAE</p>
-                <p className="text-gray-700 mb-2">Phone: <a href="tel:+971542524242" className="text-blue-600 hover:underline">+971 54 252 4242</a></p>
-                <p className="text-gray-700 mb-2">Email: <a href="mailto:legal@evidproperties.com" className="text-blue-600 hover:underline">legal@evidproperties.com</a></p>
-                <p className="text-gray-700">General Email: <a href="mailto:info@evidproperties.com" className="text-blue-600 hover:underline">info@evidproperties.com</a></p>
+                <p className="text-gray-700 mb-2">Phone: <a href="tel:+971542524242" className="text-blue-600 hover:underline">+971 50 805 0394</a></p>
+                <p className="text-gray-700 mb-2">Email: <a href="mailto:legal@makproperties.ae" className="text-blue-600 hover:underline">legal@makproperties.ae</a></p>
+                <p className="text-gray-700">General Email: <a href="mailto:info@makproperties.ae" className="text-blue-600 hover:underline">info@makproperties.ae</a></p>
               </div>
             </section>
 

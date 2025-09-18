@@ -2,8 +2,8 @@ import React from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy - EVIDPROPERTIES',
-  description: 'Privacy Policy for EVIDPROPERTIES - Learn how we collect, use, and protect your personal information.',
+  title: 'Privacy Policy - MAK PROPERTIES',
+  description: 'Privacy Policy for MAK PROPERTIES - Learn how we collect, use, and protect your personal information.',
 };
 
 export default function PrivacyPolicyPage() {
@@ -21,7 +21,7 @@ export default function PrivacyPolicyPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-serif">1. Introduction</h2>
               <p className="text-gray-700 mb-4">
-                EVIDPROPERTIES ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <a href="https://evidproperties.com" className="text-blue-600 hover:underline">evidproperties.com</a> or use our services.
+                MAK PROPERTIES ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <a href="https://makproperties.ae" className="text-blue-600 hover:underline">makproperties.ae</a> or use our services.
               </p>
               <p className="text-gray-700 mb-4">
                 This policy applies to all users of our website and services, including visitors, registered users, and property owners.
@@ -119,7 +119,7 @@ export default function PrivacyPolicyPage() {
                 <li><strong>Withdrawal of Consent:</strong> Withdraw consent for data processing</li>
               </ul>
               <p className="text-gray-700 mb-4">
-                To exercise these rights, please contact us at <a href="mailto:privacy@evidproperties.com" className="text-blue-600 hover:underline">privacy@evidproperties.com</a>.
+                To exercise these rights, please contact us at <a href="mailto:privacy@makproperties.ae" className="text-blue-600 hover:underline">privacy@makproperties.ae</a>.
               </p>
             </section>
 
@@ -157,12 +157,12 @@ export default function PrivacyPolicyPage() {
                 If you have any questions about this Privacy Policy or our data practices, please contact us:
               </p>
               <div className="bg-gray-50 p-6 rounded-lg">
-                <p className="text-gray-700 mb-2"><strong>EVIDPROPERTIES</strong></p>
+                <p className="text-gray-700 mb-2"><strong>MAK PROPERTIES</strong></p>
                 <p className="text-gray-700 mb-2">2107, Al Manara Tower, Business Bay</p>
                 <p className="text-gray-700 mb-2">Dubai, UAE</p>
-                <p className="text-gray-700 mb-2">Phone: <a href="tel:+971542524242" className="text-blue-600 hover:underline">+971 54 252 4242</a></p>
-                <p className="text-gray-700 mb-2">Email: <a href="mailto:privacy@evidproperties.com" className="text-blue-600 hover:underline">privacy@evidproperties.com</a></p>
-                <p className="text-gray-700">General Email: <a href="mailto:info@evidproperties.com" className="text-blue-600 hover:underline">info@evidproperties.com</a></p>
+                <p className="text-gray-700 mb-2">Phone: <a href="tel:+971542524242" className="text-blue-600 hover:underline">+971 50 805 0394</a></p>
+                <p className="text-gray-700 mb-2">Email: <a href="mailto:privacy@makproperties.ae" className="text-blue-600 hover:underline">privacy@makproperties.ae</a></p>
+                <p className="text-gray-700">General Email: <a href="mailto:info@makproperties.ae" className="text-blue-600 hover:underline">info@makproperties.ae</a></p>
               </div>
             </section>
 

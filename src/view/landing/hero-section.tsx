@@ -20,22 +20,61 @@ export default function HeroSection() {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const handlePriceChange = (field: "min" | "max", value: string) => {
     setPriceRange((prev) => ({ ...prev, [field]: value }));
   };
+
+  // Fallback data for when API fails
+  const fallbackProjects = [
+    {
+      id: "fallback-1",
+      name: "Luxury Marina Residences",
+      location: {
+        community: "Dubai Marina",
+        city: "Dubai"
+      },
+      photos: ["/images/dubai-marina.webp"]
+    },
+    {
+      id: "fallback-2", 
+      name: "Palm Jumeirah Villas",
+      location: {
+        community: "Palm Jumeirah",
+        city: "Dubai"
+      },
+      photos: ["/images/Palm-Jumeirah.webp"]
+    },
+    {
+      id: "fallback-3",
+      name: "Downtown Dubai Towers",
+      location: {
+        community: "Downtown Dubai", 
+        city: "Dubai"
+      },
+      photos: ["/images/bgImage.webp"]
+    }
+  ];
 
   // Fetch off-plan projects
   useEffect(() => {
     const fetchOffPlanProjects = async () => {
       try {
         setIsLoading(true);
+        setError(null);
         const data = await getAllProperties();
         if (data?.projects && data.projects.length > 0) {
           setOffPlanProjects(data.projects);
+        } else {
+          // Use fallback data if API returns empty
+          setOffPlanProjects(fallbackProjects);
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error fetching off-plan projects:", error);
+        setError(error.message || "Failed to load projects");
+        // Use fallback data when API fails
+        setOffPlanProjects(fallbackProjects);
       } finally {
         setIsLoading(false);
       }
@@ -146,7 +185,7 @@ export default function HeroSection() {
               transition={{ delay: 0.5 }}
               className="text-[#dbbb90] font-light text-lg tracking-wider"
             >
-              EVID PROPERTIES
+              MAK PROPERTIES
             </motion.p>
           </div>
         </motion.div>
@@ -220,6 +259,13 @@ export default function HeroSection() {
       
       {/* Cinematic Overlay Effects */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30 z-15" />
+
+      {/* Error Message */}
+      {error && !isLoading && (
+        <div className="absolute top-4 right-4 z-40 bg-red-500/90 text-white px-4 py-2 rounded-lg text-sm">
+          {error}
+        </div>
+      )}
 
       {/* Project Information Overlay - Center */}
       {!isLoading && currentProject && (

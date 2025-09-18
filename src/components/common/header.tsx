@@ -142,8 +142,8 @@ export default function Header() {
         <div className="flex items-center">
           <Link href={"/"}>
             <Image
-              src="/images/logo.png"
-              alt="EVIDPROPERTIES Logo"
+              src="/images/logo.webp"
+              alt="MAK PROPERTIES Logo"
               width={120}
               height={40}
               className="object-contain"
