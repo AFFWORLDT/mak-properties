@@ -117,12 +117,12 @@ export default function DetailPage({ id }: any) {
             ))}
           </div>
         </div>
-        <div className="relative z-30 text-white px-4 mt-[60vh]">
-          <span>#{id}</span>
-          <h1 className="text-3xl md:text-4xl font-light mb-4 leading-tight tracking-wide">
+        <div className="relative z-30 text-white px-4 mt-[50vh] md:mt-[60vh]">
+          <span className="text-sm md:text-base">#{id}</span>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-light mb-3 md:mb-4 leading-tight tracking-wide">
             {property?.title}
           </h1>
-          <p className="text-lg font-light mb-12 tracking-wider uppercase text-primary">
+          <p className="text-base md:text-lg font-light mb-8 md:mb-12 tracking-wider uppercase text-primary">
             {property?.location?.city} {property?.location?.community} {property?.location?.sub_community}
           </p>
         </div>
