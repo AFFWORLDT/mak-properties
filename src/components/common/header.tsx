@@ -134,8 +134,8 @@ export default function Header() {
     >
       <nav
         className={cn(
-          "container mx-auto flex items-center justify-between px-4 md:px-6",
-          isScrolled ? "h-24" : "h-28"
+          "container mx-auto flex items-center justify-between px-3 md:px-6",
+          isScrolled ? "h-16 md:h-20" : "h-18 md:h-24"
         )}
       >
         {/* Logo */}
@@ -144,9 +144,9 @@ export default function Header() {
             <Image
               src="/images/logo.webp"
               alt="MAK PROPERTIES Logo"
-              width={120}
-              height={40}
-              className="object-contain"
+              width={100}
+              height={32}
+              className="object-contain w-20 h-6 md:w-24 md:h-8"
             />
           </Link>
         </div>
@@ -262,10 +262,10 @@ export default function Header() {
           })}
         </div>
 
-        {/* Right Side - Currency, Login, Signup */}
-        <div className="flex items-center space-x-4">
-          {/* Currency Selector */}
-          <div className="hidden md:flex items-center space-x-2">
+        {/* Right Side - Mobile Optimized */}
+        <div className="flex items-center space-x-2 md:space-x-4">
+          {/* Currency Selector - Hidden on mobile */}
+          <div className="hidden lg:flex items-center space-x-2">
             <div
               className={`w-px h-6 ${
                 isScrolled ? "bg-black/30" : "bg-black/30"
@@ -292,45 +292,46 @@ export default function Header() {
             </DropdownMenu>
           </div>
 
-          {/* Login Button */}
+          {/* Login Button - Hidden on mobile */}
           <Link href="/login">
             <Button
               variant="outline"
               className={cn(
-                "hidden sm:flex items-center space-x-2 bg-transparent h-9 px-4 transition-all duration-200",
+                "hidden lg:flex items-center space-x-2 bg-transparent h-8 px-3 text-xs transition-all duration-200",
                 isScrolled
                   ? "border-black text-black hover:bg-black/10"
                   : "border-black text-black hover:bg-black/10"
               )}
             >
-              <User className="h-4 w-4" />
-              <span className="text-sm">Login</span>
+              <User className="h-3 w-3" />
+              <span>Login</span>
             </Button>
           </Link>
 
-          {/* List Your Property Button */}
+          {/* List Your Property Button - Responsive */}
           <Link href="/list-your-property">
             <Button
               className={cn(
-                "border h-9 px-4 text-sm transition-all duration-200",
+                "border h-8 px-2 md:px-3 text-xs md:text-sm transition-all duration-200",
                 isScrolled
                   ? "bg-slate-200/20 border-black text-black hover:bg-slate-200/30"
                   : "bg-slate-300/20 border-black text-black hover:bg-slate-300/30"
               )}
             >
-              List Your Property
+              <span className="hidden sm:inline">List Your Property</span>
+              <span className="sm:hidden">List</span>
             </Button>
           </Link>
 
           {/* Mobile Menu Button */}
           <div
             className={cn(
-              "lg:hidden cursor-pointer transition-colors duration-200",
+              "lg:hidden cursor-pointer transition-colors duration-200 p-1",
               isScrolled ? "text-black" : "text-black"
             )}
             onClick={() => setIsOverlayOpen(true)}
           >
-            <Menu className="h-6 w-6" />
+            <Menu className="h-5 w-5" />
           </div>
         </div>
       </nav>
@@ -338,17 +339,17 @@ export default function Header() {
       {/* Mobile Overlay */}
       <div
         data-mobile-overlay
-        className={`fixed top-0 bottom-0 right-0 w-full md:w-1/3 bg-white text-gray-900 z-[100] transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 bottom-0 right-0 w-full sm:w-80 bg-white text-gray-900 z-[100] transform transition-transform duration-300 ease-in-out ${
           isOverlayOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex items-center justify-between p-4 border-b border-gray-200">
           <h2 className="text-lg font-semibold">Menu</h2>
           <button
           onClick={() => setIsOverlayOpen(false)}
-            className="text-gray-500 hover:text-gray-700"
-        >
-            <X className="h-6 w-6" />
+            className="text-gray-500 hover:text-gray-700 p-1"
+          >
+            <X className="h-5 w-5" />
           </button>
         </div>
 
