@@ -109,21 +109,21 @@ export default function DetailPage({ id }: any) {
             ))}
           </div>
         </div>
-        <div className="relative z-30 text-white px-4 mt-[50vh] md:mt-[60vh]">
-          <span className="text-sm md:text-base">#{id}</span>
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-light mb-3 md:mb-4 leading-tight tracking-wide">
+        <div className="relative z-30 text-white px-3 sm:px-4 mt-[45vh] sm:mt-[50vh] md:mt-[60vh]">
+          <span className="text-xs sm:text-sm md:text-base block mb-2">#{id}</span>
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light mb-2 sm:mb-3 md:mb-4 leading-tight tracking-wide">
             {property?.name}
           </h1>
-          <p className="text-base md:text-lg font-light mb-8 md:mb-12 tracking-wider uppercase text-primary">
+          <p className="text-sm sm:text-base md:text-lg font-light mb-6 sm:mb-8 md:mb-12 tracking-wider uppercase text-primary">
             {property?.location?.community}, {property?.location?.sub_community}
             , {property?.location?.city}
           </p>
         </div>
       </section>
 
-      <section className="bg-white py-16 px-4 md:px-6 lg:px-8">
+      <section className="bg-white py-6 sm:py-8 md:py-16 px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="flex justify-center gap-8 text-lg font-light uppercase text-primary mb-12">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 md:gap-8 text-xs sm:text-sm md:text-lg font-light uppercase text-primary mb-6 sm:mb-8 md:mb-12">
             <a
               className="hover:underline cursor-pointer"
               onClick={() => setIsOpen(true)}
