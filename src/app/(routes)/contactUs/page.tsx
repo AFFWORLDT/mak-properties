@@ -41,7 +41,7 @@ function ContactUs() {
                 </div>
                 <div>
                   <p className="text-gray-800 font-medium font-serif">Address</p>
-                  <p className="text-gray-600 font-serif">2107, Al Manara Tower, Business Bay</p>
+                  <p className="text-gray-600 font-serif">123, Victory Heights, Dubai Sports City</p>
                   <p className="text-gray-600 font-serif">Dubai – UAE</p>
                 </div>
               </div>
@@ -55,10 +55,10 @@ function ContactUs() {
                 <div>
                   <p className="text-gray-800 font-medium font-serif">Phone</p>
                   <a
-                    href="tel:+971542524242"
+                    href="tel:+971508050394"
                     className="text-[#dbbb90] hover:text-[#C2A17B] transition-colors font-serif"
                   >
-                    +971 54 252 4242
+                    +971 50 805 0394
                   </a>
                 </div>
               </div>
