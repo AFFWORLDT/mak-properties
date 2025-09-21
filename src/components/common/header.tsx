@@ -142,7 +142,7 @@ export default function Header() {
         <div className="flex items-center">
           <Link href={"/"}>
             <Image
-              src="/images/logo.webp"
+              src="/images/logo.png"
               alt="MAK PROPERTIES Logo"
               width={80}
               height={24}

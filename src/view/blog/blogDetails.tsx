@@ -50,7 +50,7 @@ const blogPost = {
   author: {
           name: "MAK Properties",
     bio: "Leading property experts helping investors and homeowners navigate Dubai's thriving real estate market.",
-    avatar: "/images/logo.webp",
+    avatar: "/images/logo.png",
   },
   publishedAt: "December 24, 2024",
   readTime: "6 min read",
