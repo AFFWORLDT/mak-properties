@@ -144,9 +144,9 @@ export default function Header() {
             <Image
               src="/images/logo.png"
               alt="MAK PROPERTIES Logo"
-              width={80}
-              height={24}
-              className="object-contain w-16 h-5 md:w-20 md:h-6"
+              width={200}
+              height={60}
+              className="object-contain w-32 h-10 md:w-40 md:h-12"
             />
           </Link>
         </div>
