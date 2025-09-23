@@ -13,10 +13,10 @@ const sitemapLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-6 md:py-8 px-4 md:px-6">
+    <footer className="bg-black text-white py-6 md:py-8 px-4 md:px-6">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         {/* Newsletter Section */}
-        <div className="md:col-span-2 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4 w-full bg-gradient-to-r from-[#dbbb90]/10 to-[#C2A17B]/10 p-3 md:p-4 rounded-lg md:rounded-xl border border-[#dbbb90]/20">
+        <div className="md:col-span-2 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4 w-full bg-gray-900/50 p-3 md:p-4 rounded-lg md:rounded-xl border border-gray-700/50">
           <h3 className="text-lg md:text-xl font-light tracking-wide leading-relaxed w-full md:flex-none md:w-[40%] text-white font-serif">
             Receive our exceptional real estate listings delivered straight to
             your inbox.
@@ -29,7 +29,7 @@ export default function Footer() {
               id="email-subscribe"
               type="email"
               placeholder="Enter your email address"
-              className="flex-grow bg-white/10 text-white border-[#dbbb90]/50 placeholder:text-white/60 focus-visible:ring-offset-0 focus-visible:ring-[#dbbb90] focus:border-[#dbbb90] rounded-lg md:w-1/2 w-full h-12 backdrop-blur-sm"
+              className="flex-grow bg-gray-800/50 text-white border-gray-600/50 placeholder:text-white/60 focus-visible:ring-offset-0 focus-visible:ring-gray-500 focus:border-gray-500 rounded-lg md:w-1/2 w-full h-12 backdrop-blur-sm"
             />
             <Button className="bg-gradient-to-r from-[#dbbb90] to-[#C2A17B] hover:from-[#C2A17B] hover:to-[#B8956A] text-white font-medium tracking-wider py-3 px-6 transition-all duration-300 uppercase h-12 rounded-lg md:w-1/3 w-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 font-serif">
               Subscribe

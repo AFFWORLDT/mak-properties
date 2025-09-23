@@ -129,7 +129,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-lg" : "bg-transparent"
+        isScrolled ? "bg-black shadow-lg" : "bg-black"
       }`}
     >
       <nav
@@ -146,7 +146,7 @@ export default function Header() {
               alt="MAK PROPERTIES Logo"
               width={200}
               height={60}
-              className="object-contain w-32 h-10 md:w-40 md:h-12"
+              className="object-contain w-40 h-12 md:w-48 md:h-16"
             />
           </Link>
         </div>
@@ -162,9 +162,9 @@ export default function Header() {
                       href={link.href}
                       className={cn(
                         "relative pb-1 transition-all duration-300 font-sans text-sm",
-                        isScrolled && pathname === "/" ? "text-black" : "text-gray-800",
+                        "text-white",
                         "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0",
-                        "after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
+                        "after:bg-white after:transition-all after:duration-300 hover:after:w-full",
                         pathname === link.href && "after:w-full"
                       )}
                       style={{
@@ -247,9 +247,9 @@ export default function Header() {
               href={link.href}
               className={cn(
                   "relative pb-1 transition-all duration-300 font-sans text-[17px]",
-                  isScrolled && pathname === "/" ? "text-black" : "text-gray-800",
+                  "text-white",
                 "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0",
-                "after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
+                "after:bg-white after:transition-all after:duration-300 hover:after:w-full",
                 pathname === link.href && "after:w-full"
               )}
               style={{
@@ -267,17 +267,13 @@ export default function Header() {
           {/* Currency Selector - Hidden on mobile */}
           <div className="hidden lg:flex items-center space-x-2">
             <div
-              className={`w-px h-6 ${
-                isScrolled ? "bg-black/30" : "bg-black/30"
-              }`}
+              className={`w-px h-6 bg-white/30`}
             ></div>
             <DropdownMenu>
               <DropdownMenuTrigger
                 className={cn(
                   "flex items-center space-x-1 transition-colors",
-                  isScrolled
-                    ? "text-black hover:text-black/80"
-                    : "text-black hover:text-black/80"
+                  "text-white hover:text-white/80"
                 )}
               >
                 <Globe className="h-4 w-4" />
@@ -298,9 +294,7 @@ export default function Header() {
               variant="outline"
               className={cn(
                 "hidden lg:flex items-center space-x-1 bg-transparent h-7 px-2 text-xs transition-all duration-200",
-                isScrolled
-                  ? "border-black text-black hover:bg-black/10"
-                  : "border-black text-black hover:bg-black/10"
+                "border-white text-white hover:bg-white/10"
               )}
             >
               <User className="h-3 w-3" />
@@ -313,9 +307,7 @@ export default function Header() {
             <Button
               className={cn(
                 "border h-7 px-2 text-xs transition-all duration-200",
-                isScrolled
-                  ? "bg-slate-200/20 border-black text-black hover:bg-slate-200/30"
-                  : "bg-slate-300/20 border-black text-black hover:bg-slate-300/30"
+                "bg-white/20 border-white text-white hover:bg-white/30"
               )}
             >
               <span className="hidden sm:inline">List Your Property</span>
@@ -327,7 +319,7 @@ export default function Header() {
           <div
             className={cn(
               "lg:hidden cursor-pointer transition-colors duration-200 p-1",
-              isScrolled ? "text-black" : "text-black"
+              "text-white"
             )}
             onClick={() => setIsOverlayOpen(true)}
           >
