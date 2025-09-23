@@ -264,56 +264,7 @@ export default function Header() {
 
         {/* Right Side - Mobile Optimized */}
         <div className="flex items-center space-x-2 md:space-x-4">
-          {/* Currency Selector - Hidden on mobile */}
-          <div className="hidden lg:flex items-center space-x-2">
-            <div
-              className={`w-px h-6 bg-white/30`}
-            ></div>
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                className={cn(
-                  "flex items-center space-x-1 transition-colors",
-                  "text-white hover:text-white/80"
-                )}
-              >
-                <Globe className="h-4 w-4" />
-                <span className="text-sm font-medium underline">USD</span>
-                <ChevronDown className="h-3 w-3" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>USD</DropdownMenuItem>
-                <DropdownMenuItem>AED</DropdownMenuItem>
-                <DropdownMenuItem>EUR</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
 
-          {/* Login Button - Hidden on mobile */}
-          <Link href="/login">
-            <Button
-              variant="outline"
-              className={cn(
-                "hidden lg:flex items-center space-x-1 bg-transparent h-7 px-2 text-xs transition-all duration-200",
-                "border-white text-white hover:bg-white/10"
-              )}
-            >
-              <User className="h-3 w-3" />
-              <span>Login</span>
-            </Button>
-          </Link>
-
-          {/* List Your Property Button - Responsive */}
-          <Link href="/list-your-property">
-            <Button
-              className={cn(
-                "border h-7 px-2 text-xs transition-all duration-200",
-                "bg-white/20 border-white text-white hover:bg-white/30"
-              )}
-            >
-              <span className="hidden sm:inline">List Your Property</span>
-              <span className="sm:hidden">List</span>
-            </Button>
-          </Link>
 
           {/* Mobile Menu Button */}
           <div
@@ -412,39 +363,6 @@ export default function Header() {
         </nav>
 
         <div className="p-6 border-t border-gray-200 space-y-4">
-          {/* Mobile Currency Selector */}
-          <div className="flex items-center space-x-2">
-            <Globe className="h-4 w-4 text-gray-500" />
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-700">
-                <span className="text-sm font-medium">USD</span>
-                <ChevronDown className="h-3 w-3" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>USD</DropdownMenuItem>
-                <DropdownMenuItem>AED</DropdownMenuItem>
-                <DropdownMenuItem>EUR</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-
-          {/* Mobile Buttons */}
-          <div className="space-y-3">
-            <Link href="/login" onClick={() => setIsOverlayOpen(false)}>
-              <Button
-                variant="outline"
-                className="w-full flex items-center justify-center space-x-2"
-              >
-                <User className="h-4 w-4" />
-                <span>Login</span>
-              </Button>
-            </Link>
-            <Link href="/list-your-property" onClick={() => setIsOverlayOpen(false)}>
-              <Button className="w-full bg-slate-600 hover:bg-slate-700">
-                List Your Property
-              </Button>
-            </Link>
-          </div>
 
         </div>
       </div>
