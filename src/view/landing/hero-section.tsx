@@ -8,93 +8,19 @@ import {
 } from "@/src/components/ui/select";
 import { Input } from "@/src/components/ui/input";
 import { Button } from "@/src/components/ui/button";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { getAllProperties } from "@/src/api/offPlans";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 export default function HeroSection() {
   const [priceRange, setPriceRange] = useState({ min: "", max: "" });
   const [isPriceOpen, setIsPriceOpen] = useState(false);
-  const [offPlanProjects, setOffPlanProjects] = useState<any[]>([]);
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   const handlePriceChange = (field: "min" | "max", value: string) => {
     setPriceRange((prev) => ({ ...prev, [field]: value }));
   };
 
-  // Fallback data for when API fails
-  const fallbackProjects = [
-    {
-      id: "fallback-1",
-      name: "Luxury Marina Residences",
-      location: {
-        community: "Dubai Marina",
-        city: "Dubai"
-      },
-      photos: ["/images/dubai-marina.webp"]
-    },
-    {
-      id: "fallback-2", 
-      name: "Palm Jumeirah Villas",
-      location: {
-        community: "Palm Jumeirah",
-        city: "Dubai"
-      },
-      photos: ["/images/Palm-Jumeirah.webp"]
-    },
-    {
-      id: "fallback-3",
-      name: "Downtown Dubai Towers",
-      location: {
-        community: "Downtown Dubai", 
-        city: "Dubai"
-      },
-      photos: ["/images/bgImage.webp"]
-    }
-  ];
-
-  // Fetch off-plan projects
-  useEffect(() => {
-    const fetchOffPlanProjects = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
-        const data = await getAllProperties();
-        if (data?.projects && data.projects.length > 0) {
-          setOffPlanProjects(data.projects);
-        } else {
-          // Use fallback data if API returns empty
-          setOffPlanProjects(fallbackProjects);
-        }
-      } catch (error: any) {
-        console.error("Error fetching off-plan projects:", error);
-        setError(error.message || "Failed to load projects");
-        // Use fallback data when API fails
-        setOffPlanProjects(fallbackProjects);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchOffPlanProjects();
-  }, []);
-
-  // Auto-slide through projects
-  useEffect(() => {
-    if (offPlanProjects.length <= 1) return;
-
-    const interval = setInterval(() => {
-      setCurrentProjectIndex((prevIndex) => 
-        (prevIndex + 1) % offPlanProjects.length
-      );
-    }, 5000); // Change every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [offPlanProjects]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -103,21 +29,6 @@ export default function HeroSection() {
     setMousePosition({ x, y });
   };
 
-  const goToProject = (index: number) => {
-    setCurrentProjectIndex(index);
-  };
-
-  const nextProject = () => {
-    setCurrentProjectIndex((prev) => 
-      prev === offPlanProjects.length - 1 ? 0 : prev + 1
-    );
-  };
-
-  const prevProject = () => {
-    setCurrentProjectIndex((prev) => 
-      prev === 0 ? offPlanProjects.length - 1 : prev - 1
-    );
-  };
 
   const getPriceDisplayValue = () => {
     if (priceRange.min && priceRange.max) {
@@ -158,47 +69,39 @@ export default function HeroSection() {
     { value: "100000000", label: "100,000,000" },
   ];
 
-  const currentProject = offPlanProjects[currentProjectIndex];
 
   return (
     <section 
       className="relative h-screen w-full flex items-center justify-center text-center bg-gradient-to-br from-[#F8F6F0] via-white to-[#F2EEE8] overflow-hidden"
       onMouseMove={handleMouseMove}
     >
-      {/* Luxury Loading Overlay */}
-      {isLoading && (
-        <motion.div
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 0 }}
-          transition={{ duration: 1, delay: 2 }}
-          className="absolute inset-0 z-50 bg-gradient-to-br from-[#F8F6F0] via-white to-[#F2EEE8] flex items-center justify-center"
-        >
-          <div className="text-center">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              className="w-16 h-16 border-4 border-[#dbbb90]/30 border-t-[#dbbb90] rounded-full mx-auto mb-4"
-            />
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="text-[#dbbb90] font-light text-lg tracking-wider"
-            >
-              MAK PROPERTIES
-            </motion.p>
-          </div>
-        </motion.div>
-      )}
 
-      {/* Ultra-Rich Cinematic Background */}
+      {/* Ultra-Rich Cinematic Background Video */}
       <div className="absolute inset-0 w-full h-full">
-        {isLoading ? (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          style={{
+            filter: 'brightness(1.2) contrast(1.1) saturate(1.1)',
+            transform: `scale(1.1) translate(${(mousePosition.x - 50) * 0.005}%, ${(mousePosition.y - 50) * 0.005}%)`,
+            transformOrigin: 'center center',
+            transition: 'transform 0.3s ease-out'
+          }}
+          onError={(e) => {
+            console.log('Video failed to load, falling back to image');
+          }}
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+          {/* Fallback image if video doesn't load */}
           <Image
             src="/images/bgImage.webp"
             alt="Luxury Living in Dubai"
             fill
-            className="object-cover z-0 animate-zoomInOut"
+            className="object-cover"
             style={{
               filter: 'brightness(1.2) contrast(1.1) saturate(1.1)'
             }}
@@ -206,52 +109,7 @@ export default function HeroSection() {
             priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
           />
-        ) : (
-          <div className="relative w-full h-full">
-            {offPlanProjects.map((project, index) => (
-              <div key={project.id || index} className="absolute inset-0">
-                {project.photos && project.photos.length > 0 ? (
-                  <Image
-                    src={project.photos[0]}
-                    alt={project.name || "Luxury Project"}
-                    fill
-                    className={`absolute inset-0 transition-all duration-2000 ease-in-out ${
-                      index === currentProjectIndex
-                        ? "opacity-100 z-10"
-                        : "opacity-0 z-0"
-                    }`}
-                    style={{
-                      transform: index === currentProjectIndex 
-                        ? `scale(1.1) translate(${(mousePosition.x - 50) * 0.005}%, ${(mousePosition.y - 50) * 0.005}%)`
-                        : 'scale(1)',
-                      transformOrigin: 'center center',
-                      filter: 'brightness(1.2) contrast(1.1) saturate(1.1)'
-                    }}
-                    quality={85}
-                    priority={index === 0}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-                  />
-                ) : (
-                  <Image
-                    src="/images/bgImage.webp"
-                    alt="Luxury Living in Dubai"
-                    fill
-                    className={`absolute inset-0 transition-all duration-2000 ease-in-out ${
-                      index === currentProjectIndex
-                        ? "opacity-100 z-10"
-                        : "opacity-0 z-0"
-                    }`}
-                    style={{
-                      filter: 'brightness(1.2) contrast(1.1) saturate(1.1)'
-                    }}
-                    quality={80}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-                  />
-                )}
-              </div>
-            ))}
-          </div>
-        )}
+        </video>
       </div>
 
       {/* Enhanced Gradient Overlay */}
@@ -259,72 +117,140 @@ export default function HeroSection() {
       
       {/* Cinematic Overlay Effects */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30 z-15" />
-
-      {/* Error Message */}
-      {error && !isLoading && (
-        <div className="absolute top-4 right-4 z-40 bg-red-500/90 text-white px-4 py-2 rounded-lg text-sm">
-          {error}
-        </div>
-      )}
-
-      {/* Project Information Overlay - Center */}
-      {!isLoading && currentProject && (
-        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 text-white max-w-xs sm:max-w-sm w-full px-4">
+      
+      {/* Luxury Glow Effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#dbbb90]/3 via-transparent to-[#dbbb90]/3 z-12" />
+      
+      {/* Super Luxury Glass Effect */}
+      <div className="absolute inset-0 z-25">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-radial from-[#dbbb90]/10 via-transparent to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-radial from-white/5 via-transparent to-transparent rounded-full blur-2xl" />
+      </div>
+      
+      {/* Floating Particles Effect */}
+      <div className="absolute inset-0 z-20">
+        {[...Array(20)].map((_, i) => (
           <motion.div
-            key={currentProjectIndex}
-            initial={{ opacity: 0, scale: 0.8, y: 50 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: -50 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="bg-white/5 backdrop-blur-[2px] p-6 sm:p-8 rounded-2xl border border-white/10 text-center shadow-sm"
+            key={i}
+            className="absolute w-1 h-1 bg-[#dbbb90]/30 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
+
+
+      {/* Hero Title - Center */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 text-white max-w-4xl w-full px-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: 50 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="backdrop-blur-[20px] p-8 sm:p-12 lg:p-16 rounded-3xl border border-white/10 text-center shadow-2xl relative overflow-hidden"
+          style={{
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.05) 100%)',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(20px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(20px) saturate(180%)'
+          }}
+        >
+          {/* Inner Glow Effect */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/5 rounded-3xl" />
+          
+          {/* Animated Border Glow */}
+          <motion.div
+            className="absolute inset-0 rounded-3xl"
+            style={{
+              background: 'linear-gradient(45deg, transparent, rgba(219, 187, 144, 0.1), transparent)',
+              backgroundSize: '200% 200%'
+            }}
+            animate={{
+              backgroundPosition: ['0% 0%', '100% 100%', '0% 0%']
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+            className="relative z-10"
           >
-            <h2 className="text-lg sm:text-2xl font-light mb-2 leading-tight font-serif text-gray-900">
-              {currentProject.name || "Luxury Project"}
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-700 mb-3 sm:mb-4 font-serif">
-              {currentProject.location?.community}, {currentProject.location?.city}
-            </p>
-            
-            {/* Hero Title Below Project */}
-            <motion.div
-              key={`hero-title-${currentProjectIndex}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+            <motion.h1 
+              className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6 text-[#dbbb90] font-serif leading-tight"
+              style={{
+                textShadow: '0 0 30px rgba(219, 187, 144, 0.3), 0 0 60px rgba(219, 187, 144, 0.1)',
+                background: 'linear-gradient(135deg, #dbbb90 0%, #f4e4bc 50%, #dbbb90 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+              animate={{
+                textShadow: [
+                  '0 0 30px rgba(219, 187, 144, 0.3), 0 0 60px rgba(219, 187, 144, 0.1)',
+                  '0 0 40px rgba(219, 187, 144, 0.4), 0 0 80px rgba(219, 187, 144, 0.2)',
+                  '0 0 30px rgba(219, 187, 144, 0.3), 0 0 60px rgba(219, 187, 144, 0.1)'
+                ]
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
             >
-              <h1 className="text-lg sm:text-2xl lg:text-3xl font-light mb-2 sm:mb-3 text-[#dbbb90] font-serif">
-                Luxury Living Reimagined
-              </h1>
-              <p className="text-xs sm:text-sm uppercase max-w-2xl mx-auto text-gray-800 leading-tight tracking-wider font-serif">
-                EMBRACE TO A JOURNEY OF PURE SOPHISTICATION
-              </p>
-            </motion.div>
+              Luxury Living Reimagined
+            </motion.h1>
+            <motion.p 
+              className="text-sm sm:text-base lg:text-lg xl:text-xl uppercase max-w-4xl mx-auto text-white/90 leading-relaxed tracking-[0.2em] font-serif font-light"
+              animate={{
+                opacity: [0.9, 1, 0.9]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              EMBRACE TO A JOURNEY OF PURE SOPHISTICATION
+            </motion.p>
           </motion.div>
-        </div>
-      )}
+        </motion.div>
+      </div>
 
       {/* Search Form - Bottom */}
       <div className="absolute bottom-2 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-20 text-white px-2 sm:px-4 lg:px-6 container w-full">
         <motion.div
-          key={`search-${currentProjectIndex}`}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
         >
 
         <div className="w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-1 sm:gap-2 p-2 sm:p-3 bg-white/95 sm:bg-black/20 backdrop-blur-md rounded-lg border border-white/20 shadow-2xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-1 sm:gap-2 p-1 sm:p-2 bg-white/95 sm:bg-black/20 backdrop-blur-md rounded-lg border border-white/20 shadow-2xl">
             {/* Location */}
             <div className="lg:col-span-1 relative">
-              <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
+              <div className="absolute top-1 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
                 Location
               </div>
               <Select>
-                <SelectTrigger className="w-full h-8 sm:h-10 text-white max-sm:text-black focus:ring-offset-0 focus:ring-transparent bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-lg pt-3 pb-1 hover:border-[#dbbb90]/50 transition-colors">
-                  <SelectValue placeholder="Any" className="max-sm:hidden pt-1" />
+                <SelectTrigger className="w-full h-7 sm:h-8 text-white max-sm:text-black focus:ring-offset-0 focus:ring-transparent bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-lg pt-2 pb-1 hover:border-[#dbbb90]/50 transition-colors">
+                  <SelectValue placeholder="Select Location" className="max-sm:hidden pt-1" />
                 </SelectTrigger>
                 <SelectContent className="bg-white text-gray-900">
-                  <SelectItem value="any">Any</SelectItem>
                   <SelectItem value="dubai-marina">Dubai Marina</SelectItem>
                   <SelectItem value="downtown-dubai">Downtown Dubai</SelectItem>
                   <SelectItem value="palm-jumeirah">Palm Jumeirah</SelectItem>
@@ -337,15 +263,14 @@ export default function HeroSection() {
 
             {/* Type */}
             <div className="lg:col-span-1 relative">
-              <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
+              <div className="absolute top-1 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
                 Type
               </div>
               <Select>
-                <SelectTrigger className="w-full h-8 sm:h-10 text-white max-sm:text-black bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-lg focus:ring-offset-0 focus:ring-transparent pt-3 pb-1">
-                  <SelectValue placeholder="Any" className="max-sm:hidden pt-1" />
+                <SelectTrigger className="w-full h-7 sm:h-8 text-white max-sm:text-black bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-lg focus:ring-offset-0 focus:ring-transparent pt-2 pb-1">
+                  <SelectValue placeholder="Select Type" className="max-sm:hidden pt-1" />
                 </SelectTrigger>
                 <SelectContent className="bg-white text-gray-900">
-                  <SelectItem value="any">Any</SelectItem>
                   <SelectItem value="apartment">Apartment</SelectItem>
                   <SelectItem value="villa">Villa</SelectItem>
                   <SelectItem value="penthouse">Penthouse</SelectItem>
@@ -359,11 +284,11 @@ export default function HeroSection() {
 
             {/* Price */}
             <div className="lg:col-span-1 relative">
-              <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
+              <div className="absolute top-1 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
                 Price
               </div>
               <div
-                className="relative w-full h-8 sm:h-10 text-white max-sm:text-black bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-lg focus:ring-offset-0 focus:ring-transparent cursor-pointer flex items-center px-3 pt-3 pb-1"
+                className="relative w-full h-7 sm:h-8 text-white max-sm:text-black bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-lg focus:ring-offset-0 focus:ring-transparent cursor-pointer flex items-center px-3 pt-2 pb-1"
                 onClick={() => setIsPriceOpen(!isPriceOpen)}
               >
                 <span className="text-white max-sm:text-black max-sm:hidden pt-1">
@@ -388,7 +313,6 @@ export default function HeroSection() {
                           <SelectValue placeholder="Any" />
                         </SelectTrigger>
                         <SelectContent className="bg-white text-gray-900 max-h-48 overflow-y-auto">
-                          <SelectItem value="any">Any</SelectItem>
                           {priceOptions.map((option) => (
                             <SelectItem key={option.value} value={option.value}>
                               {option.label}
@@ -411,7 +335,6 @@ export default function HeroSection() {
                           <SelectValue placeholder="Any" />
                         </SelectTrigger>
                         <SelectContent className="bg-white text-gray-900 max-h-48 overflow-y-auto">
-                          <SelectItem value="any">Any</SelectItem>
                           {priceOptions.map((option) => (
                             <SelectItem key={option.value} value={option.value}>
                               {option.label}
@@ -427,15 +350,14 @@ export default function HeroSection() {
 
             {/* Bedrooms */}
             <div className="lg:col-span-1 relative">
-              <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
+              <div className="absolute top-1 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
                 Bedrooms
               </div>
               <Select>
-                <SelectTrigger className="w-full h-8 sm:h-10 text-white max-sm:text-black bg-white/10 max-sm:bg-white border max-sm:border-gray-300 border-white/30 rounded-lg focus:ring-offset-0 focus:ring-transparent pt-3 pb-1">
-                  <SelectValue placeholder="Any" className="max-sm:hidden pt-1" />
+                <SelectTrigger className="w-full h-7 sm:h-8 text-white max-sm:text-black bg-white/10 max-sm:bg-white border max-sm:border-gray-300 border-white/30 rounded-lg focus:ring-offset-0 focus:ring-transparent pt-2 pb-1">
+                  <SelectValue placeholder="Select Bedrooms" className="max-sm:hidden pt-1" />
                 </SelectTrigger>
                 <SelectContent className="bg-white text-gray-900">
-                  <SelectItem value="any">Any</SelectItem>
                   <SelectItem value="studio">Studio</SelectItem>
                   <SelectItem value="1">1</SelectItem>
                   <SelectItem value="2">2</SelectItem>
@@ -449,19 +371,19 @@ export default function HeroSection() {
 
             {/* Ref Number */}
             <div className="lg:col-span-1 relative">
-              <div className="absolute top-2 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
+              <div className="absolute top-1 left-3 text-xs text-white/70 max-sm:text-gray-500 z-10 font-serif">
                 Ref Number
               </div>
               <Input
                 type="text"
                 placeholder=""
-                className="w-full h-8 sm:h-10 text-white max-sm:text-black bg-white/10 max-sm:bg-white border max-sm:border-gray-300 border-white/30 rounded-lg placeholder:text-white/70 max-sm:placeholder:text-black/70 focus-visible:ring-offset-0 focus-visible:ring-transparent pt-3 pb-1"
+                className="w-full h-7 sm:h-8 text-white max-sm:text-black bg-white/10 max-sm:bg-white border max-sm:border-gray-300 border-white/30 rounded-lg placeholder:text-white/70 max-sm:placeholder:text-black/70 focus-visible:ring-offset-0 focus-visible:ring-transparent pt-2 pb-1"
               />
             </div>
 
             {/* Search Button */}
             <div className="lg:col-span-1 sm:col-span-2">
-              <Button className="w-full bg-gradient-to-r from-[#dbbb90] to-[#C2A17B] hover:from-[#C2A17B] hover:to-[#B8956A] text-white font-semibold py-1 px-3 rounded-lg transition-all duration-300 h-8 sm:h-10 uppercase tracking-wider text-xs shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+              <Button className="w-full bg-gradient-to-r from-[#dbbb90] to-[#C2A17B] hover:from-[#C2A17B] hover:to-[#B8956A] text-white font-semibold py-1 px-3 rounded-lg transition-all duration-300 h-7 sm:h-8 uppercase tracking-wider text-xs shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                 Search
               </Button>
             </div>
@@ -471,19 +393,6 @@ export default function HeroSection() {
       </div>
 
 
-      {/* Loading Overlay */}
-      {isLoading && (
-        <div className="absolute inset-0 bg-black/50 z-40 flex items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="text-white text-center"
-          >
-            <div className="w-16 h-16 border-4 border-white/20 border-t-[#dbbb90] rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-lg font-light">Loading Luxury Projects...</p>
-          </motion.div>
-        </div>
-      )}
     </section>
   );
 }

@@ -161,7 +161,7 @@ export default function Header() {
                     <Link
                       href={link.href}
                       className={cn(
-                        "relative pb-1 transition-all duration-300 font-sans text-sm",
+                        "relative pb-1 transition-all duration-300 font-sans text-lg",
                         "text-white",
                         "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0",
                         "after:bg-white after:transition-all after:duration-300 hover:after:w-full",
@@ -246,7 +246,7 @@ export default function Header() {
               key={i}
               href={link.href}
               className={cn(
-                  "relative pb-1 transition-all duration-300 font-sans text-[17px]",
+                  "relative pb-1 transition-all duration-300 font-sans text-xl",
                   "text-white",
                 "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0",
                 "after:bg-white after:transition-all after:duration-300 hover:after:w-full",
@@ -304,7 +304,7 @@ export default function Header() {
                   <button
                     onClick={() => setIsServicesOpen(!isServicesOpen)}
                     className={cn(
-                      "flex items-center justify-between w-full text-left text-gray-700 hover:text-gray-900 transition-colors duration-200 py-2",
+                      "flex items-center justify-between w-full text-left text-gray-700 hover:text-gray-900 transition-colors duration-200 py-2 text-lg",
                       pathname === link.href && "text-gray-900 font-medium"
                     )}
                   >
@@ -351,7 +351,7 @@ export default function Header() {
               key={i}
               href={link.href}
               className={cn(
-                  "text-gray-700 hover:text-gray-900 transition-colors duration-200 py-2",
+                  "text-gray-700 hover:text-gray-900 transition-colors duration-200 py-2 text-lg",
                   pathname === link.href && "text-gray-900 font-medium"
               )}
                 onClick={() => setIsOverlayOpen(false)}
