@@ -83,7 +83,7 @@ export default function HeroSection() {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover z-0"
           style={{
             filter: 'brightness(1.2) contrast(1.1) saturate(1.1)',
@@ -92,18 +92,28 @@ export default function HeroSection() {
             transition: 'transform 0.3s ease-out'
           }}
           onError={(e) => {
-            console.log('Video failed to load, falling back to image');
+            console.log('Video failed to load:', e);
+          }}
+          onLoadStart={() => {
+            console.log('Video loading started');
+          }}
+          onCanPlay={() => {
+            console.log('Video can play');
+          }}
+          onLoadedData={() => {
+            console.log('Video data loaded');
           }}
         >
           <source src="/hero.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
         
-        {/* Fallback image if video doesn't load */}
+        {/* Fallback image - only show if video fails */}
         <Image
           src="/images/bgImage.webp"
           alt="Luxury Living in Dubai"
           fill
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute inset-0 w-full h-full object-cover z-0 opacity-0"
           style={{
             filter: 'brightness(1.2) contrast(1.1) saturate(1.1)'
           }}
@@ -128,28 +138,30 @@ export default function HeroSection() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-radial from-white/5 via-transparent to-transparent rounded-full blur-2xl" />
       </div>
       
-      {/* Floating Particles Effect */}
-      <div className="absolute inset-0 z-20">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-[#dbbb90]/30 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
+      {/* Floating Particles Effect - Client Side Only */}
+      {typeof window !== 'undefined' && (
+        <div className="absolute inset-0 z-20">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-[#dbbb90]/30 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -20, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+      )}
 
 
 
