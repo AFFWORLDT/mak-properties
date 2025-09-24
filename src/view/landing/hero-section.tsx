@@ -96,20 +96,21 @@ export default function HeroSection() {
           }}
         >
           <source src="/hero.mp4" type="video/mp4" />
-          {/* Fallback image if video doesn't load */}
-          <Image
-            src="/images/bgImage.webp"
-            alt="Luxury Living in Dubai"
-            fill
-            className="object-cover"
-            style={{
-              filter: 'brightness(1.2) contrast(1.1) saturate(1.1)'
-            }}
-            quality={80}
-            priority
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-          />
         </video>
+        
+        {/* Fallback image if video doesn't load */}
+        <Image
+          src="/images/bgImage.webp"
+          alt="Luxury Living in Dubai"
+          fill
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          style={{
+            filter: 'brightness(1.2) contrast(1.1) saturate(1.1)'
+          }}
+          quality={80}
+          priority
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+        />
       </div>
 
       {/* Enhanced Gradient Overlay */}
@@ -151,85 +152,6 @@ export default function HeroSection() {
       </div>
 
 
-      {/* Hero Title - Center */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 text-white max-w-4xl w-full px-4">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: 50 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="backdrop-blur-[20px] p-8 sm:p-12 lg:p-16 rounded-3xl border border-white/10 text-center shadow-2xl relative overflow-hidden"
-          style={{
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.05) 100%)',
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-            backdropFilter: 'blur(20px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(20px) saturate(180%)'
-          }}
-        >
-          {/* Inner Glow Effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/5 rounded-3xl" />
-          
-          {/* Animated Border Glow */}
-          <motion.div
-            className="absolute inset-0 rounded-3xl"
-            style={{
-              background: 'linear-gradient(45deg, transparent, rgba(219, 187, 144, 0.1), transparent)',
-              backgroundSize: '200% 200%'
-            }}
-            animate={{
-              backgroundPosition: ['0% 0%', '100% 100%', '0% 0%']
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-            className="relative z-10"
-          >
-            <motion.h1 
-              className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6 text-[#dbbb90] font-serif leading-tight"
-              style={{
-                textShadow: '0 0 30px rgba(219, 187, 144, 0.3), 0 0 60px rgba(219, 187, 144, 0.1)',
-                background: 'linear-gradient(135deg, #dbbb90 0%, #f4e4bc 50%, #dbbb90 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}
-              animate={{
-                textShadow: [
-                  '0 0 30px rgba(219, 187, 144, 0.3), 0 0 60px rgba(219, 187, 144, 0.1)',
-                  '0 0 40px rgba(219, 187, 144, 0.4), 0 0 80px rgba(219, 187, 144, 0.2)',
-                  '0 0 30px rgba(219, 187, 144, 0.3), 0 0 60px rgba(219, 187, 144, 0.1)'
-                ]
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              Luxury Living Reimagined
-            </motion.h1>
-            <motion.p 
-              className="text-sm sm:text-base lg:text-lg xl:text-xl uppercase max-w-4xl mx-auto text-white/90 leading-relaxed tracking-[0.2em] font-serif font-light"
-              animate={{
-                opacity: [0.9, 1, 0.9]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              EMBRACE TO A JOURNEY OF PURE SOPHISTICATION
-            </motion.p>
-          </motion.div>
-        </motion.div>
-      </div>
 
       {/* Search Form - Bottom */}
       <div className="absolute bottom-2 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-20 text-white px-2 sm:px-4 lg:px-6 container w-full">
@@ -248,7 +170,7 @@ export default function HeroSection() {
               </div>
               <Select>
                 <SelectTrigger className="w-full h-7 sm:h-8 text-white max-sm:text-black focus:ring-offset-0 focus:ring-transparent bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-lg pt-2 pb-1 hover:border-[#dbbb90]/50 transition-colors">
-                  <SelectValue placeholder="Select Location" className="max-sm:hidden pt-1" />
+                  <SelectValue placeholder="Location" className="max-sm:hidden pt-1" />
                 </SelectTrigger>
                 <SelectContent className="bg-white text-gray-900">
                   <SelectItem value="dubai-marina">Dubai Marina</SelectItem>
@@ -268,7 +190,7 @@ export default function HeroSection() {
               </div>
               <Select>
                 <SelectTrigger className="w-full h-7 sm:h-8 text-white max-sm:text-black bg-white/10 max-sm:bg-white border border-white/30 max-sm:border-gray-300 rounded-lg focus:ring-offset-0 focus:ring-transparent pt-2 pb-1">
-                  <SelectValue placeholder="Select Type" className="max-sm:hidden pt-1" />
+                  <SelectValue placeholder="Type" className="max-sm:hidden pt-1" />
                 </SelectTrigger>
                 <SelectContent className="bg-white text-gray-900">
                   <SelectItem value="apartment">Apartment</SelectItem>
@@ -355,7 +277,7 @@ export default function HeroSection() {
               </div>
               <Select>
                 <SelectTrigger className="w-full h-7 sm:h-8 text-white max-sm:text-black bg-white/10 max-sm:bg-white border max-sm:border-gray-300 border-white/30 rounded-lg focus:ring-offset-0 focus:ring-transparent pt-2 pb-1">
-                  <SelectValue placeholder="Select Bedrooms" className="max-sm:hidden pt-1" />
+                  <SelectValue placeholder="Bedrooms" className="max-sm:hidden pt-1" />
                 </SelectTrigger>
                 <SelectContent className="bg-white text-gray-900">
                   <SelectItem value="studio">Studio</SelectItem>
