@@ -14,7 +14,7 @@ export const getCommunityArticles = async (communityName: string) => {
   try {
     const encodedName = encodeURIComponent(communityName);
     const response = await axios.get(
-      `https://mak-api.propfusion.io/locations/communities/${encodedName}/articles`
+      `https://makproperties-api.propfusion.io/locations/communities/${encodedName}/articles`
     );
     return response.data;
   } catch (error) {
