@@ -4,7 +4,7 @@ import CommunitiesCard from "@/src/view/communities/communitiesCard";
 import { Loader } from "lucide-react";
 import React, { useEffect, useState, useRef, useCallback } from "react";
 
-const PAGE_SIZE = 100;
+const PAGE_SIZE = 12;
 
 function Communities() {
   const [communities, setCommunities] = useState<any[]>([]);
@@ -132,6 +132,23 @@ function Communities() {
               <p className="text-[#dbbb90] font-medium font-serif">
                 Found {filteredCommunities.length} community{filteredCommunities.length !== 1 ? 'ies' : 'y'} matching "{searchKeyword}"
               </p>
+            </div>
+          </div>
+        )}
+
+        {/* Communities Stats */}
+        {!searchKeyword && communities.length > 0 && (
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-8 px-8 py-4 bg-white/80 backdrop-blur-sm rounded-2xl border border-[#dbbb90]/20 shadow-lg">
+              <div className="text-center">
+                <p className="text-2xl font-light text-[#dbbb90] font-serif">{total}</p>
+                <p className="text-sm text-gray-600 font-serif">Total Communities</p>
+              </div>
+              <div className="w-px h-8 bg-[#dbbb90]/20"></div>
+              <div className="text-center">
+                <p className="text-2xl font-light text-[#dbbb90] font-serif">{communities.length}</p>
+                <p className="text-sm text-gray-600 font-serif">Loaded</p>
+              </div>
             </div>
           </div>
         )}

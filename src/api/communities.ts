@@ -1,9 +1,9 @@
 import { api, handleApiError } from "@/src/lib/axios"
 import axios from "axios";
 
-export const getAllCommunities = async (page: number = 1, size: number = 100) => {
+export const getAllCommunities = async (page: number = 1, size: number = 12, sortBy: string = 'total_count', sortOrder: string = 'desc') => {
    try {
-     const res = await api.get(`/locations/communities/ordered?page=${page}&size=${size}&include_unordered=false`)
+     const res = await api.get(`/locations/communities?sort_by=${sortBy}&sort_order=${sortOrder}&page=${page}&size=${size}`)
      return res.data
    } catch (error) {
     throw handleApiError(error)
