@@ -22,7 +22,7 @@ import { Loader, X, Search } from "lucide-react";
 import { useEffect, useState, useCallback, useMemo } from "react";
 import { api } from "@/src/lib/axios";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 // Constants
 const COMPLETION_STATUS_OPTIONS = [
@@ -85,6 +85,7 @@ const HANDOVER_YEAR_OPTIONS = [
 
 function OffPlansPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [property, setProperty] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
@@ -95,18 +96,18 @@ function OffPlansPage() {
   const [totalPages, setTotalPages] = useState(1);
   const [totalProperties, setTotalProperties] = useState(0);
 
-  // Filter states
+  // Filter states - initialize with URL parameters
   const [filters, setFilters] = useState({
-    type: "off_plan",
-    title: "",
-    property_type: "any",
-    min_price: "any",
-    max_price: "any",
-    completion_status: "all",
-    developer_id: "any",
-    bedrooms: "any",
-    bathrooms: "any",
-    handover_year: "any",
+    type: searchParams.get("type") || "off_plan",
+    title: searchParams.get("title") || "",
+    property_type: searchParams.get("property_type") || "any",
+    min_price: searchParams.get("min_price") || "any",
+    max_price: searchParams.get("max_price") || "any",
+    completion_status: searchParams.get("completion_status") || "all",
+    developer_id: searchParams.get("developer_id") || "any",
+    bedrooms: searchParams.get("bedrooms") || "any",
+    bathrooms: searchParams.get("bathrooms") || "any",
+    handover_year: searchParams.get("handover_year") || "any",
   });
 
   const fetchproperty = useCallback(async (page = 1) => {
@@ -326,76 +327,185 @@ function OffPlansPage() {
 
   return (
     <div>
-      <section className="pt-32 pb-16 px-6 luxury-bg">
-        <div className="container mx-auto">
+      <section className="relative bg-gradient-to-br from-[#F8F6F0] via-white to-[#F2EEE8] py-8 px-4">
+        <div className="container mx-auto max-w-6xl">
+          {/* Mobile Filter */}
           {FilterButton}
 
-          {/* Desktop Search Form */}
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-8 gap-4 p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl">
-           
-            {/* Location */}
-            <div className="col-span-2">
-              <Input
-                placeholder="City, building or community"
-                value={filters.title}
-                onChange={(e) => handleFilterChange("title", e.target.value)}
-                className="w-full text-gray-800 bg-white/90 border border-[#dbbb90]/30 placeholder:text-gray-600 hover:border-[#dbbb90]/50 transition-colors font-serif"
-              />
-            </div>
+          {/* Ultra Compact Luxury Desktop Filter */}
+          <div className="hidden md:block">
+            <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-4">
+              {/* Filter Header */}
+              <div className="text-center mb-4">
+                <h2 className="text-lg font-light text-gray-800 mb-1 font-serif">
+                  Refine Your <span className="text-[#dbbb90] font-normal">Search</span>
+                </h2>
+                <div className="w-12 h-px bg-gradient-to-r from-transparent via-[#dbbb90] to-transparent mx-auto"></div>
+              </div>
 
-            {/* Property Type */}
-            <div>{PropertyTypeSelect}</div>
+              {/* Compact Filter Form */}
+              <div className="space-y-3">
+                {/* First Row - Main Filters */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                  {/* Transaction Type */}
+                  <div className="relative">
+                    <Select value={filters.type} onValueChange={(value) => handleFilterChange("type", value)}>
+                      <SelectTrigger className="w-full h-10 bg-white border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300 text-sm">
+                        <SelectValue placeholder="Type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="buy">Buy</SelectItem>
+                        <SelectItem value="rent">Rent</SelectItem>
+                        <SelectItem value="off_plan">Off Plan</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-            {/* Min Price */}
-            <div>
-              <PriceSelect.MinPriceSelect />
-            </div>
+                  {/* Location */}
+                  <div className="relative col-span-2 sm:col-span-1">
+                    <Input
+                      type="text"
+                      placeholder="Location"
+                      value={filters.title}
+                      onChange={(e) => handleFilterChange("title", e.target.value)}
+                      className="w-full h-10 pl-3 pr-3 bg-white border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300 text-sm"
+                    />
+                  </div>
 
-            {/* Max Price */}
-            <div>
-              <PriceSelect.MaxPriceSelect />
-            </div>
+                  {/* Property Type */}
+                  <div className="relative">
+                    <Select
+                      value={filters.property_type}
+                      onValueChange={(value) => handleFilterChange("property_type", value)}
+                    >
+                      <SelectTrigger className="w-full h-10 bg-white border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300 text-sm">
+                        <SelectValue placeholder="Type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="any">Property Type</SelectItem>
+                        {PROPERTY_TYPES.map((type) => (
+                          <SelectItem key={type} value={type}>
+                            {type}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-            {/* Beds */}
-            <div>
-              <Select
-                value={filters.bedrooms}
-                onValueChange={(value) => handleFilterChange("bedrooms", value)}
-              >
-                <SelectTrigger className="w-full bg-white/90 border border-[#dbbb90]/30 text-gray-800 hover:border-[#dbbb90]/50 transition-colors font-serif">
-                  <SelectValue placeholder="Beds" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="any">Beds</SelectItem>
-                  {BEDROOM_OPTIONS.slice(1).map((bed) => (
-                    <SelectItem key={bed} value={bed}>
-                      {bed === "5+" ? "5+ Beds" : `${bed} Bed`}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+                  {/* Bedrooms */}
+                  <div className="relative">
+                    <Select
+                      value={filters.bedrooms}
+                      onValueChange={(value) => handleFilterChange("bedrooms", value)}
+                    >
+                      <SelectTrigger className="w-full h-10 bg-white border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300 text-sm">
+                        <SelectValue placeholder="Beds" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="any">Beds</SelectItem>
+                        {BEDROOM_OPTIONS.slice(1).map((bed) => (
+                          <SelectItem key={bed} value={bed}>
+                            {bed === "5+" ? "5+ Beds" : `${bed} Bed`}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-            {/* More Filters Button and Search Button in same column */}
-            <div className="flex gap-2">
-              <Button
-                onClick={toggleFilters}
-                variant="outline"
-                className="w-32 h-14 bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 flex items-center justify-center gap-2"
-              >
-                <Icon icon="lucide:sliders-horizontal" className="w-4 h-4" />
-                More Filters
-              </Button>
+                  {/* Min Price */}
+                  <div className="relative">
+                    <Select
+                      value={filters.min_price}
+                      onValueChange={(value) => handleFilterChange("min_price", value)}
+                    >
+                      <SelectTrigger className="w-full h-10 bg-white border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300 text-sm">
+                        <SelectValue placeholder="Min Price" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="any">Min Price</SelectItem>
+                        {PRICE_OPTIONS.slice(0, 8).map((price) => (
+                          <SelectItem key={price} value={price}>
+                            {parseInt(price) >= 1000000 ? `${parseInt(price)/1000000}M AED` : `${parseInt(price)/1000}K AED`}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-              <Button
-                onClick={handleSearch}
-                className="h-14 w-14 bg-primary hover:bg-primary/90 text-white flex items-center justify-center shadow-lg"
-              >
-                <Icon
-                  icon="iconamoon:search-fill"
-                  className="text-white text-xl"
-                />
-              </Button>
+                  {/* Search Button */}
+                  <div className="relative">
+                    <Button
+                      onClick={handleSearch}
+                      className="w-full h-10 bg-gradient-to-r from-[#dbbb90] to-[#C2A17B] hover:from-[#C2A17B] hover:to-[#B8956A] text-white rounded-lg transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 text-sm"
+                    >
+                      <Search className="w-3 h-3 mr-1" />
+                      Search
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Second Row - Additional Filters */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  {/* Max Price */}
+                  <div className="relative">
+                    <Select
+                      value={filters.max_price}
+                      onValueChange={(value) => handleFilterChange("max_price", value)}
+                    >
+                      <SelectTrigger className="w-full h-10 bg-white border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300 text-sm">
+                        <SelectValue placeholder="Max Price" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="any">Max Price</SelectItem>
+                        {PRICE_OPTIONS.slice(4, 12).map((price) => (
+                          <SelectItem key={price} value={price}>
+                            {parseInt(price) >= 1000000 ? `${parseInt(price)/1000000}M AED` : `${parseInt(price)/1000}K AED`}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {/* Handover Year */}
+                  <div className="relative">
+                    <Select
+                      value={filters.handover_year}
+                      onValueChange={(value) => handleFilterChange("handover_year", value)}
+                    >
+                      <SelectTrigger className="w-full h-10 bg-white border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300 text-sm">
+                        <SelectValue placeholder="Handover" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="any">Handover Year</SelectItem>
+                        {HANDOVER_YEAR_OPTIONS.slice(1, 8).map((year) => (
+                          <SelectItem key={year} value={year}>
+                            {year}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {/* More Filters Button */}
+                  <div className="relative">
+                    <Button
+                      onClick={toggleFilters}
+                      variant="outline"
+                      className="w-full h-10 border-gray-200 rounded-lg hover:bg-gray-50 transition-all duration-300 text-sm"
+                    >
+                      <Icon icon="lucide:sliders-horizontal" className="w-3 h-3 mr-1" />
+                      More Filters
+                    </Button>
+                  </div>
+
+                  {/* Results Count */}
+                  <div className="relative flex items-center justify-center">
+                    <span className="text-sm text-gray-600 font-medium">
+                      {totalProperties.toLocaleString()} Properties
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

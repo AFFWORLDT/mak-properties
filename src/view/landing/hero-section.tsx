@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown, Search, Filter } from "lucide-react";
+import { ChevronDown, Search } from "lucide-react";
 import { Button } from "@/src/components/ui/button";
 import { Input } from "@/src/components/ui/input";
 import {
@@ -11,8 +11,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/src/components/ui/select";
+import { useRouter } from "next/navigation";
 
 export default function HeroSection() {
+  const router = useRouter();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isClient, setIsClient] = useState(false);
   const [filters, setFilters] = useState({
@@ -35,6 +37,75 @@ export default function HeroSection() {
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
     setMousePosition({ x, y });
+  };
+
+  const handleSearch = () => {
+    // Map transaction type to the correct page and listing type
+    let targetPage = "/buy";
+    let listingType = "SELL";
+    
+    switch (filters.transactionType) {
+      case "buy":
+        targetPage = "/buy";
+        listingType = "SELL";
+        break;
+      case "rent":
+        targetPage = "/rent";
+        listingType = "RENT";
+        break;
+      case "off-plan":
+        targetPage = "/offPlans";
+        listingType = "SELL"; // Off-plan uses SELL listing type
+        break;
+      default:
+        targetPage = "/buy";
+        listingType = "SELL";
+    }
+
+    // Build query parameters
+    const queryParams = new URLSearchParams();
+    
+    // Add listing type for buy/rent pages
+    if (filters.transactionType !== "off-plan") {
+      queryParams.append("listing_type", listingType);
+    }
+    
+    // Add other filters if they have values
+    if (filters.location) {
+      queryParams.append("title", filters.location);
+    }
+    
+    if (filters.propertyType) {
+      // Map property types to match the existing system
+      const propertyTypeMap: { [key: string]: string } = {
+        "apartment": "APARTMENT",
+        "villa": "VILLA", 
+        "penthouse": "PENTHOUSE",
+        "townhouse": "TOWNHOUSE",
+        "studio": "APARTMENT", // Studio maps to apartment
+        "duplex": "APARTMENT", // Duplex maps to apartment
+        "maisonette": "APARTMENT" // Maisonette maps to apartment
+      };
+      queryParams.append("property_type", propertyTypeMap[filters.propertyType] || filters.propertyType.toUpperCase());
+    }
+    
+    if (filters.minPrice) {
+      queryParams.append("min_price", filters.minPrice);
+    }
+    
+    if (filters.maxPrice) {
+      queryParams.append("max_price", filters.maxPrice);
+    }
+    
+    if (filters.bedrooms) {
+      queryParams.append("bedrooms", filters.bedrooms);
+    }
+
+    // Navigate to the target page with query parameters
+    const queryString = queryParams.toString();
+    const finalUrl = queryString ? `${targetPage}?${queryString}` : targetPage;
+    
+    router.push(finalUrl);
   };
 
 
@@ -145,146 +216,129 @@ export default function HeroSection() {
 
 
 
-      {/* Luxury Property Filter Section */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 w-full max-w-7xl px-4">
+      {/* Ultra Compact Property Filter Section */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 w-full max-w-5xl px-3">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-          className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-6"
+          className="bg-white/95 backdrop-blur-xl rounded-xl shadow-2xl border border-white/20 p-3 md:p-4"
         >
-          {/* Filter Header */}
-          <div className="text-center mb-6">
-            <h2 className="text-2xl font-light text-gray-800 mb-2 font-serif">
+          {/* Compact Filter Header */}
+          <div className="text-center mb-3">
+            <h2 className="text-lg md:text-xl font-light text-gray-800 mb-1 font-serif">
               Find Your <span className="text-[#dbbb90] font-normal">Dream Property</span>
             </h2>
-            <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#dbbb90] to-transparent mx-auto"></div>
+            <div className="w-10 md:w-12 h-px bg-gradient-to-r from-transparent via-[#dbbb90] to-transparent mx-auto"></div>
           </div>
 
-          {/* Filter Form */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-4">
-            {/* Transaction Type */}
-            <div className="lg:col-span-1">
-              <Select
-                value={filters.transactionType}
-                onValueChange={(value) => setFilters(prev => ({ ...prev, transactionType: value }))}
-              >
-                <SelectTrigger className="w-full h-12 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300">
-                  <SelectValue placeholder="Buy" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="buy">Buy</SelectItem>
-                  <SelectItem value="rent">Rent</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Location */}
-            <div className="lg:col-span-2">
+          {/* Ultra Compact Filter Form */}
+          <div className="space-y-3">
+            {/* Single Row - All Filters */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3">
+              {/* Transaction Type */}
               <div className="relative">
+                <Select
+                  value={filters.transactionType}
+                  onValueChange={(value) => setFilters(prev => ({ ...prev, transactionType: value }))}
+                >
+                  <SelectTrigger className="w-full h-9 md:h-10 bg-white border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300 text-xs md:text-sm">
+                    <SelectValue placeholder="Buy" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="buy">Buy</SelectItem>
+                    <SelectItem value="rent">Rent</SelectItem>
+                    <SelectItem value="off-plan">Off-Plan</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Location */}
+              <div className="relative col-span-2 sm:col-span-1">
                 <Input
                   type="text"
-                  placeholder="City, building or community"
+                  placeholder="Location"
                   value={filters.location}
                   onChange={(e) => setFilters(prev => ({ ...prev, location: e.target.value }))}
-                  className="w-full h-12 pl-4 pr-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300"
+                  className="w-full h-9 md:h-10 pl-2 md:pl-3 pr-3 bg-white border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300 text-xs md:text-sm"
                 />
               </div>
-            </div>
 
-            {/* Property Type */}
-            <div className="lg:col-span-1">
-              <Select
-                value={filters.propertyType}
-                onValueChange={(value) => setFilters(prev => ({ ...prev, propertyType: value }))}
-              >
-                <SelectTrigger className="w-full h-12 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300">
-                  <SelectValue placeholder="Property Type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="apartment">Apartment</SelectItem>
-                  <SelectItem value="villa">Villa</SelectItem>
-                  <SelectItem value="penthouse">Penthouse</SelectItem>
-                  <SelectItem value="townhouse">Townhouse</SelectItem>
-                  <SelectItem value="studio">Studio</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+              {/* Property Type */}
+              <div className="relative">
+                <Select
+                  value={filters.propertyType}
+                  onValueChange={(value) => setFilters(prev => ({ ...prev, propertyType: value }))}
+                >
+                  <SelectTrigger className="w-full h-9 md:h-10 bg-white border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300 text-xs md:text-sm">
+                    <SelectValue placeholder="Type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="apartment">Apartment</SelectItem>
+                    <SelectItem value="villa">Villa</SelectItem>
+                    <SelectItem value="penthouse">Penthouse</SelectItem>
+                    <SelectItem value="townhouse">Townhouse</SelectItem>
+                    <SelectItem value="studio">Studio</SelectItem>
+                    <SelectItem value="duplex">Duplex</SelectItem>
+                    <SelectItem value="maisonette">Maisonette</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-            {/* Min Price */}
-            <div className="lg:col-span-1">
-              <Select
-                value={filters.minPrice}
-                onValueChange={(value) => setFilters(prev => ({ ...prev, minPrice: value }))}
-              >
-                <SelectTrigger className="w-full h-12 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300">
-                  <SelectValue placeholder="Min Price" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="250000">250,000 AED</SelectItem>
-                  <SelectItem value="500000">500,000 AED</SelectItem>
-                  <SelectItem value="1000000">1,000,000 AED</SelectItem>
-                  <SelectItem value="2000000">2,000,000 AED</SelectItem>
-                  <SelectItem value="5000000">5,000,000 AED</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+              {/* Bedrooms */}
+              <div className="relative">
+                <Select
+                  value={filters.bedrooms}
+                  onValueChange={(value) => setFilters(prev => ({ ...prev, bedrooms: value }))}
+                >
+                  <SelectTrigger className="w-full h-9 md:h-10 bg-white border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300 text-xs md:text-sm">
+                    <SelectValue placeholder="Beds" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="studio">Studio</SelectItem>
+                    <SelectItem value="1">1 Bed</SelectItem>
+                    <SelectItem value="2">2 Beds</SelectItem>
+                    <SelectItem value="3">3 Beds</SelectItem>
+                    <SelectItem value="4">4 Beds</SelectItem>
+                    <SelectItem value="5">5+ Beds</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-            {/* Max Price */}
-            <div className="lg:col-span-1">
-              <Select
-                value={filters.maxPrice}
-                onValueChange={(value) => setFilters(prev => ({ ...prev, maxPrice: value }))}
-              >
-                <SelectTrigger className="w-full h-12 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300">
-                  <SelectValue placeholder="Max Price" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="500000">500,000 AED</SelectItem>
-                  <SelectItem value="1000000">1,000,000 AED</SelectItem>
-                  <SelectItem value="2000000">2,000,000 AED</SelectItem>
-                  <SelectItem value="5000000">5,000,000 AED</SelectItem>
-                  <SelectItem value="10000000">10,000,000 AED</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+              {/* Price Range */}
+              <div className="relative">
+                <Select
+                  value={filters.minPrice}
+                  onValueChange={(value) => setFilters(prev => ({ ...prev, minPrice: value }))}
+                >
+                  <SelectTrigger className="w-full h-9 md:h-10 bg-white border border-gray-200 rounded-lg focus:ring-1 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300 text-xs md:text-sm">
+                    <SelectValue placeholder="Min Price" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="250000">250K AED</SelectItem>
+                    <SelectItem value="500000">500K AED</SelectItem>
+                    <SelectItem value="750000">750K AED</SelectItem>
+                    <SelectItem value="1000000">1M AED</SelectItem>
+                    <SelectItem value="1500000">1.5M AED</SelectItem>
+                    <SelectItem value="2000000">2M AED</SelectItem>
+                    <SelectItem value="3000000">3M AED</SelectItem>
+                    <SelectItem value="5000000">5M AED</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-            {/* Bedrooms */}
-            <div className="lg:col-span-1">
-              <Select
-                value={filters.bedrooms}
-                onValueChange={(value) => setFilters(prev => ({ ...prev, bedrooms: value }))}
-              >
-                <SelectTrigger className="w-full h-12 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#dbbb90]/20 focus:border-[#dbbb90] transition-all duration-300">
-                  <SelectValue placeholder="Beds" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="studio">Studio</SelectItem>
-                  <SelectItem value="1">1 Bed</SelectItem>
-                  <SelectItem value="2">2 Beds</SelectItem>
-                  <SelectItem value="3">3 Beds</SelectItem>
-                  <SelectItem value="4">4 Beds</SelectItem>
-                  <SelectItem value="5">5+ Beds</SelectItem>
-                </SelectContent>
-              </Select>
+              {/* Search Button */}
+              <div className="relative">
+                <Button
+                  onClick={handleSearch}
+                  className="w-full h-9 md:h-10 bg-gradient-to-r from-[#dbbb90] to-[#C2A17B] hover:from-[#C2A17B] hover:to-[#B8956A] text-white rounded-lg transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 text-xs md:text-sm"
+                >
+                  <Search className="w-3 h-3 md:w-4 md:h-4 mr-1" />
+                  <span className="hidden sm:inline">Search</span>
+                  <span className="sm:hidden">🔍</span>
+                </Button>
+              </div>
             </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex items-center justify-center gap-4 mt-6">
-            <Button
-              variant="outline"
-              className="h-12 px-6 border-gray-200 rounded-xl hover:bg-gray-50 transition-all duration-300"
-            >
-              <Filter className="w-4 h-4 mr-2" />
-              More Filters
-            </Button>
-            <Button
-              className="h-12 px-8 bg-gradient-to-r from-[#dbbb90] to-[#C2A17B] hover:from-[#C2A17B] hover:to-[#B8956A] text-white rounded-xl transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5"
-            >
-              <Search className="w-4 h-4 mr-2" />
-              Search Properties
-            </Button>
           </div>
         </motion.div>
       </div>
