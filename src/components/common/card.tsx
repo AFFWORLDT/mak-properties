@@ -43,14 +43,6 @@ export function PropertyCard({
             AVAILABLE
           </span>
         </div>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="absolute top-4 right-4 text-white rounded-full"
-        >
-          <Heart className="w-7 h-7 " />
-          <span className="sr-only">Add to favorites</span>
-        </Button>
       </div>
       <CardContent className="grid gap-2 px-4 py-3">
         <div className="flex items-center justify-between">

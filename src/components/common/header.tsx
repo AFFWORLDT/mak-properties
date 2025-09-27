@@ -14,8 +14,6 @@ import {
   DollarSign,
   Scale,
   Bed,
-  Wrench,
-  Users,
   Bitcoin,
   TrendingUp,
   Building2,
@@ -86,14 +84,6 @@ export default function Header() {
     {
       icon: <Bed className="h-4 w-4 text-gray-500" />,
       name: "Short Term Rentals"
-    },
-    {
-      icon: <Wrench className="h-4 w-4 text-gray-500" />,
-      name: "Property Snagging"
-    },
-    {
-      icon: <Users className="h-4 w-4 text-gray-500" />,
-      name: "Partner Program"
     },
     
   ];

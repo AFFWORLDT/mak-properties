@@ -96,7 +96,6 @@ export function BuyCard({ data, onFavorite }: BuyCardProps) {
             {data?.title}
           </h3>
           <p className="text-sm text-gray-500 font-light">
-            #{data?.ownPortal_agent_Id}
           </p>
         </div>
 

@@ -52,41 +52,46 @@ function PartnersSection() {
   ]
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-8 bg-gradient-to-r from-[#F8F6F0] via-white to-[#F2EEE8] border-t border-b border-[#dbbb90]/20">
       <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-1">
+        <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="flex items-center justify-center w-1/2">
-            <div className="flex items-center space-x-4">
-              <h2 className="text-gray-500    text-lg">
+          <div className="text-center mb-8">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#dbbb90] font-light mb-2">
+              TRUSTED PARTNERSHIPS
+            </p>
+            <h2 className="text-sm text-gray-600 font-light tracking-wide">
               Partners with Dubai&apos;s leading developers
-              </h2>
-            </div>
+            </h2>
           </div>
 
-          {/* Auto-scrolling Partners */}
+          {/* Luxury Partners Grid */}
           <div className="relative overflow-hidden">
             <div className="flex animate-scroll">
               {/* First set of logos */}
-              <div className="flex items-center space-x-16 min-w-max">
+              <div className="flex items-center space-x-20 min-w-max">
                 {partners.map((partner, index) => (
                   <div
                     key={`first-${index}`}
-                    className="flex-shrink-0 flex items-center justify-center h-16 px-8"
+                    className="flex-shrink-0 flex items-center justify-center h-12 px-6 opacity-70 hover:opacity-100 transition-all duration-300 group"
                   >
-                    {partner.logo}
+                    <div className="transform group-hover:scale-105 transition-transform duration-300">
+                      {partner.logo}
+                    </div>
                   </div>
                 ))}
               </div>
               
               {/* Duplicate set for seamless loop */}
-              <div className="flex items-center space-x-16 min-w-max">
+              <div className="flex items-center space-x-20 min-w-max">
                 {partners.map((partner, index) => (
                   <div
                     key={`second-${index}`}
-                    className="flex-shrink-0 flex items-center justify-center h-16 px-8"
+                    className="flex-shrink-0 flex items-center justify-center h-12 px-6 opacity-70 hover:opacity-100 transition-all duration-300 group"
                   >
-                    {partner.logo}
+                    <div className="transform group-hover:scale-105 transition-transform duration-300">
+                      {partner.logo}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -106,7 +111,7 @@ function PartnersSection() {
         }
         
         .animate-scroll {
-          animation: scroll 30s linear infinite;
+          animation: scroll 40s linear infinite;
         }
         
         .animate-scroll:hover {

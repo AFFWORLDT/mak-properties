@@ -118,7 +118,6 @@ export default function DetailPage({ id }: any) {
           </div>
         </div>
         <div className="relative z-30 text-white px-3 sm:px-4 mt-[45vh] sm:mt-[50vh] md:mt-[60vh]">
-          <span className="text-xs sm:text-sm md:text-base block mb-2">#{id}</span>
           <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light mb-2 sm:mb-3 md:mb-4 leading-tight tracking-wide">
             {property?.title}
           </h1>
@@ -135,14 +134,6 @@ export default function DetailPage({ id }: any) {
               onClick={() => setIsOpen(true)}
             >
               Enquire Now
-            </a>
-            <span className="text-gray-300">|</span>
-            <a href="#" className="hover:underline">
-              Brochure
-            </a>
-            <span className="text-gray-300">|</span>
-            <a href="#" className="hover:underline">
-              <Heart className="w-4 h-4 inline-block" />
             </a>
             {property?.agent && (
               <>

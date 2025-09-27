@@ -16,6 +16,7 @@ export default function DetailPage({ id }: any) {
   const [heroImageIndex, setHeroImageIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   useEffect(() => {
     async function fetchProperty() {
@@ -110,7 +111,6 @@ export default function DetailPage({ id }: any) {
           </div>
         </div>
         <div className="relative z-30 text-white px-3 sm:px-4 mt-[45vh] sm:mt-[50vh] md:mt-[60vh]">
-          <span className="text-xs sm:text-sm md:text-base block mb-2">#{id}</span>
           <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light mb-2 sm:mb-3 md:mb-4 leading-tight tracking-wide">
             {property?.name}
           </h1>
@@ -129,14 +129,6 @@ export default function DetailPage({ id }: any) {
               onClick={() => setIsOpen(true)}
             >
               Enquire Now
-            </a>
-            <span className="text-gray-300">|</span>
-            <a href="#" className="hover:underline">
-              Brochure
-            </a>
-            <span className="text-gray-300">|</span>
-            <a href="#" className="hover:underline">
-              <Icon icon="lucide:heart" className="w-4 h-4 inline-block" />
             </a>
             {property?.agent && (
               <>
@@ -201,42 +193,83 @@ export default function DetailPage({ id }: any) {
 
           <hr className="border-t border-gray-200 mb-12" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-12">
-            <div>
-              <h3 className="text-sm font-light uppercase text-primary mb-2 border-b border-primary inline-block pb-1">
-                From
-              </h3>
-              <p className="text-sm font-light text-gray-700">
-                {property?.newParam?.price
-                  ? `AED ${property.newParam.price.toLocaleString()}`
-                  : property?.price_from
-                  ? `AED ${property.price_from.toLocaleString()}`
-                  : property?.price
-                  ? `AED ${property.price.toLocaleString()}`
-                  : "Price on request"}
-              </p>
+          {/* Luxury Key Details Section */}
+          <div className="relative bg-gradient-to-br from-[#F8F6F0] via-white to-[#F2EEE8] rounded-2xl p-8 mb-16 shadow-xl border border-[#dbbb90]/20 overflow-hidden">
+            {/* Luxury Background Pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#dbbb90] rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-[#dbbb90] rounded-full blur-2xl"></div>
             </div>
-            <div>
-              <h3 className="text-sm font-light uppercase text-primary mb-2 border-b border-primary inline-block pb-1">
-                Completion Date
-              </h3>
-              <p className="text-sm font-light text-gray-700">
-                {property?.newParam?.handoverTime
-                  ? moment(property?.newParam?.handoverTime).format("MMMM YYYY")
-                  : property?.completionDate
-                  ? moment(property?.completionDate).format("MMMM YYYY")
-                  : property?.handoverTime
-                  ? moment(property?.handoverTime).format("MMMM YYYY")
-                  : "TBA"}
-              </p>
-            </div>
-            <div>
-              <h3 className="text-sm font-light uppercase text-primary mb-2 border-b border-primary inline-block pb-1">
-                Construction Stage
-              </h3>
-              <p className="text-sm font-light text-gray-700">
-                {property?.constructionStage || property?.completionStatus || "Off-plan"}
-              </p>
+            
+            <div className="relative z-10">
+              <div className="text-center mb-8">
+                <h2 className="text-xs uppercase tracking-[0.3em] text-[#dbbb90] font-light mb-2">
+                  KEY DETAILS
+                </h2>
+                <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#dbbb90] to-transparent mx-auto"></div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Price Card */}
+                <div className="group relative bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-[#dbbb90]/20 hover:border-[#dbbb90]/40 transition-all duration-300 hover:shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#dbbb90]/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-center mb-3">
+                      <div className="w-2 h-2 bg-[#dbbb90] rounded-full mr-3"></div>
+                      <h3 className="text-xs font-light uppercase text-[#dbbb90] tracking-wider">
+                        Starting From
+                      </h3>
+                    </div>
+                    <p className="text-2xl font-light text-[#1A202C] tracking-wide">
+                      {property?.newParam?.price
+                        ? `AED ${property.newParam.price.toLocaleString()}`
+                        : property?.price_from
+                        ? `AED ${property.price_from.toLocaleString()}`
+                        : property?.price
+                        ? `AED ${property.price.toLocaleString()}`
+                        : "Price on request"}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Completion Date Card */}
+                <div className="group relative bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-[#dbbb90]/20 hover:border-[#dbbb90]/40 transition-all duration-300 hover:shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#dbbb90]/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-center mb-3">
+                      <div className="w-2 h-2 bg-[#dbbb90] rounded-full mr-3"></div>
+                      <h3 className="text-xs font-light uppercase text-[#dbbb90] tracking-wider">
+                        Completion Date
+                      </h3>
+                    </div>
+                    <p className="text-lg font-light text-[#1A202C] tracking-wide">
+                      {property?.newParam?.handoverTime
+                        ? moment(property?.newParam?.handoverTime).format("MMMM YYYY")
+                        : property?.completionDate
+                        ? moment(property?.completionDate).format("MMMM YYYY")
+                        : property?.handoverTime
+                        ? moment(property?.handoverTime).format("MMMM YYYY")
+                        : "TBA"}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Construction Stage Card */}
+                <div className="group relative bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-[#dbbb90]/20 hover:border-[#dbbb90]/40 transition-all duration-300 hover:shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#dbbb90]/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-center mb-3">
+                      <div className="w-2 h-2 bg-[#dbbb90] rounded-full mr-3"></div>
+                      <h3 className="text-xs font-light uppercase text-[#dbbb90] tracking-wider">
+                        Construction Stage
+                      </h3>
+                    </div>
+                    <p className="text-lg font-light text-[#1A202C] tracking-wide">
+                      {property?.constructionStage || property?.completionStatus || "Off-plan"}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -246,9 +279,23 @@ export default function DetailPage({ id }: any) {
             <h2 className="text-4xl font-serif text-gray-800 mb-8">
               Description
             </h2>
-            <p className="text-sm font-light text-gray-600 leading-relaxed mb-6 line-clamp-4">
-              {property?.description}
-            </p>
+            <div className="max-w-4xl mx-auto">
+              <p className={`text-sm font-light text-gray-600 leading-relaxed mb-6 ${!isDescriptionExpanded ? 'line-clamp-4' : ''}`}>
+                {property?.description}
+              </p>
+              {property?.description && property.description.length > 200 && (
+                <button
+                  onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#dbbb90] to-[#C2A17B] hover:from-[#C2A17B] hover:to-[#B8956A] text-white font-light text-sm uppercase tracking-wider rounded-lg transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5"
+                >
+                  {isDescriptionExpanded ? 'Read Less' : 'Read More'}
+                  <Icon 
+                    icon={isDescriptionExpanded ? "lucide:chevron-up" : "lucide:chevron-down"} 
+                    className="w-4 h-4 transition-transform duration-300"
+                  />
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </section>
