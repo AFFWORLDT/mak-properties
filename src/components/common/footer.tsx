@@ -121,6 +121,21 @@ export default function Footer() {
                   info@makproperties.ae
                 </a>
               </p>
+              <p>
+                <span className="text-[#dbbb90] font-semibold">IG</span>{" "}
+                <a
+                  href="https://www.instagram.com/makproperties.ae/?hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative inline-block hover:text-[#dbbb90] transition-all duration-300 text-white/90 hover:text-white
+                             after:content-[''] after:absolute after:left-0 after:bottom-0
+                             after:h-[2px] after:w-0 after:bg-[#dbbb90]
+                             after:transition-all after:duration-300 hover:after:w-full font-serif
+                             hover:transform hover:translate-x-1"
+                >
+                  @makproperties.ae
+                </a>
+              </p>
             </address>
           </div>
         </div>
