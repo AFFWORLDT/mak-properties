@@ -1,5 +1,6 @@
 import { Input } from "@/src/components/ui/input";
 import { Button } from "@/src/components/ui/button";
+import { Phone, Mail, Instagram } from "lucide-react";
 
 const sitemapLinks = [
   { href: "/buy", label: "Buy" },
@@ -95,8 +96,8 @@ export default function Footer() {
             <address className="not-italic space-y-4 text-base font-serif leading-relaxed">
               <p className="text-white/90">123, Victory Heights, Dubai Sports City</p>
               <p className="text-white/90">Dubai, UAE</p>
-              <p>
-                <span className="text-[#dbbb90] font-semibold">P</span>{" "}
+              <p className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-[#dbbb90] flex-shrink-0" />
                 <a
                   href="tel:+971508050394"
                   className="relative inline-block hover:text-[#dbbb90] transition-all duration-300 text-white/90 hover:text-white
@@ -108,8 +109,8 @@ export default function Footer() {
                   +971 50 805 0394
                 </a>
               </p>
-              <p>
-                <span className="text-[#dbbb90] font-semibold">E</span>{" "}
+              <p className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-[#dbbb90] flex-shrink-0" />
                 <a
                   href="mailto:info@makproperties.ae"
                   className="relative inline-block hover:text-[#dbbb90] transition-all duration-300 text-white/90 hover:text-white
@@ -121,8 +122,8 @@ export default function Footer() {
                   info@makproperties.ae
                 </a>
               </p>
-              <p>
-                <span className="text-[#dbbb90] font-semibold">IG</span>{" "}
+              <p className="flex items-center gap-3">
+                <Instagram className="w-5 h-5 text-[#dbbb90] flex-shrink-0" />
                 <a
                   href="https://www.instagram.com/makproperties.ae/?hl=en"
                   target="_blank"
