@@ -65,10 +65,10 @@ export default function Header() {
     { href: "/contactUs", label: "More" },
   ];
   const services = [
-    {
-      icon: <Settings className="h-4 w-4 text-gray-500" />,
-      name: "Property Management"
-    },
+    // {
+    //   icon: <Settings className="h-4 w-4 text-gray-500" />,
+    //   name: "Property Management"
+    // },
     {
       icon: <Home className="h-4 w-4 text-gray-500" />,
       name: "List Your Property"
