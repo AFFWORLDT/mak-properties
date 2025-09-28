@@ -19,7 +19,7 @@ import { cn } from "@/src/lib/utils";
 import OffPlanCard from "@/src/view/offPlans/offPlanCard";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Loader, X, Search } from "lucide-react";
-import { useEffect, useState, useCallback, useMemo } from "react";
+import { useEffect, useState, useCallback, useMemo, Suspense } from "react";
 import { api } from "@/src/lib/axios";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -83,7 +83,8 @@ const HANDOVER_YEAR_OPTIONS = [
   "2035",
 ];
 
-function OffPlansPage() {
+// Component that uses useSearchParams - needs to be wrapped in Suspense
+function OffPlansPageWithSearchParams() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [property, setProperty] = useState([]);
@@ -877,6 +878,19 @@ function OffPlansPage() {
         )}
       </div>
     </div>
+  );
+}
+
+// Main component that wraps OffPlansPageWithSearchParams in Suspense
+function OffPlansPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex justify-center items-center h-64">
+        <Loader className="animate-spin h-10 w-10 text-primary" />
+      </div>
+    }>
+      <OffPlansPageWithSearchParams />
+    </Suspense>
   );
 }
 

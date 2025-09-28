@@ -20,7 +20,7 @@ import { RentCard } from "@/src/view/rent/rentCard";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Loader, Filter, X, Search } from "lucide-react";
 import PropertyCardSkeleton from "@/src/components/common/property-card-skeleton";
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, Suspense } from "react";
 import { api } from "@/src/lib/axios";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -53,7 +53,8 @@ const HANDOVER_YEAR_OPTIONS = [
   "any", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035"
 ];
 
-function Rent() {
+// Component that uses useSearchParams - needs to be wrapped in Suspense
+function RentWithSearchParams() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [property, setProperty] = React.useState([]);
@@ -761,6 +762,21 @@ function Rent() {
         </div>
       )}
     </div>
+  );
+}
+
+// Main component that wraps RentWithSearchParams in Suspense
+function Rent() {
+  return (
+    <Suspense fallback={
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 container my-4 mx-auto">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <PropertyCardSkeleton key={i} />
+        ))}
+      </div>
+    }>
+      <RentWithSearchParams />
+    </Suspense>
   );
 }
 
