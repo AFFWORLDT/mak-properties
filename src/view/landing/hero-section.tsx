@@ -145,7 +145,7 @@ export default function HeroSection() {
             console.log('Video data loaded');
           }}
         >
-          <source src="/hero.mp4" type="video/mp4" />
+          <source src="/heroo.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         

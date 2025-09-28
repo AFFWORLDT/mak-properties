@@ -55,6 +55,7 @@ export default function Header() {
   }, [isOverlayOpen]);
 
   const navLinks = [
+    { href: "/", label: "Home" },
     { href: "/buy", label: "Buy" },
     { href: "/rent", label: "Rent" },
     { href: "/offPlans", label: "Projects" },
@@ -89,6 +90,7 @@ export default function Header() {
   ];
 
   const headerLink = [
+    { href: "/", label: "Home" },
     { href: "/buy", label: "Buy" },
     { href: "/rent", label: "Rent" },
     { href: "/offPlans", label: "Projects" },
@@ -125,24 +127,24 @@ export default function Header() {
       <nav
         className={cn(
           "container mx-auto flex items-center justify-between px-3 md:px-6",
-          isScrolled ? "h-14 md:h-16" : "h-16 md:h-20"
+          isScrolled ? "h-20 md:h-24" : "h-24 md:h-28"
         )}
       >
         {/* Logo */}
-        <div className="flex items-center">
+        <div className="flex items-center flex-1">
           <Link href={"/"}>
             <Image
               src="/images/logo.png"
               alt="MAK PROPERTIES Logo"
-              width={200}
-              height={60}
-              className="object-contain w-40 h-12 md:w-48 md:h-16"
+              width={400}
+              height={80}
+              className="object-contain w-full max-w-none h-16 md:h-20 lg:h-24"
             />
           </Link>
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center space-x-6">
+        <div className="hidden lg:flex items-center space-x-8">
           {headerLink.map((link, i) => {
             if (link.hasDropdown) {
               return (
@@ -151,14 +153,14 @@ export default function Header() {
                     <Link
                       href={link.href}
                       className={cn(
-                        "relative pb-1 transition-all duration-300 font-sans text-lg",
+                        "relative pb-1 transition-all duration-300 font-sans text-xl",
                         "text-white",
                         "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0",
                         "after:bg-white after:transition-all after:duration-300 hover:after:w-full",
                         pathname === link.href && "after:w-full"
                       )}
                       style={{
-                        letterSpacing: "1px",
+                        letterSpacing: "1.5px",
                       }}
                     >
                       {link.label}
@@ -259,12 +261,12 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <div
             className={cn(
-              "lg:hidden cursor-pointer transition-colors duration-200 p-1",
+              "lg:hidden cursor-pointer transition-colors duration-200 p-2",
               "text-white"
             )}
             onClick={() => setIsOverlayOpen(true)}
           >
-            <Menu className="h-5 w-5" />
+            <Menu className="h-7 w-7" />
           </div>
         </div>
       </nav>
