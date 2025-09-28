@@ -38,23 +38,34 @@ function Solutions() {
       <div className="absolute inset-0 bg-gradient-to-br from-[#dbbb90]/5 via-transparent to-[#dbbb90]/5" />
       <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent" />
       
-      {/* Floating Luxury Particles - Client Side Only */}
-      {typeof window !== 'undefined' && (
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(12)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-[#dbbb90]/20 rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`
-              }}
-            />
-          ))}
-        </div>
-      )}
+      {/* Floating Luxury Particles - Fixed positions to avoid hydration mismatch */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[
+          { left: "10%", top: "20%", delay: "0.5s", duration: "3s" },
+          { left: "85%", top: "15%", delay: "1.2s", duration: "2.5s" },
+          { left: "25%", top: "60%", delay: "0.8s", duration: "3.5s" },
+          { left: "70%", top: "45%", delay: "1.8s", duration: "2.8s" },
+          { left: "15%", top: "80%", delay: "0.3s", duration: "3.2s" },
+          { left: "90%", top: "70%", delay: "1.5s", duration: "2.7s" },
+          { left: "45%", top: "10%", delay: "0.7s", duration: "3.1s" },
+          { left: "60%", top: "85%", delay: "1.1s", duration: "2.9s" },
+          { left: "5%", top: "50%", delay: "0.9s", duration: "3.3s" },
+          { left: "95%", top: "35%", delay: "1.7s", duration: "2.6s" },
+          { left: "35%", top: "25%", delay: "0.4s", duration: "3.4s" },
+          { left: "75%", top: "75%", delay: "1.3s", duration: "2.4s" }
+        ].map((particle, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-[#dbbb90]/20 rounded-full animate-pulse"
+            style={{
+              left: particle.left,
+              top: particle.top,
+              animationDelay: particle.delay,
+              animationDuration: particle.duration
+            }}
+          />
+        ))}
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-7xl mx-auto">

@@ -48,19 +48,38 @@ export default function Property() {
         </section>
 
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {property?.map((obj:any,i) => (
-            <PropertyCard
-              photos={obj?.photos[0]}
-              title={obj?.title}
-              location="UNITED ARAB EMIRATES, DUBAI INTERNATIONAL MARINE CLUB, DUBAI"
-              price="4,400,000د"
-              bedrooms={2}
-              bathrooms={2}
-              area="1,277ft²"
-              propertyId="1059"
-              key={i}
-            />
-          ))}
+          {property?.map((obj:any,i) => {
+            // Handle location object properly
+            let locationString = "Dubai, UAE";
+            if (obj?.location) {
+              if (typeof obj.location === 'string') {
+                locationString = obj.location;
+              } else if (typeof obj.location === 'object') {
+                // Extract location from object
+                const parts = [];
+                if (obj.location.city) parts.push(obj.location.city);
+                if (obj.location.community) parts.push(obj.location.community);
+                if (obj.location.sub_community) parts.push(obj.location.sub_community);
+                locationString = parts.length > 0 ? parts.join(', ') : "Dubai, UAE";
+              }
+            } else if (obj?.area_name) {
+              locationString = obj.area_name;
+            }
+
+            return (
+              <PropertyCard
+                photos={obj?.photos?.[0]}
+                title={obj?.title}
+                location={locationString}
+                price={obj?.price ? `${obj.price.toLocaleString()} AED` : "Price on request"}
+                bedrooms={obj?.bedrooms || 0}
+                bathrooms={obj?.bathrooms || 0}
+                area={obj?.area ? `${obj.area} sq ft` : "Area not specified"}
+                propertyId={obj?.id || i.toString()}
+                key={i}
+              />
+            );
+          })}
         </section>
 
         <div className="text-center">

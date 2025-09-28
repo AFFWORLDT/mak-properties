@@ -19,23 +19,37 @@ export default function Footer() {
       <div className="absolute inset-0 bg-gradient-to-br from-[#dbbb90]/5 via-transparent to-[#dbbb90]/5" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
       
-      {/* Floating Luxury Particles - Client Side Only */}
-      {typeof window !== 'undefined' && (
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(15)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-[#dbbb90]/20 rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`
-              }}
-            />
-          ))}
-        </div>
-      )}
+      {/* Floating Luxury Particles - Fixed positions to avoid hydration mismatch */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[
+          { left: "8%", top: "15%", delay: "0.3s", duration: "2.8s" },
+          { left: "92%", top: "25%", delay: "1.1s", duration: "3.2s" },
+          { left: "15%", top: "65%", delay: "0.7s", duration: "2.5s" },
+          { left: "85%", top: "55%", delay: "1.8s", duration: "3.1s" },
+          { left: "25%", top: "35%", delay: "0.5s", duration: "2.9s" },
+          { left: "75%", top: "75%", delay: "1.3s", duration: "2.7s" },
+          { left: "5%", top: "85%", delay: "0.9s", duration: "3.3s" },
+          { left: "95%", top: "5%", delay: "1.6s", duration: "2.6s" },
+          { left: "45%", top: "20%", delay: "0.4s", duration: "3.0s" },
+          { left: "55%", top: "80%", delay: "1.2s", duration: "2.8s" },
+          { left: "35%", top: "10%", delay: "0.8s", duration: "3.4s" },
+          { left: "65%", top: "90%", delay: "1.5s", duration: "2.4s" },
+          { left: "12%", top: "45%", delay: "0.6s", duration: "3.1s" },
+          { left: "88%", top: "65%", delay: "1.4s", duration: "2.9s" },
+          { left: "50%", top: "50%", delay: "1.0s", duration: "2.7s" }
+        ].map((particle, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-[#dbbb90]/20 rounded-full animate-pulse"
+            style={{
+              left: particle.left,
+              top: particle.top,
+              animationDelay: particle.delay,
+              animationDuration: particle.duration
+            }}
+          />
+        ))}
+      </div>
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         {/* Newsletter Section */}
         <div className="md:col-span-2 relative z-10">
