@@ -108,7 +108,7 @@ export default function Footer() {
           <div className="relative backdrop-blur-[10px] bg-white/5 p-6 rounded-xl border border-white/10 shadow-xl">
             <h4 className="text-xl md:text-2xl mb-6 font-serif text-[#dbbb90] font-light">Contact</h4>
             <address className="not-italic space-y-4 text-base font-serif leading-relaxed">
-              <p className="text-white/90">107, Stadium Point, Dubai Sports City</p>
+              <p className="text-white/90">108, Stadium Point, Dubai Sports City</p>
               <p className="text-white/90">Dubai, UAE</p>
               <p className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-[#dbbb90] flex-shrink-0" />

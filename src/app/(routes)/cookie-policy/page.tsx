@@ -228,7 +228,7 @@ export default function CookiePolicyPage() {
               </p>
               <div className="bg-gray-50 p-6 rounded-lg">
                 <p className="text-gray-700 mb-2"><strong>MAK PROPERTIES</strong></p>
-                <p className="text-gray-700 mb-2">107, Stadium Point, Dubai Sports City</p>
+                <p className="text-gray-700 mb-2">108, Stadium Point, Dubai Sports City</p>
                 <p className="text-gray-700 mb-2">Dubai, UAE</p>
                 <p className="text-gray-700 mb-2">Phone: <a href="tel:+971505468230" className="text-blue-600 hover:underline">+971 50 546 8230</a></p>
                 <p className="text-gray-700 mb-2">Email: <a href="mailto:privacy@makproperties.ae" className="text-blue-600 hover:underline">privacy@makproperties.ae</a></p>
